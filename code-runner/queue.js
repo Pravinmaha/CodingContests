@@ -17,8 +17,8 @@ class CodeQueue {
 
     const { job, res } = this.queue.shift();
     try {
-      const output = await executeCode(job.code, job.language);
-      res.json({ output });
+      const data = await executeCode(job.code, job.language, job.input);
+      res.json(data);
     } catch (err) {
       res.status(500).json({ error: err.toString() });
     }

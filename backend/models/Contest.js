@@ -11,7 +11,7 @@ const ContestSchema = new mongoose.Schema({
   questions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }],
   registeredUsers: [{
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, 
-    status: { type: String, enum : ["normal", "suspended"]}
+    status: { type: String, enum : ["registered", "suspended", "joined"]}
   }],
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   isPublished: { type: Boolean, default: false },

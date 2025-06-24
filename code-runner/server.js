@@ -8,12 +8,18 @@ const PORT = 3000;
 app.use(bodyParser.json());
 
 app.post('/api/run', (req, res) => {
-  const { code, language } = req.body;
-  if (!code || !language) {
-    return res.status(400).json({ error: 'Code and language are required' });
-  }
+  try {
 
-  codeQueue.add({ code, language }, res);
+    const { code, language, input } = req.body;
+    if (!code || !language) {
+      return res.status(400).json({ error: 'Code and language are required' });
+    }
+    
+    codeQueue.add({ code, language, input }, res);
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).send({ message: error.message })
+  }
 });
 
 app.listen(PORT, () => {

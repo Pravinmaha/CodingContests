@@ -6,10 +6,10 @@ const TestCaseSchema = new mongoose.Schema({
     ref: 'Question',
     required: true
   },
-  inputs: [{ 
-    type: String, 
+  input: {
+    type: String,
     required: true
-  }],
+  },
   output: { type: String, required: true },
   isPublic: { type: Boolean, default: false }
 });

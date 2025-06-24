@@ -1,19 +1,63 @@
-import { writeFile, unlink } from 'fs/promises';
-import { exec } from 'child_process';
+import { writeFile, unlink, mkdir } from 'fs/promises';
+import { spawn } from 'child_process';
 import { v4 as uuid } from 'uuid';
+import { join } from 'path';
 
-export async function runC(code) {
-  const id = uuid();
-  const filename = `temp/${id}.c`;
-  const output = `temp/${id}`;
-  await writeFile(filename, code);
+export async function runC(code, input) {
+  const id = uuid().replace(/-/g, '').substring(0, 8);
+  const cFile = join('temp', `program_${id}.c`);
+  const outFile = join('temp', `output_${id}`);
 
-  return new Promise((resolve, reject) => {
-    exec(`gcc ${filename} -o ${output} && ${output}`, async (err, stdout, stderr) => {
-      await unlink(filename);
-      await unlink(output).catch(() => {});
-      if (err) return reject(stderr || err.message);
-      resolve(stdout);
+  await mkdir('temp', { recursive: true });
+  await writeFile(cFile, code);
+
+  // Compile
+  await new Promise((resolve, reject) => {
+    const compile = spawn('gcc', [cFile, '-o', outFile]);
+    let compileErr = '';
+    compile.stderr?.on('data', (data) => {
+      compileErr += data.toString();
+    });
+    compile.on('exit', (code) => {
+      if (code === 0) resolve();
+      else reject(`Compilation failed:\n${compileErr}`);
     });
   });
+
+  // Run with /usr/bin/time
+  const result = await new Promise((resolve) => {
+    const run = spawn('/usr/bin/time', [
+      '-v',
+      outFile
+    ]);
+
+    let stdout = '';
+    let stderr = '';
+
+    run.stdout.on('data', (data) => (stdout += data.toString()));
+    run.stderr.on('data', (data) => (stderr += data.toString()));
+
+    run.on('close', (code) => {
+      const memoryMatch = stderr.match(/Maximum resident set size.*:\s+(\d+)/);
+      const memory = memoryMatch ? parseInt(memoryMatch[1]) : null;
+
+      const timeMatch = stderr.match(/User time.*:\s+([\d.]+)/);
+      const time = timeMatch ? parseFloat(timeMatch[1]) : null;
+
+      if (code !== 0) {
+        resolve({ error: stderr || `Exited with code ${code}`, time, memory });
+      } else {
+        resolve({ output: stdout.trim(), time, memory });
+      }
+    });
+
+    run.stdin.write(input || '');
+    run.stdin.end();
+  });
+
+  // Clean up
+  await unlink(cFile).catch(() => {});
+  await unlink(outFile).catch(() => {});
+
+  return result;
 }

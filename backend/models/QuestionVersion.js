@@ -11,9 +11,10 @@ const QuestionVersionSchema = new mongoose.Schema({
     enum: ['python', 'cpp', 'java', 'js', 'c'],
     required: true
   },
-  workingCode: { type: String, required: true },
-  starterCode: { type: String },
-  runnerCode: { type: String }, // base test runner
+  referenceSolution: { type: String, required: true },
+  starterCode: { type: String, required: true  },
+  runnerCode: { type: String, required: true  }, // base test runner
+  submitCode: { type: String, required: true  },
   createdAt: { type: Date, default: Date.now }
 });
 

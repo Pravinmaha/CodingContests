@@ -4,12 +4,9 @@ const QuestionSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   examples: [{
-    inputs: [{ 
-      inputKey: { type: String, required: true },
-      inputValue: { type: String, required: true },
-    }],
+    input: { type: String, required: true },
     output: { type: String, required: true },
-    explanation: { type: String, required: true },
+    explanation: { type: String},
   }],
   constraints: [{
     type: String,
