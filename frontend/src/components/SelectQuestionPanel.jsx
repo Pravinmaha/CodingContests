@@ -2,7 +2,7 @@ import React from 'react';
 
 const SelectQuestionsPanel = ({
     problems,
-    selectedQuestionIds,
+    selectedQuestions,
     onCheckboxChange,
     onAddSelectedQuestions,
     onClose,
@@ -20,12 +20,12 @@ const SelectQuestionsPanel = ({
                         <div style={styles.customCheckboxWrapper}>
                             <input
                                 type="checkbox"
-                                checked={selectedQuestionIds.includes(q._id)}
-                                onChange={() => onCheckboxChange(q._id)}
+                                checked={selectedQuestions.some(que => que.question._id === q._id)}
+                                onChange={() => onCheckboxChange(q)}
                                 style={styles.customCheckbox}
                             />
                             <div style={styles.customCheckboxCircle}>
-                                {selectedQuestionIds.includes(q._id) && <div style={styles.checkmark}></div>}
+                                {selectedQuestions.some(que => que.question._id === q._id) && <div style={styles.checkmark}></div>}
                             </div>
                         </div>
                         <div style={styles.questionContent}>

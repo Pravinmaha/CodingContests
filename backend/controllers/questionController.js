@@ -73,12 +73,12 @@ export const getCompleteQuestionById = async (req, res) => {
     const versions = await QuestionVersion.find({ questionId }).lean();
 
     // 3. Get all test cases for the question
-    const testCases = await TestCase.find({ questionId }).lean();
+    // const testCases = await TestCase.find({ questionId }).lean();
     // 4. Return combined data
     return res.status(200).json({
       ...question,
       versions,
-      testCases
+      // testCases
     });
   } catch (err) {
     console.error('Error fetching full question:', err);

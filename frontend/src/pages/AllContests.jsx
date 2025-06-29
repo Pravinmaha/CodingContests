@@ -2,20 +2,21 @@ import { useState } from 'react';
 import { useAllContests } from '../contexts/AllContestsContext';
 
 export default function AllContestsPage() {
-  const [tab, setTab] = useState('all');
+  const [tab, setTab] = useState('upcoming');
   const { allContests, loading } = useAllContests();
 
   if (loading) return <div style={styles.loading}>Contests are loading...</div>;
 
-  const userId = localStorage.getItem("userId");
+  const now = Date.now();
 
   const filteredContests =
-    tab === 'mine'
-      ? allContests.filter((c) =>
-        c.registeredUsers?.some((entry) => entry.user === userId || entry.user?._id === userId)
-      )
-      : allContests;
-
+    tab === 'past'
+      ? allContests.filter(
+          (c) => new Date(c.endTime).getTime() + c.duration * 60000 < now
+        )
+      : allContests.filter(
+          (c) => new Date(c.endTime).getTime() + c.duration * 60000 >= now
+        );
 
   return (
     <div style={styles.page}>
@@ -24,16 +25,16 @@ export default function AllContestsPage() {
 
         <div style={styles.tabs}>
           <button
-            onClick={() => setTab('all')}
-            style={tab === 'all' ? styles.activeTab : styles.tab}
+            onClick={() => setTab('upcoming')}
+            style={tab === 'upcoming' ? styles.activeTab : styles.tab}
           >
-            All Contests
+            Upcoming Contests
           </button>
           <button
-            onClick={() => setTab('mine')}
-            style={tab === 'mine' ? styles.activeTab : styles.tab}
+            onClick={() => setTab('past')}
+            style={tab === 'past' ? styles.activeTab : styles.tab}
           >
-            My Contests
+            Past Contests
           </button>
         </div>
 
@@ -42,7 +43,7 @@ export default function AllContestsPage() {
             <div key={contest._id} style={styles.card}>
               <div style={styles.cardHeader}>
                 <h2 style={styles.cardTitle}>{contest.title}</h2>
-                <a href={`/contests/${contest._id}`} style={styles.viewBtn}>
+                <a href={`/contests/${contest._id}/questions`} style={styles.viewBtn}>
                   View →
                 </a>
               </div>
@@ -62,6 +63,7 @@ export default function AllContestsPage() {
     </div>
   );
 }
+
 
 const styles = {
   page: {

@@ -17,6 +17,7 @@ export const FullContestProvider = ({ children }) => {
     getFullContest(contestId)
       .then((data) => {
         setContest(data);
+        console.log(data)
         setLoading(false);
       })
       .catch((err) => {

@@ -1,43 +1,69 @@
 import { useState, useEffect, useRef } from 'react';
 import { useFullProblem } from '../contexts/FullProblemContext';
 import TestCaseEditor from '../components/TestCaseEditor';
-import QuestionDescription from '../components/QuestionDescription';
 import CodeEditorPanel from '../components/CodeEditorPanel';
-import QuestionSubmissions from '../components/QuestionSubmissions';
-import { runCode } from '../services/codeRunnerService';
+import { runCode, submitCode } from '../services/codeRunnerService';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export default function QuestionPage() {
   const { problem, loading, error } = useFullProblem();
   const [language, setLanguage] = useState('c');
   const [code, setCode] = useState('');
-  const [output, setOutput] = useState('');
-  const [activeTab, setActiveTab] = useState('description');
   const [runResults, setRunResults] = useState([]);
   const [leftWidth, setLeftWidth] = useState(50);
   const [allInputs, setAllInputs] = useState([]);
-  const [runError, setRunError] = useState('')
+  const [runError, setRunError] = useState('');
+  const [activeMainView, setActiveMainView] = useState('testcases');
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [stdouts, setStdouts] = useState([]);
+
+  const { contestId } = useParams();
+
+
+  const location = useLocation();
+
+  const activeTab = location.pathname.includes('/submissions') ? 'submissions' : 'description';
+
+
+  const navigate = useNavigate();
 
   const resizerRef = useRef(null);
 
   function parseJavaOutput(rawOutput) {
     if (typeof rawOutput !== 'string') return [];
 
-    const lines = rawOutput.replace(/\r\n/g, '\n').trim().split('\n');
+    // const lines = rawOutput.replace(/\r\n/g, '\n').trim().split('\n');
+    const lines = rawOutput.replace("[", "").replace("]", "").split(",");
+    // const userStdout = rawOutput.substring(0, rawOutput.indexOf("actualOutput"));
+    // setStdouts(userStdout);
 
     const results = [];
-
-    for (let i = 0; i < lines.length; i += 2) {
-      const actual = lines[i]?.split('=')[1]?.trim();
-      const expected = lines[i + 1]?.split('=')[1]?.trim();
+    for (let i = 0; i < lines.length; i++) {
+      const outputs = lines[i].replace(/\r\n/g, '\n').trim().split('\n');
+      const actual = outputs[0]?.split('=')[1]?.trim();
+      const expected = outputs[1]?.split('=')[1]?.trim();
+      const stdout = outputs[2]?.split('=')[1]?.trim();
 
       if (actual !== undefined && expected !== undefined) {
         results.push({
-          // values: { a, b },
           actualOutput: actual,
           expectedOutput: expected,
+          stdout
         });
       }
     }
+
+    // for (let i = 0; i < lines.length; i += 2) {
+    //   const actual = lines[i]?.split('=')[1]?.trim();
+    //   const expected = lines[i + 1]?.split('=')[1]?.trim();
+
+    //   if (actual !== undefined && expected !== undefined) {
+    //     results.push({
+    //       actualOutput: actual,
+    //       expectedOutput: expected,
+    //     });
+    //   }
+    // }
     setRunResults(results)
 
     return results;
@@ -45,33 +71,57 @@ export default function QuestionPage() {
 
 
   useEffect(() => {
-    if (problem && problem.versions) {
+    if (problem && problem?.versions) {
       let l = localStorage.getItem("language") || 'c';
-      const langObj = problem.versions.find(v => v.language === l);
+      const langObj = problem?.versions.find(v => v.language === l);
       setLanguage(l);
       setCode(langObj ? langObj.starterCode : '');
+      setRunError('');
     }
   }, [problem]);
 
   const handleRun = () => {
+    runCode(problem?._id, language, code, allInputs)
+    .then((data) => {
+      console.log(data)
+      parseJavaOutput(data.output)
+      setRunError('')
+      setActiveMainView("results")
+      setIsExpanded(true);
+      
+    })
+    .catch((err) => {
+      console.log(err)
+      setRunError(err.response.data.message)
+      setActiveMainView("results")
+      setIsExpanded(true);
+    })
+  }
 
-    runCode(problem._id, language, code, allInputs)
-      .then((data) => {
-        console.log(data)
-        parseJavaOutput(data.output)
-        setRunError('')
 
+  const handleSubmit = () => {
+    submitCode(problem?._id, language, code, contestId)
+      .then(async (data) => {
+        // alert("Question submitted");
+        if(contestId)
+        navigate(`/contests/${contestId}/questions/${problem._id}/submissions/${data._id}`);
+      else
+      navigate(`/admin/problems/${problem._id}/submissions/${data._id}`)
       })
       .catch((err) => {
-        console.log(err)
-        setRunError(err.response.data.message)
+        setRunError(err?.response?.data?.message?.error);
+        if (err?.response?.data?.message?.error) {
+          setActiveMainView("results");
+          setIsExpanded(true)
+        }
       })
   }
-  const handleSubmit = () => setOutput('Submitted for evaluation...');
+
+
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
     localStorage.setItem("language", lang)
-    const langObj = problem.versions.find(v => v.language === lang);
+    const langObj = problem?.versions.find(v => v.language === lang);
     setCode(langObj ? langObj.starterCode : '');
   };
 
@@ -106,36 +156,45 @@ export default function QuestionPage() {
   if (error) return <p>Error loading problem</p>;
 
   return (
-    <div style={styles.page}>
+    <div style={{...styles.page, height: `${contestId ? '90vh':'100vh'}`,}}>
       {/* LEFT PANEL */}
       <div style={{ ...styles.left, width: `${leftWidth}%` }}>
         <div style={styles.tabButtons}>
           <button
-            onClick={() => setActiveTab('description')}
+            onClick={() => {
+              if(contestId) navigate(`/contests/${contestId}/questions/${problem._id}/`);
+              else navigate(`/admin/problems/${problem._id}`)
+            }}
             style={activeTab === 'description' ? styles.activeTabButton : styles.tabButton}
           >
             📄 Description
           </button>
           <button
-            onClick={() => setActiveTab('submissions')}
+            onClick={() => {
+              if (!location.pathname.endsWith('/submissions')) {
+                navigate(`submissions`);
+              }
+            }}
             style={activeTab === 'submissions' ? styles.activeTabButton : styles.tabButton}
           >
             📜 Submissions
           </button>
+
         </div>
 
         <div style={styles.leftContent}>
-          {activeTab === 'description' ? (
-            <QuestionDescription problem={problem} />
-          ) : (
-            <QuestionSubmissions />
-          )}
+          <Outlet />
         </div>
 
         <TestCaseEditor
+          isExpanded={isExpanded}
+          setIsExpanded={setIsExpanded}
+          activeMainView={activeMainView}
+          setActiveMainView={setActiveMainView}
           runError={runError}
           results={runResults}
-          examples={problem.examples}
+          stdouts={stdouts}
+          examples={problem?.examples}
           setAllInputs={setAllInputs}
         />
 
@@ -153,8 +212,7 @@ export default function QuestionPage() {
         <CodeEditorPanel
           language={language}
           code={code}
-          output={output}
-          problem={problem}
+          versions={problem?.versions}
           setCode={setCode}
           handleLanguageChange={handleLanguageChange}
           handleRun={handleRun}

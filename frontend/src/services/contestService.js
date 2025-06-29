@@ -5,8 +5,8 @@ export const createContest = async (contestData) => {
   return response.data;
 };
 
-export const addQuestionToContest = async (questionIds, contestId) => {
-  const response = await api.post(`/contests/addquestions/${contestId}`, { questionIds });
+export const addQuestionToContest = async (selectedQuestions, contestId) => {
+  const response = await api.post(`/contests/addquestions/${contestId}`, {newQuestions: selectedQuestions});
   return response.data;
 };
 
@@ -43,5 +43,15 @@ export const getFullContest = async (contestId) => {
 
 export const registerForContest = async (contestId) => {
   const response = await api.post(`/contests/register/${contestId}`);
+  return response.data;
+};
+
+export const suspendUser = async (contestId, userId) => {
+  const response = await api.post(`/contests/${contestId}/suspend/${userId}`);
+  return response.data;
+};
+
+export const unsuspendUser = async (contestId, userId) => {
+  const response = await api.post(`/contests/${contestId}/unsuspend/${userId}`);
   return response.data;
 };

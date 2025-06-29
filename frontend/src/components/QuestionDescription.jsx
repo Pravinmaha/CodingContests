@@ -1,4 +1,5 @@
 import React from 'react';
+import { useFullProblem } from '../contexts/FullProblemContext';
 
 const styles = {
   title: {
@@ -66,7 +67,8 @@ const getTagStyle = (difficulty) => {
   return styles.difficultyTag;
 };
 
-const QuestionDescription = ({ problem }) => {
+const QuestionDescription = () => {
+  const { problem } = useFullProblem();
   if (!problem) return <p style={{ color: '#aaa' }}>Loading...</p>;
 
   return (
@@ -86,7 +88,7 @@ const QuestionDescription = ({ problem }) => {
       {/* Examples */}
       <div style={styles.section}>
         <h4 style={styles.sectionTitle}>Examples</h4>
-        {problem.examples.map((ex, index) => (
+        {problem?.examples?.map((ex, index) => (
           <div key={index} style={styles.exampleBlock}>
             <div style={styles.preBlock}>
               <strong>Example {index + 1}</strong>

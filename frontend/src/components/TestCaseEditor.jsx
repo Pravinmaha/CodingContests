@@ -86,17 +86,17 @@ const styles = {
   },
 };
 
-export default function TestCaseEditor({ runError, examples, setAllInputs, results }) {
+export default function TestCaseEditor({ runError, examples, setAllInputs, results, activeMainView, setActiveMainView, isExpanded, setIsExpanded }) {
   const [testCases, setTestCases] = useState([{ input: '', values: {}, expectedOutput: '', actualOutput: '' }]);
   const [activeTab, setActiveTab] = useState(0);
-  const [activeMainView, setActiveMainView] = useState('testcases');
-  const [isExpanded, setIsExpanded] = useState(false);
+  // const [activeMainView, setActiveMainView] = useState('testcases');
+  // const [isExpanded, setIsExpanded] = useState(false);
 
 
 
   const parseInput = (input) => {
     const obj = {};
-    input.split(',').forEach((pair) => {
+    input.split('\n').forEach((pair) => {
       const [key, value] = pair.split('=').map((s) => s.trim());
       if (key) obj[key] = value ?? '';
     });
@@ -296,23 +296,20 @@ export default function TestCaseEditor({ runError, examples, setAllInputs, resul
                 <input style={styles.input} value={val} readOnly />
               </div>
             ))}
-              <div style={styles.card}>
-                <label style={styles.label}>Expected Output</label>
-                <input
-                  style={styles.input}
-                  value={results[activeTab]?.expectedOutput}
-                  onChange={(e) => handleOutputChange(activeTab, 'expectedOutput', e.target.value)}
-                  readOnly
-                />
-              </div>
+              {results[activeTab]?.stdout && <div style={styles.card}>
+                <label style={styles.label}>Stdout</label>
+                <div style={styles.input}>{results[activeTab]?.stdout}</div>
+              </div>}
+
               <div style={styles.card}>
                 <label style={styles.label}>Your Output</label>
-                <input
-                  style={styles.input}
-                  value={results[activeTab]?.actualOutput}
-                  onChange={(e) => handleOutputChange(activeTab, 'actualOutput', e.target.value)}
-                  readOnly
-                />
+                <div style={styles.input}>{results[activeTab]?.actualOutput}</div>
+              </div>
+              <div style={styles.card}>
+                <label style={styles.label}>Expected Output</label>
+                <div style={styles.input}>
+                  {results[activeTab]?.expectedOutput}
+                </div>
               </div>
             </>
               :

@@ -77,7 +77,7 @@ export default function AddProblemPage() {
     }));
     const problem = { title, description, examples, constraints, difficulty, tags: selectedTags, testCases, versions };
     try { addQuestion(problem); alert('Question added'); }
-    catch(err){ console.error(err); }
+    catch (err) { console.error(err); }
   };
 
   return (
@@ -108,9 +108,9 @@ export default function AddProblemPage() {
           <div style={{ marginTop: 16 }}>
             <h3 style={styles.sectionHeading}>⚙️ Difficulty</h3>
             <div style={{ position: 'relative' }}>
-              <div onClick={() => setShowDropdown(d => !d)} style={{...styles.input, cursor:'pointer', display:'flex', justifyContent:'space-between'}}>
-                <span style={{display:'flex', alignItems:'center', gap:8}}>
-                  <span style={{width:10,height:10,borderRadius:'50%',backgroundColor: difficulties.find(d=>d.value===difficulty).color}} />
+              <div onClick={() => setShowDropdown(d => !d)} style={{ ...styles.input, cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: difficulties.find(d => d.value === difficulty).color }} />
                   {difficulty}
                 </span>
                 <span>▼</span>
@@ -118,8 +118,8 @@ export default function AddProblemPage() {
               {showDropdown && (
                 <div style={styles.dropdownMenu}>
                   {difficulties.map(d => (
-                    <div key={d.value} onClick={()=>{setDifficulty(d.value); setShowDropdown(false)}} style={styles.dropdownItem}>
-                      <span style={{width:10,height:10,borderRadius:'50%',backgroundColor:d.color}} /> {d.value}
+                    <div key={d.value} onClick={() => { setDifficulty(d.value); setShowDropdown(false) }} style={styles.dropdownItem}>
+                      <span style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: d.color }} /> {d.value}
                     </div>
                   ))}
                 </div>
@@ -129,22 +129,22 @@ export default function AddProblemPage() {
 
           <h3 style={styles.sectionHeading}>⚙️ Tags</h3>
           <div style={{ position: 'relative' }}>
-            <div onClick={()=>setShowTagDropdown(t=>!t)} style={{...styles.input, cursor:'pointer', minHeight:50, display:'flex', flexWrap:'wrap', gap:8}}>
-              {selectedTags.length ? selectedTags.map(t=> <div key={t} style={styles.tagPill}>{t} <span onClick={e=>{e.stopPropagation(); setSelectedTags(ts=>ts.filter(x=>x!==t));}}>×</span></div>)
-                : <span style={{color:'#777'}}>Select Tags...</span> }
+            <div onClick={() => setShowTagDropdown(t => !t)} style={{ ...styles.input, cursor: 'pointer', minHeight: 50, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {selectedTags.length ? selectedTags.map(t => <div key={t} style={styles.tagPill}>{t} <span onClick={e => { e.stopPropagation(); setSelectedTags(ts => ts.filter(x => x !== t)); }}>×</span></div>)
+                : <span style={{ color: '#777' }}>Select Tags...</span>}
             </div>
             {showTagDropdown && (
               <div style={styles.tagMenu}>
-                {tagOptions.map(tag=>{
+                {tagOptions.map(tag => {
                   const sel = selectedTags.includes(tag);
-                  return <div key={tag} onClick={()=>setSelectedTags(ts=> sel? ts.filter(x=>x!==tag): [...ts, tag])} style={sel? styles.tagItemSelected:styles.tagItem}>{tag}</div>;
+                  return <div key={tag} onClick={() => setSelectedTags(ts => sel ? ts.filter(x => x !== tag) : [...ts, tag])} style={sel ? styles.tagItemSelected : styles.tagItem}>{tag}</div>;
                 })}
               </div>
             )}
           </div>
 
           <h3 style={styles.sectionHeading}>📍 Constraints</h3>
-          <textarea placeholder="Constraints (e.g., 1 ≤ n ≤ 10^5)" style={styles.textarea} value={constraints} onChange={e=>setConstraints(e.target.value)} />
+          <textarea placeholder="Constraints (e.g., 1 ≤ n ≤ 10^5)" style={styles.textarea} value={constraints} onChange={e => setConstraints(e.target.value)} />
 
         </>
       )}
@@ -153,27 +153,27 @@ export default function AddProblemPage() {
       {activeSection === 'testcases' && (
         <>
           <h3 style={styles.sectionHeading}>📌 Examples</h3>
-          {examples.map((ex,i)=>(
+          {examples.map((ex, i) => (
             <div key={i} style={styles.card}>
-              <input placeholder="Input" style={styles.input} value={ex.input} onChange={e=> updateExamples(i,'input',e.target.value)} />
-              <textarea placeholder="Output" style={styles.input} value={ex.output} onChange={e=> updateExamples(i,'output',e.target.value)} />
-              <input placeholder="Explanation" style={styles.input} value={ex.explanation} onChange={e=> updateExamples(i,'explanation',e.target.value)} />
-              {examples.length>1 && <button style={styles.removeBtn} onClick={()=>removeExample(i)}>Remove</button>}
+              <textarea placeholder="Input" style={styles.input} value={ex.input} onChange={e => updateExamples(i, 'input', e.target.value)} />
+              <textarea placeholder="Output" style={styles.input} value={ex.output} onChange={e => updateExamples(i, 'output', e.target.value)} />
+              <textarea placeholder="Explanation" style={styles.input} value={ex.explanation} onChange={e => updateExamples(i, 'explanation', e.target.value)} />
+              {examples.length > 1 && <button style={styles.removeBtn} onClick={() => removeExample(i)}>Remove</button>}
             </div>
           ))}
-          <button onClick={()=>setExamples(ex=>[...ex,{input:'',output:'',explanation:''}])} style={styles.addBtn}>➕ Add Example</button>
+          <button onClick={() => setExamples(ex => [...ex, { input: '', output: '', explanation: '' }])} style={styles.addBtn}>➕ Add Example</button>
 
           <h3 style={styles.sectionHeading}>🧪 Test Cases</h3>
-          {testCases.map((tc,i)=>(
+          {testCases.map((tc, i) => (
             <div key={i} style={styles.card}>
-              <div style={{display:'flex', gap:10}}>
-                <textarea placeholder="Input" style={{...styles.textarea, flex:1}} value={tc.input} onChange={e=> updateTestCases(i,'input',e.target.value)} />
-                <textarea placeholder="Output" style={{...styles.textarea, flex:1}} value={tc.output} onChange={e=> updateTestCases(i,'output',e.target.value)} />
+              <div style={{ display: 'flex', gap: 10 }}>
+                <textarea placeholder="Input" style={{ ...styles.textarea, flex: 1 }} value={tc.input} onChange={e => updateTestCases(i, 'input', e.target.value)} />
+                <textarea placeholder="Output" style={{ ...styles.textarea, flex: 1 }} value={tc.output} onChange={e => updateTestCases(i, 'output', e.target.value)} />
               </div>
-              {testCases.length>1 && <button style={styles.removeBtn} onClick={()=>removeTestCase(i)}>Remove</button>}
+              {testCases.length > 1 && <button style={styles.removeBtn} onClick={() => removeTestCase(i)}>Remove</button>}
             </div>
           ))}
-          <button onClick={()=>setTestCases(tc=>[...tc,{input:'',output:''}])} style={styles.addBtn}>➕ Add Test Case</button>
+          <button onClick={() => setTestCases(tc => [...tc, { input: '', output: '' }])} style={styles.addBtn}>➕ Add Test Case</button>
         </>
       )}
 
@@ -182,15 +182,15 @@ export default function AddProblemPage() {
         <>
           <h3 style={styles.sectionHeading}>🧠 Code</h3>
           <div style={styles.tabLineBar}>
-            {['runner','reference','default','submit'].map(tab=> (
-              <button key={tab} onClick={()=>handleTabChange(tab)} style={activeCodeTab===tab?styles.activeTab:styles.tab}>
-                {tab.charAt(0).toUpperCase()+tab.slice(1)} Code
+            {['runner', 'reference', 'default', 'submit'].map(tab => (
+              <button key={tab} onClick={() => handleTabChange(tab)} style={activeCodeTab === tab ? styles.activeTab : styles.tab}>
+                {tab.charAt(0).toUpperCase() + tab.slice(1)} Code
               </button>
             ))}
           </div>
           <div style={styles.tabBar}>
-            {languages.map(lang=> (
-              <button key={lang} onClick={()=>handleLangChange(lang)} style={activeLang===lang? {...styles.tabPill,...styles.activeTabPill} : styles.tabPill}>
+            {languages.map(lang => (
+              <button key={lang} onClick={() => handleLangChange(lang)} style={activeLang === lang ? { ...styles.tabPill, ...styles.activeTabPill } : styles.tabPill}>
                 {lang}
               </button>
             ))}
@@ -205,28 +205,28 @@ export default function AddProblemPage() {
 
 // Styles remain mostly unchanged, extended for new elements
 const styles = {
-  container: { padding: 30, width:'100%', margin:'0 auto', fontFamily:'sans-serif', backgroundColor:'#10141a', color:'#e0f7fa', borderRadius:8 },
-  heading: { fontSize:28, marginBottom:20, fontWeight:'bold', color:'#4dd0e1' },
-  sectionTabs: { display:'flex', gap:16, marginBottom:24 },
-  sectionTab: { padding:'8px 16px', background:'#263238', border:'none', borderRadius:6, cursor:'pointer', color:'#90caf9' },
-  activeSectionTab: { padding:'8px 16px', background:'#00e5ff', border:'none', borderRadius:6, cursor:'pointer', color:'#000', fontWeight:'bold' },
-  sectionHeading: { fontSize:20, marginTop:24, color:'#80deea', fontWeight:600 },
-  input: { width:'100%', margin:'8px 0', padding:10, borderRadius:6, border:'1px solid #37474f', backgroundColor:'#1c232b', color:'#e0f7fa', fontSize:15 },
-  textarea: { width:'100%', margin:'8px 0', padding:10, borderRadius:6, fontSize:15, border:'1px solid #37474f', backgroundColor:'#1c232b', color:'#e0f7fa' },
-  dropdownMenu: { position:'absolute', top:'100%', left:0, width:'100%', backgroundColor:'#1c232b', border:'1px solid #37474f', borderRadius:6, marginTop:4, zIndex:10 },
-  dropdownItem: { padding:10, cursor:'pointer', display:'flex', alignItems:'center', gap:8, color:'#e0f7fa' },
-  tagMenu: { position:'absolute', top:'100%', left:0, width:'100%', backgroundColor:'#1c232b', border:'1px solid #37474f', borderRadius:6, marginTop:4, zIndex:10, padding:10, display:'flex', flexWrap:'wrap', gap:10 },
-  tagPill: { backgroundColor:'#37474f', color:'#e0f7fa', padding:'4px 8px', borderRadius:14, fontSize:13, display:'flex', alignItems:'center', gap:6, cursor:'default' },
-  tagItem: { padding:'6px 14px', borderRadius:9999, fontSize:14, backgroundColor:'#263238', color:'#e0f7fa', cursor:'pointer', transition:'0.2s', border:'1px solid transparent' },
-  tagItemSelected: { padding:'6px 14px', borderRadius:9999, fontSize:14, backgroundColor:'#00e5ff', color:'#000', cursor:'pointer', transition:'0.2s', border:'1px solid #00e5ff' },
-  card: { border:'1px solid #263238', padding:16, borderRadius:8, backgroundColor:'#151c25', marginTop:10 },
-  addBtn: { background:'#4fc3f7', color:'#000', padding:'8px 14px', border:'none', borderRadius:6, marginTop:10, cursor:'pointer' },
-  removeBtn: { background:'#ef5350', color:'#fff', padding:'6px 10px', border:'none', borderRadius:6, marginTop:10, cursor:'pointer' },
-  tabBar: { display:'flex', borderBottom:'2px solid #263238', marginBottom:12, gap:16 },
-  tabLineBar: { display:'flex', gap:16, borderBottom:'2px solid #263238', marginBottom:12 },
-  tab: { padding:'10px 0', background:'transparent', border:'none', borderBottom:'2px solid transparent', color:'#90caf9', fontSize:15, fontWeight:500, cursor:'pointer', transition:'border-bottom 0.2s, color 0.2s' },
-  activeTab: { padding:'10px 0', background:'transparent', border:'none', borderBottom:'2px solid #00e5ff', color:'#00e5ff', fontSize:15, fontWeight:600, cursor:'pointer' },
-  tabPill: { padding:'6px 16px', borderRadius:9999, border:'1px solid #37474f', backgroundColor:'#1a1f27', color:'#e0f7fa', fontSize:14, cursor:'pointer', transition:'all 0.2s ease-in-out' },
-  activeTabPill: { backgroundColor:'#00e5ff', color:'#000', border:'1px solid #00e5ff', fontWeight:'bold' },
-  submitBtn: { background:'#26c6da', color:'#000', padding:'12px 20px', border:'none', borderRadius:6, fontSize:16, marginTop:30, cursor:'pointer', fontWeight:'bold' },
+  container: { padding: 30, width: '100%', margin: '0 auto', fontFamily: 'sans-serif', backgroundColor: '#10141a', color: '#e0f7fa', borderRadius: 8 },
+  heading: { fontSize: 28, marginBottom: 20, fontWeight: 'bold', color: '#4dd0e1' },
+  sectionTabs: { display: 'flex', gap: 16, marginBottom: 24 },
+  sectionTab: { padding: '8px 16px', background: '#263238', border: 'none', borderRadius: 6, cursor: 'pointer', color: '#90caf9' },
+  activeSectionTab: { padding: '8px 16px', background: '#00e5ff', border: 'none', borderRadius: 6, cursor: 'pointer', color: '#000', fontWeight: 'bold' },
+  sectionHeading: { fontSize: 20, marginTop: 24, color: '#80deea', fontWeight: 600 },
+  input: { width: '100%', margin: '8px 0', padding: 10, borderRadius: 6, border: '1px solid #37474f', backgroundColor: '#1c232b', color: '#e0f7fa', fontSize: 15 },
+  textarea: { width: '100%', margin: '8px 0', padding: 10, borderRadius: 6, fontSize: 15, border: '1px solid #37474f', backgroundColor: '#1c232b', color: '#e0f7fa' },
+  dropdownMenu: { position: 'absolute', top: '100%', left: 0, width: '100%', backgroundColor: '#1c232b', border: '1px solid #37474f', borderRadius: 6, marginTop: 4, zIndex: 10 },
+  dropdownItem: { padding: 10, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, color: '#e0f7fa' },
+  tagMenu: { position: 'absolute', top: '100%', left: 0, width: '100%', backgroundColor: '#1c232b', border: '1px solid #37474f', borderRadius: 6, marginTop: 4, zIndex: 10, padding: 10, display: 'flex', flexWrap: 'wrap', gap: 10 },
+  tagPill: { backgroundColor: '#37474f', color: '#e0f7fa', padding: '4px 8px', borderRadius: 14, fontSize: 13, display: 'flex', alignItems: 'center', gap: 6, cursor: 'default' },
+  tagItem: { padding: '6px 14px', borderRadius: 9999, fontSize: 14, backgroundColor: '#263238', color: '#e0f7fa', cursor: 'pointer', transition: '0.2s', border: '1px solid transparent' },
+  tagItemSelected: { padding: '6px 14px', borderRadius: 9999, fontSize: 14, backgroundColor: '#00e5ff', color: '#000', cursor: 'pointer', transition: '0.2s', border: '1px solid #00e5ff' },
+  card: { border: '1px solid #263238', padding: 16, borderRadius: 8, backgroundColor: '#151c25', marginTop: 10 },
+  addBtn: { background: '#4fc3f7', color: '#000', padding: '8px 14px', border: 'none', borderRadius: 6, marginTop: 10, cursor: 'pointer' },
+  removeBtn: { background: '#ef5350', color: '#fff', padding: '6px 10px', border: 'none', borderRadius: 6, marginTop: 10, cursor: 'pointer' },
+  tabBar: { display: 'flex', borderBottom: '2px solid #263238', marginBottom: 12, gap: 16 },
+  tabLineBar: { display: 'flex', gap: 16, borderBottom: '2px solid #263238', marginBottom: 12 },
+  tab: { padding: '10px 0', background: 'transparent', border: 'none', borderBottom: '2px solid transparent', color: '#90caf9', fontSize: 15, fontWeight: 500, cursor: 'pointer', transition: 'border-bottom 0.2s, color 0.2s' },
+  activeTab: { padding: '10px 0', background: 'transparent', border: 'none', borderBottom: '2px solid #00e5ff', color: '#00e5ff', fontSize: 15, fontWeight: 600, cursor: 'pointer' },
+  tabPill: { padding: '6px 16px', borderRadius: 9999, border: '1px solid #37474f', backgroundColor: '#1a1f27', color: '#e0f7fa', fontSize: 14, cursor: 'pointer', transition: 'all 0.2s ease-in-out' },
+  activeTabPill: { backgroundColor: '#00e5ff', color: '#000', border: '1px solid #00e5ff', fontWeight: 'bold' },
+  submitBtn: { background: '#26c6da', color: '#000', padding: '12px 20px', border: 'none', borderRadius: 6, fontSize: 16, marginTop: 30, cursor: 'pointer', fontWeight: 'bold' },
 };

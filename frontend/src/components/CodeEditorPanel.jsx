@@ -62,8 +62,7 @@ const styles = {
 export default function CodeEditorPanel({
   language,
   code,
-  output,
-  problem,
+  versions,
   setCode,
   handleLanguageChange,
   handleRun,
@@ -79,7 +78,7 @@ export default function CodeEditorPanel({
           onChange={(e) => handleLanguageChange(e.target.value)}
           style={styles.select}
         >
-          {problem.versions.map((v, idx) => (
+          {versions.map((v, idx) => (
             <option key={idx} value={v.language}>
               {v.language}
             </option>
@@ -112,11 +111,6 @@ export default function CodeEditorPanel({
           Submit
         </button>
       </div>
-
-      {/* Output */}
-      {/* <div style={styles.output}>
-        <pre>{output}</pre>
-      </div> */}
     </div>
   );
 }

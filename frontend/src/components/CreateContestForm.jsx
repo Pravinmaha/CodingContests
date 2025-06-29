@@ -11,7 +11,10 @@ const CreateContestForm = ({ onClose, onCreate }) => {
         duration: '',
         isPublic: true,
         isPublished: false,
-        questions: []
+        questions: [{
+            question: '',
+            score: 0
+        }]
     });
 
     const [showQuestionPanel, setShowQuestionPanel] = useState(false);
@@ -21,33 +24,77 @@ const CreateContestForm = ({ onClose, onCreate }) => {
     if (error) return <div>{error}</div>
 
 
-    const [selectedQuestionIds, setSelectedQuestionIds] = useState([]);
+    const [selectedQuestions, setSelectedQuestions] = useState([]);
 
     const handleChange = (field, value) => {
-        setNewContest(prev => ({ ...prev, [field]: value }));
+        setNewContest(prev => {
+            const updated = { ...prev, [field]: value };
+
+            const start = new Date(updated.startTime).getTime();
+            const end = new Date(updated.endTime).getTime();
+            const duration = parseInt(updated.duration); // in minutes
+
+            if (updated.startTime && updated.duration && field !== 'endTime') {
+                updated.endTime = toLocalDatetimeString(start + duration * 60000);
+            } else if (updated.endTime && updated.startTime && field !== 'duration') {
+                if(updated.endTime < updated.startTime){
+                    updated.endTime = updated.startTime;
+                  }
+                updated.duration = Math.max(Math.round((end - start) / 60000), 0);
+            } else if (updated.endTime && updated.duration && field !== 'startTime') {
+                updated.startTime = toLocalDatetimeString(end - duration * 60000);
+            }
+
+            return updated;
+        });
     };
 
-    const handleCheckboxChange = (id) => {
-        setSelectedQuestionIds(prev =>
-            prev.includes(id) ? prev.filter(qid => qid !== id) : [...prev, id]
-        );
+
+    function toLocalDatetimeString(dateInput) {
+        const date = new Date(dateInput);
+        const year = date.getFullYear();
+        const month = (`0${date.getMonth() + 1}`).slice(-2);
+        const day = (`0${date.getDate()}`).slice(-2);
+        const hours = (`0${date.getHours()}`).slice(-2);
+        const minutes = (`0${date.getMinutes()}`).slice(-2);
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+    }
+
+
+    const handleCheckboxChange = (question) => {
+        setSelectedQuestions(prev => {
+            const exists = prev.some(entry => entry.question._id === question._id);
+            if (exists) {
+                return prev.filter(entry => entry.question._id !== question._id);
+            } else {
+                return [...prev, { question, score: 10 }];
+            }
+        });
     };
+
 
     const handleAddSelectedQuestions = () => {
-        const selected = problems.filter(q =>
-          selectedQuestionIds.includes(q._id) &&
-          !questions.some(existing => existing._id === q._id) // ensure not already added
-        );
-      
+        const selected = problems
+            .filter(q =>
+                selectedQuestions.some(sq => sq.question._id === q._id) &&
+                !questions.some(existing => existing.question._id === q._id)
+            )
+            .map(q => ({
+                question: q,
+                score: 10 // default score
+            }));
+
         setQuestions(prev => [...prev, ...selected]);
-        setSelectedQuestionIds([]);
+        setSelectedQuestions([]);
         setShowQuestionPanel(false);
-      };
-      
+    };
+
+
 
     const handleRemoveQuestion = (id) => {
-        setQuestions(prev => prev.filter(q => q._id !== id));
+        setQuestions(prev => prev.filter(q => q.question._id !== id));
     };
+
 
     const handleSubmit = () => {
         const { title, startTime, endTime, duration } = newContest;
@@ -59,7 +106,10 @@ const CreateContestForm = ({ onClose, onCreate }) => {
         const formattedContest = {
             ...newContest,
             duration: Number(duration),
-            questions: questions.map(q => q._id),
+            questions: questions.map(q => ({
+                question: q.question?._id,
+                score: q.score
+            }))
         };
 
         onCreate(formattedContest);
@@ -74,7 +124,7 @@ const CreateContestForm = ({ onClose, onCreate }) => {
             questions: []
         });
         setQuestions([]);
-        setSelectedQuestionIds([]);
+        setSelectedQuestions([]);
         setShowQuestionPanel(false);
     };
 
@@ -118,7 +168,7 @@ const CreateContestForm = ({ onClose, onCreate }) => {
                                 <input
                                     type="datetime-local"
                                     style={styles.input}
-                                    value={newContest[field]}
+                                    value={toLocalDatetimeString(newContest[field])}
                                     onChange={(e) => handleChange(field, e.target.value)}
                                 />
                             </div>
@@ -148,19 +198,53 @@ const CreateContestForm = ({ onClose, onCreate }) => {
 
                     {/* RIGHT SIDE – Selected Questions */}
                     <div style={styles.rightSection}>
-                        <h3 style={styles.subheading}>Selected Questions</h3>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <h3 style={styles.subheading}>Selected Questions</h3>
+                            <h3 style={{ ...styles.subheading, marginRight: "55px" }}>Score</h3>
+                        </div>
 
                         <div style={styles.questionList}>
-                            {questions.map((q, i) => (
-                                <div key={q._id} style={styles.questionCard}>
+                            {questions.map((entry, i) => (
+                                <div key={entry.question?._id || entry?._id} style={styles.questionCard}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <strong>{i + 1}. {q.title}</strong>
-                                        <button
-                                            onClick={() => handleRemoveQuestion(q._id)}
-                                            style={styles.removeSmallBtn}
-                                        >
-                                            ✕
-                                        </button>
+                                        <strong>{i + 1}. {entry?.question?.title || entry.title}</strong>
+                                        {/* <p>{" " + entry?.question?.difficulty || entry.difficulty}</p> */}
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <input
+                                                type="number"
+                                                value={entry.score}
+                                                onChange={(e) => {
+                                                    const newScore = parseInt(e.target.value, 10);
+                                                    setQuestions(prev =>
+                                                        prev.map(q =>
+                                                            q.question._id === entry.question._id ? { ...q, score: newScore } : q
+                                                        )
+                                                    );
+                                                }}
+                                                style={{
+                                                    width: '60px',
+                                                    background: '#111',
+                                                    color: '#fff',
+                                                    border: '1px solid #444',
+                                                    borderRadius: '4px',
+                                                    padding: '4px',
+                                                    marginRight: '10px',
+                                                }}
+                                            />
+                                            <button
+                                                onClick={() => {
+                                                    if (entry?.question) {
+                                                        handleRemoveQuestion(entry?.question?._id);
+                                                    }
+                                                    else {
+                                                        handleRemoveQuestion(entry._id);
+                                                    }
+                                                }}
+                                                style={styles.removeSmallBtn}
+                                            >
+                                                ✕
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -170,7 +254,7 @@ const CreateContestForm = ({ onClose, onCreate }) => {
                         {showQuestionPanel ? (
                             <SelectQuestionsPanel
                                 problems={problems}
-                                selectedQuestionIds={selectedQuestionIds}
+                                selectedQuestions={selectedQuestions}
                                 onCheckboxChange={handleCheckboxChange}
                                 onAddSelectedQuestions={handleAddSelectedQuestions}
                                 onClose={() => setShowQuestionPanel(false)}

@@ -1,5 +1,5 @@
 import express from 'express';
-import { addQuestionToContest, createContest, editContest, getAllContests, getContestById, getFullContestById, getMyContests, joinContest, registerForContest, removeQuestionFromContest } from '../controllers/contestController.js';
+import { addQuestionToContest, createContest, editContest, getAllContests, getContestById, getFullContestById, getMyContests, registerForContest, removeQuestionFromContest, suspendUserInContest, unsuspendUserInContest } from '../controllers/contestController.js';
 import { protect } from '../middlewares/auth.js';
 
 const router = express.Router();
@@ -14,7 +14,8 @@ router.get('/:contestId', getContestById);
 router.get('/full/:contestId', protect, getFullContestById);
 
 router.post('/register/:id', protect, registerForContest);
-// router.post('/join/:id', protect, joinContest);
+router.post('/:contestId/suspend/:userId', protect, suspendUserInContest); // admin access only
+router.post('/:contestId/unsuspend/:userId', protect, unsuspendUserInContest); // admin access only
 
 
 export default router;

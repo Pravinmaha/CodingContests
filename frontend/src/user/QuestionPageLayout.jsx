@@ -21,32 +21,15 @@ const QuestionPageLayout = () => {
                 clearInterval(interval);
                 return;
             }
-
+            const days = Math.floor((diff / (1000 * 60 * 60 * 24)));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((diff / (1000 * 60)) % 60);
             const seconds = Math.floor((diff / 1000) % 60);
-            setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
+            setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`);
         }, 1000);
 
         return () => clearInterval(interval);
     }, [contest]);
-
-    useEffect(() => {
-        if (!loading && contest) {
-            const now = new Date();
-            const start = new Date(contest.startTime);
-            const end = new Date(contest.endTime);
-            const userId = localStorage.getItem("userId");
-
-            if (userId !== contest?.createdBy?.toString() && (now < start 
-                // || now > end
-            )) {
-                navigate(`/contests/${contest._id}`);
-            } else if (!questionId) {
-                navigate(`/contests/${contest?._id}/questions/${contest?.questions[0]?._id}`);
-            }
-        }
-    }, [contest, loading]);
 
     if (loading || !contest) return <div style={styles.loading}>Loading Contest...</div>;
 
@@ -55,23 +38,23 @@ const QuestionPageLayout = () => {
             {/* Top Navbar */}
             <header style={styles.navbar}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <h2 style={styles.logo}>🔥 {contest.title}</h2>
+                    <h2 style={styles.logo} onClick={() => navigate(`/contests/${contest._id}`)}>🔥 {contest.title}</h2>
                 </div>
 
                 {/* Question Buttons */}
                 <aside style={styles.questionList}>
-                    {contest.questions.map((q, i) => {
-                        const isActive = q._id === questionId;
+                    {contest.questions.map((entry, i) => {
+                        const isActive = entry.question._id === questionId;
                         return (
                             <div
-                                key={q._id}
+                                key={entry.question._id}
                                 style={{
                                     ...styles.questionCard,
                                     ...(isActive ? styles.activeQuestion : {})
                                 }}
                                 onClick={() => {
                                     if (!isActive) {
-                                        navigate(`/contests/${contest._id}/questions/${q._id}`);
+                                        navigate(`/contests/${contest._id}/questions/${entry.question._id}`);
                                     }
                                 }}
                             >
@@ -82,7 +65,8 @@ const QuestionPageLayout = () => {
                 </aside>
 
                 <div style={styles.meta}>
-                    <p>⏱ <strong>{timeLeft}</strong></p>
+                    <p>⏱ </p>
+                    <strong>{timeLeft}</strong>
                 </div>
             </header>
 
@@ -120,13 +104,15 @@ const styles = {
         fontSize: '20px',
         fontWeight: 'bold',
         color: '#ffa726',
+        cursor: 'pointer'
     },
     meta: {
         display: 'flex',
-        gap: '20px',
+        gap: '10px',
         fontSize: '14px',
         color: '#ccc',
         alignItems: 'center',
+        width: "150px",
     },
     questionList: {
         backgroundColor: '#181818',

@@ -9,21 +9,50 @@ const ContestPage = () => {
   const [contest, setContest] = useState(null);
   const [isEditable, setIsEditable] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedQuestionIds, setSelectedQuestionIds] = useState([]);
+  const [selectedQuestions, setSelectedQuestions] = useState([]);
   const { problems } = useProblems();
-  const { id } = useParams();
+  const { contestId } = useParams();
   const navigate = useNavigate();
 
 
   useEffect(() => {
-    getFullContest(id)
+    getFullContest(contestId)
       .then(data => setContest(data))
       .catch(err => console.error('Error fetching contest details', err));
-  }, [id]);
+  }, [contestId]);
 
   const handleInputChange = (field, value) => {
-    setContest(prev => ({ ...prev, [field]: value }));
+    setContest(prev => {
+      const updated = { ...prev, [field]: value };
+
+      const start = new Date(updated.startTime).getTime();
+      const end = new Date(updated.endTime).getTime();
+      const duration = parseInt(updated.duration); // in minutes
+
+      if (updated.startTime && updated.duration && field !== 'endTime') {
+        updated.endTime = toLocalDatetimeString(start + duration * 60000);
+      } else if (updated.endTime && updated.startTime && field !== 'duration') {
+        updated.duration = Math.max(Math.round((end - start) / 60000), 0);
+      } else if (updated.endTime && updated.duration && field !== 'startTime') {
+        updated.startTime = toLocalDatetimeString(end - duration * 60000);
+      }
+
+      return updated;
+    });
   };
+
+
+  function toLocalDatetimeString(dateInput) {
+    const date = new Date(dateInput);
+    const year = date.getFullYear();
+    const month = (`0${date.getMonth() + 1}`).slice(-2);
+    const day = (`0${date.getDate()}`).slice(-2);
+    const hours = (`0${date.getHours()}`).slice(-2);
+    const minutes = (`0${date.getMinutes()}`).slice(-2);
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  }
+
+
 
   const handleSaveChanges = () => {
     const data = {
@@ -46,17 +75,30 @@ const ContestPage = () => {
       })
   }
 
-  const handleCheckboxChange = id => {
-    setSelectedQuestionIds(prev =>
-      prev.includes(id) ? prev.filter(qid => qid !== id) : [...prev, id]
-    );
+  const handleCheckboxChange = (question) => {
+    setSelectedQuestions(prev => {
+      const exists = prev.find(q => q.question._id === question._id);
+      const alreadyInContest = contest.questions.some(q => q.question._id === question._id || q._id === question._id);
+
+      if (exists) {
+        return prev.filter(q => q.question._id !== question._id);
+      } else if (alreadyInContest) {
+        console.log("Already added in contest");
+        return prev;
+      } else {
+        return [...prev, { question: question, score: 10 }];
+      }
+    });
   };
 
+
+
   const handleAddSelectedQuestions = () => {
+    const selectedQuestionIds = selectedQuestions.map(entry => ({ question: entry.question._id, score: entry.score }))
     addQuestionToContest(selectedQuestionIds, contest._id)
       .then((data) => {
         setContest(data);
-        setSelectedQuestionIds([]);
+        setSelectedQuestions([]);
         setShowPopup(false);
         alert("Questions added succesfully");
       })
@@ -73,8 +115,9 @@ const ContestPage = () => {
       })
       .catch((err) => {
         console.log("Error while removing question", err)
-      })
+      });
   };
+
 
   if (!contest) return <div style={styles.container}>Loading...</div>;
 
@@ -116,10 +159,11 @@ const ContestPage = () => {
               <input
                 type="datetime-local"
                 style={styles.input}
-                value={contest[field].slice(0, 16)}
+                value={toLocalDatetimeString(contest[field])}
                 onChange={e => handleInputChange(field, e.target.value)}
                 autoFocus
               />
+
             </div>
           ))}
         </div>
@@ -216,36 +260,81 @@ const ContestPage = () => {
               <th style={styles.th}>Title</th>
               <th style={styles.th}>Difficulty</th>
               <th style={styles.th}>Tags</th>
+              <th style={styles.th}> Score</th>
               <th style={styles.th}>Actions</th>
             </tr>
           </thead>
           <tbody>
             {contest.questions.map(q => (
-              <tr key={q._id}>
-                <td style={styles.td}>{q.title}</td>
-                <td style={styles.td}>{q.difficulty}</td>
-                <td style={styles.td}>{q.tags.toString()}</td>
+              <tr key={q.question._id}>
+                <td style={styles.td}>{q.question.title}</td>
+                <td style={styles.td}>{q.question.difficulty}</td>
+                <td style={styles.td}>{q.question.tags?.join(', ')}</td>
+                <td style={styles.td}>{q.score}</td>
                 <td style={styles.td}>
-                  <button style={styles.removeBtn} onClick={() => handleRemove(q._id)}>Remove</button>
+                  <button
+                    style={{ ...styles.removeBtn, marginLeft: '10px' }}
+                    onClick={() => handleRemove(q.question._id)}
+                  >
+                    Remove
+                  </button>
                 </td>
               </tr>
             ))}
+
           </tbody>
         </table>
 
         <button style={styles.addBtn} onClick={() => setShowPopup(true)}>+ Add Question</button>
 
+        {!showPopup && selectedQuestions?.length > 0 && <div style={styles.selectedQuestionsBox}>
+          <h3 style={styles.selectedTitle}>Selected Questions</h3>
+          {selectedQuestions.map((entry, i) => (
+            <div key={entry.question._id} style={styles.questionCard}>
+              <div style={styles.questionHeader}>
+                <span style={styles.questionTitle}>{entry.question.title}</span>
+              </div>
+              <div style={styles.scoreInputWrapper}>
+                <input
+                  type="number"
+                  style={styles.input}
+                  value={entry.score}
+                  onChange={(e) => {
+                    const newScore = parseInt(e.target.value);
+                    setSelectedQuestions(prev =>
+                      prev.map((q, index) =>
+                        index === i ? { ...q, score: newScore } : q
+                      )
+                    );
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+          <div style={{ textAlign: 'right', marginTop: '20px' }}>
+            <button
+              onClick={handleAddSelectedQuestions}
+              style={styles.updateBtn}
+            >
+              ✅ Update Questions
+            </button>
+          </div>
+        </div>
+        }
+
         {showPopup && (
           <SelectQuestionsPanel
             problems={problems}
-            selectedQuestionIds={selectedQuestionIds}
+            selectedQuestions={selectedQuestions}
             onCheckboxChange={handleCheckboxChange}
-            onAddSelectedQuestions={handleAddSelectedQuestions}
+            onAddSelectedQuestions={() => {
+              setShowPopup(false);
+            }}
             onClose={() => setShowPopup(false)}
           />
         )}
       </div>
-      <RegisteredUsersTable users={contest.registeredUsers} />
+      <RegisteredUsersTable usersData={contest.registeredUsers} contestId={contest._id} />
     </div>
   );
 };
@@ -414,6 +503,67 @@ const styles = {
     borderRadius: '50%',
     transition: '.4s',
   },
+  selectedQuestionsBox: {
+    marginTop: '30px',
+    padding: '20px',
+    backgroundColor: '#1a1a1a',
+    borderRadius: '10px',
+    border: '1px solid #333',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.5)',
+  },
+
+  selectedTitle: {
+    fontSize: '20px',
+    fontWeight: 'bold',
+    color: '#f1f1f1',
+    marginBottom: '16px',
+  },
+
+  questionCard: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    backgroundColor: '#262626',
+    padding: '16px',
+    borderRadius: '8px',
+    marginBottom: '16px',
+    border: '1px solid #444',
+  },
+
+  questionHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '10px',
+  },
+
+  questionTitle: {
+    fontSize: '16px',
+    color: '#e0e0e0',
+    fontWeight: '600',
+  },
+
+  scoreInputWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+  },
+
+  updateBtn: {
+    backgroundColor: '#3b82f6',
+    color: '#fff',
+    border: 'none',
+    padding: '10px 18px',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    transition: 'all 0.3s ease',
+  },
+
+  updateBtnHover: {
+    backgroundColor: '#2563eb',
+  },
+
 };
 
 export default ContestPage;

@@ -16,7 +16,6 @@ export const FullProblemProvider = ({ children }) => {
     getFullQuestionById(questionId)
       .then((data) => {
         setProblem(data);
-        console.log(data)
         setLoading(false);
       })
       .catch((err) => {

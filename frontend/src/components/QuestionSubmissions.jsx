@@ -1,69 +1,6 @@
-import React, { useEffect, useState } from 'react';
-
-const CURRENT_USER = 'abhijitraut'; // Replace with auth context or props if available
-
-const dummySubmissions = [
-  {
-    id: 'SUB123',
-    language: 'python',
-    status: 'Passed',
-    score: 100,
-    time: '2025-06-20 17:30',
-    code: 'print("Hello, world!")',
-    input: 'a=2, b=3',
-    output: '5',
-  },
-  {
-    id: 'SUB124',
-    language: 'cpp',
-    status: 'Failed',
-    score: 0,
-    time: '2025-06-20 17:20',
-    code: '#include<iostream>\nint main() { std::cout << "Hi"; }',
-    input: 'x=1, y=4',
-    output: 'Error: Compilation failed',
-  },
-  {
-    id: 'SUB125',
-    language: 'cpp',
-    status: 'Failed',
-    score: 0,
-    time: '2025-06-20 17:20',
-    code: '#include<iostream>\nint main() { std::cout << "Hi"; }',
-    input: 'x=1, y=4',
-    output: 'Error: Compilation failed',
-  },
-  {
-    id: 'SUB126',
-    language: 'cpp',
-    status: 'Failed',
-    score: 0,
-    time: '2025-06-20 17:20',
-    code: '#include<iostream>\nint main() { std::cout << "Hi"; }',
-    input: 'x=1, y=4',
-    output: 'Error: Compilation failed',
-  },
-  {
-    id: 'SUB127',
-    language: 'cpp',
-    status: 'Failed',
-    score: 0,
-    time: '2025-06-20 17:20',
-    code: '#include<iostream>\nint main() { std::cout << "Hi"; }',
-    input: 'x=1, y=4',
-    output: 'Error: Compilation failed',
-  },
-  {
-    id: 'SUB128',
-    language: 'cpp',
-    status: 'Failed',
-    score: 0,
-    time: '2025-06-20 17:20',
-    code: '#include<iostream>\nint main() { std::cout << "Hi"; }',
-    input: 'x=1, y=4',
-    output: 'Error: Compilation failed',
-  },
-];
+import React, { useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useSubmissions } from '../contexts/SubmissionContext';
 
 const styles = {
   container: {
@@ -93,17 +30,17 @@ const styles = {
     padding: '10px',
     fontWeight: '600',
     fontSize: '14px',
+    textAlign: 'left',
   },
   td: {
     padding: '12px',
     fontSize: '14px',
-    textAlign: 'center',
     borderBottom: '1px solid #444',
-    cursor: 'pointer',
     transition: 'background 0.2s',
+    cursor: 'pointer',
   },
   rowHover: {
-    backgroundColor: '#2b2b2b',
+    backgroundColor: '#2a2a2a',
   },
   statusPassed: {
     color: '#28a745',
@@ -113,94 +50,64 @@ const styles = {
     color: '#dc3545',
     fontWeight: '600',
   },
-  detailsBox: {
-    marginTop: '1.5rem',
-    padding: '1rem',
-    borderRadius: '8px',
-    backgroundColor: '#121212',
-    border: '1px solid #333',
-    fontSize: '14px',
-    whiteSpace: 'pre-wrap',
-    color: '#ccc',
-  },
-  label: {
-    fontWeight: '600',
-    marginBottom: '4px',
-    color: '#999',
-  },
-  section: {
-    marginBottom: '1rem',
-  },
+};
+
+const formatDate = (isoDate) => {
+  const date = new Date(isoDate);
+  return date.toLocaleString();
 };
 
 const QuestionSubmissions = () => {
-  const [submissions, setSubmissions] = useState([]);
-  const [selectedSubmission, setSelectedSubmission] = useState(null);
 
-  useEffect(() => {
-    // Simulate API filtering by user
-    const userSubmissions = dummySubmissions.filter((s) => s.user === CURRENT_USER);
-    setSubmissions(userSubmissions);
-  }, []);
+  const { submissions, loading } = useSubmissions();
+  const [selectedId, setSelectedId] = useState(null);
+  const navigate = useNavigate();
+
+  if (loading) return <>Loding submissions.....</>
+
 
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>📝 Your Submissions</h2>
 
-      {submissions.length === 0 ? (
+      {submissions?.length === 0 ? (
         <p>No submissions yet.</p>
       ) : (
         <table style={styles.table}>
           <thead>
             <tr>
-              <th style={styles.th}>ID</th>
-              <th style={styles.th}>Language</th>
               <th style={styles.th}>Status</th>
-              <th style={styles.th}>Score</th>
+              <th style={styles.th}>Language</th>
               <th style={styles.th}>Submitted At</th>
             </tr>
           </thead>
           <tbody>
-            {submissions.map((s, i) => (
+            {submissions?.length > 0 && submissions?.map((s) => (
               <tr
-                key={i}
-                style={selectedSubmission?.id === s.id ? styles.rowHover : {}}
-                onClick={() => setSelectedSubmission(s)}
+                key={s._id}
+                style={selectedId === s._id ? styles.rowHover : {}}
+                onClick={() => {
+                  setSelectedId(s._id);
+                  navigate(`${s._id}`);
+                }}
               >
-                <td style={styles.td}>{s.id}</td>
-                <td style={styles.td}>{s.language}</td>
                 <td
                   style={{
                     ...styles.td,
-                    ...(s.status === 'Passed' ? styles.statusPassed : styles.statusFailed),
+                    ...(s.verdict === 'Accepted' ? styles.statusPassed : styles.statusFailed),
                   }}
                 >
-                  {s.status}
+                  {s.verdict}
                 </td>
-                <td style={styles.td}>{s.score}</td>
-                <td style={styles.td}>{s.time}</td>
+                <td style={styles.td}>{s.language}</td>
+                <td style={styles.td}>{formatDate(s.createdAt)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
 
-      {selectedSubmission && (
-        <div style={styles.detailsBox}>
-          <div style={styles.section}>
-            <div style={styles.label}>🔠 Code:</div>
-            <pre>{selectedSubmission.code}</pre>
-          </div>
-          <div style={styles.section}>
-            <div style={styles.label}>📥 Input:</div>
-            <pre>{selectedSubmission.input}</pre>
-          </div>
-          <div style={styles.section}>
-            <div style={styles.label}>📤 Output:</div>
-            <pre>{selectedSubmission.output}</pre>
-          </div>
-        </div>
-      )}
+      <Outlet />
     </div>
   );
 };
