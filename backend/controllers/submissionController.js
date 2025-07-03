@@ -250,7 +250,7 @@ export const runCode = async (req, res) => {
     const version = await QuestionVersion.findOne({ language, questionId })
     // console.log(version.runnerCode.replace('// RUNNER_CODE', code))
     let replaceComment = (language === 'python') ? '# RUNNER_CODE' : '// RUNNER_CODE';
-    const codeToExecute = version.runnerCode.replace(replaceComment, `${version.referenceSolution + '\n' + code}`);
+    const codeToExecute = version.runnerCode.replace(replaceComment, `${code + '\n' + version.referenceSolution }`);
     let input = '';
 
     for (const tc of testCases) {
