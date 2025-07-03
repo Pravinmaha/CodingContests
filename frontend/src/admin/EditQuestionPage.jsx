@@ -1,166 +1,202 @@
-// admin/EditQuestionPage.jsx
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-// import { updateQuestion } from '../services/questionService';
-import CodeEditor from '../components/CodeEditorForAddQuestion';
-import { useFullProblem } from '../contexts/FullProblemContext';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getFullQuestionById, updateQuestion } from '../services/questionService';
+import BasicDetails from '../components/question/BasicDetails';
+import TestCases from '../components/question/TestCases';
+import CodeEditorPanel from '../components/question/CodeEditorPanel';
 
 const languages = ['c', 'cpp', 'java', 'python', 'js'];
-const tagOptions = ['Array', 'HashMap', 'String', 'DP', 'Graph', 'Math', 'Greedy'];
 const difficulties = [
   { value: 'Easy', color: 'limegreen' },
   { value: 'Medium', color: 'orange' },
   { value: 'Hard', color: 'red' },
 ];
 
-export default function EditQuestionPage() {
-  const navigate = useNavigate();
-  const { problem, loading } = useFullProblem();
+export default function EditProblemPage() {
+  const { questionId } = useParams();
 
-  if (loading) return <>Loading...</>
+  const [activeSection, setActiveSection] = useState('basic');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [difficulty, setDifficulty] = useState('Easy');
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [constraints, setConstraints] = useState('');
+  const [examples, setExamples] = useState([]);
+  const [testCases, setTestCases] = useState([]);
 
-  console.log(problem)
-
-  // Basic
-  const [title, setTitle] = useState(problem.title);
-  const [description, setDescription] = useState(problem.description);
-  const [constraints, setConstraints] = useState(problem.constraints || '');
-  const [difficulty, setDifficulty] = useState(problem.difficulty);
-  const [selectedTags, setSelectedTags] = useState(problem.tags || []);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showTagDropdown, setShowTagDropdown] = useState(false);
-
-  // Examples & Testcases
-  const [examples, setExamples] = useState(problem.examples || [{ input: '', output: '', explanation: '' }]);
-  const [testCases, setTestCases] = useState(problem.testCases || [{ input: '', output: '' }]);
-
-  // Code Versions
   const [activeCodeTab, setActiveCodeTab] = useState('runner');
   const [activeLang, setActiveLang] = useState('java');
   const [currentCode, setCurrentCode] = useState('');
-  const [codeMap, setCodeMap] = useState(
-    languages.reduce((map, lang) => {
-      const version = problem.versions.find(v => v.language === lang) || {};
-      map[lang] = {
-        runner: version.runnerCode || '',
-        reference: version.referenceSolution || '',
-        default: version.starterCode || '',
-        submit: version.submitCode || ''
-      };
-      return map;
-    }, {})
-  );
+  const [codeMap, setCodeMap] = useState({});
+
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showTagDropdown, setShowTagDropdown] = useState(false);
+
 
   useEffect(() => {
-    setCurrentCode(codeMap[activeLang][activeCodeTab]);
-  }, [activeLang, activeCodeTab, codeMap]);
+    getFullQuestionById(questionId)
+      .then((data) => {
+        setTitle(data.title);
+        setDescription(data.description);
+        setDifficulty(data.difficulty);
+        setSelectedTags(data.tags);
+        setConstraints(data.constraints);
+        setExamples(data.examples);
+        setTestCases(data.testCases);
 
-  // Full Save (all fields)
-  const handleUpdate = async () => {
-    const updated = {
-      ...problem,
-      title,
-      description,
-      constraints,
-      difficulty,
-      tags: selectedTags,
-      examples,
-      testCases,
-      versions: languages.map(lang => ({
-        language: lang,
-        runnerCode: codeMap[lang].runner,
-        referenceSolution: codeMap[lang].reference,
-        starterCode: codeMap[lang].default,
-        submitCode: codeMap[lang].submit,
-      }))
-    };
-    try {
-      // await updateQuestion(problem.id, updated);
-      alert('Question saved!');
-      navigate(-1);
-    } catch (e) {
-      console.error(e);
-      alert('Save failed');
-    }
+        const map = {};
+        languages.forEach(lang => {
+          const langVersion = data.versions.find(v => v.language === lang);
+          map[lang] = {
+            runner: langVersion?.runnerCode || '',
+            reference: langVersion?.referenceSolution || '',
+            default: langVersion?.starterCode || '',
+            submit: langVersion?.submitCode || '',
+          };
+        });
+        setCodeMap(map);
+        setCurrentCode(map[activeLang][activeCodeTab]);
+      })
+      .catch(console.error);
+  }, [questionId]);
+
+  const saveCurrentCode = () => {
+    setCodeMap(prev => ({
+      ...prev,
+      [activeLang]: {
+        ...prev[activeLang],
+        [activeCodeTab]: currentCode,
+      },
+    }));
   };
 
-  // Save only code versions
-  const handleSaveCodes = async () => {
-    // capture current editor
-    setCodeMap(prev => ({ ...prev, [activeLang]: { ...prev[activeLang], [activeCodeTab]: currentCode } }));
-    const payload = {
-      versions: languages.map(lang => ({
-        language: lang,
-        runnerCode: codeMap[lang].runner,
-        referenceSolution: codeMap[lang].reference,
-        starterCode: codeMap[lang].default,
-        submitCode: codeMap[lang].submit,
-      }))
-    };
-    try {
-      // await updateQuestion(problem.id, payload);
-      alert('Code versions saved!');
-    } catch (e) {
-      console.error(e);
-      alert('Save codes failed');
-    }
+  const handleLangChange = (lang) => {
+    saveCurrentCode();
+    setActiveLang(lang);
+    setCurrentCode(codeMap[lang][activeCodeTab] || '');
   };
 
-  // Handlers
-  const updateExamples = (i, field, val) => { const arr = [...examples]; arr[i][field] = val; setExamples(arr); };
-  const removeExample = i => setExamples(prev => prev.filter((_, idx) => idx !== i));
-  const updateTestCases = (i, field, val) => { const arr = [...testCases]; arr[i][field] = val; setTestCases(arr); };
-  const removeTestCase = i => setTestCases(prev => prev.filter((_, idx) => idx !== i));
-  const handleLangChange = lang => { setCodeMap(prev => ({ ...prev, [activeLang]: { ...prev[activeLang], [activeCodeTab]: currentCode } })); setActiveLang(lang); };
-  const handleTabChange = tab => { setCodeMap(prev => ({ ...prev, [activeLang]: { ...prev[activeLang], [activeCodeTab]: currentCode } })); setActiveCodeTab(tab); };
-  const handleTagChange = e => setSelectedTags(Array.from(e.target.selectedOptions).map(o => o.value));
+  const handleTabChange = (tab) => {
+    saveCurrentCode();
+    setActiveCodeTab(tab);
+    setCurrentCode(codeMap[activeLang][tab] || '');
+  };
+
+  const handleUpdate = () => {
+    // Use callback pattern to ensure latest codeMap
+    setCodeMap(prev => {
+      const updatedCodeMap = {
+        ...prev,
+        [activeLang]: {
+          ...prev[activeLang],
+          [activeCodeTab]: currentCode,
+        }
+      };
+
+      const versions = languages.map(lang => ({
+        language: lang,
+        referenceSolution: updatedCodeMap[lang]?.reference || '',
+        starterCode: updatedCodeMap[lang]?.default || '',
+        runnerCode: updatedCodeMap[lang]?.runner || '',
+        submitCode: updatedCodeMap[lang]?.submit || '',
+      }));
+
+      const updatedProblem = {
+        title,
+        description,
+        difficulty,
+        tags: selectedTags,
+        constraints,
+        examples,
+        testCases,
+        versions,
+      };
+
+      // console.log(updatedProblem);
+
+      // Uncomment to actually update:
+      updateQuestion(questionId, updatedProblem)
+        .then(() => alert('Problem updated successfully!'))
+        .catch(console.error);
+
+      return updatedCodeMap;
+    });
+  };
+
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.heading}>✏️ Edit Problem</h2>
-      {/* ... other tabs omitted for brevity ... */}
+      <h2 style={styles.heading}>✏️ Edit DSA Problem</h2>
 
-      {/* Code Editor Tab */}
-      <h3 style={styles.sectionHeading}>🧠 Code</h3>
-      <div style={styles.tabLineBar}>
-        {['runner', 'reference', 'default', 'submit'].map(tab => (
-          <button key={tab} onClick={() => handleTabChange(tab)} style={activeCodeTab === tab ? styles.activeTab : styles.tab}>{tab}</button>
+      <div style={styles.sectionTabs}>
+        {['basic', 'testcases', 'codes'].map(sec => (
+          <button
+            key={sec}
+            onClick={() => setActiveSection(sec)}
+            style={activeSection === sec ? styles.activeSectionTab : styles.sectionTab}
+          >
+            {sec === 'basic' ? 'Basic Details' : sec === 'testcases' ? 'Test Cases' : 'Codes'}
+          </button>
         ))}
       </div>
-      <div style={styles.tabBar}>
-        {languages.map(lang => (
-          <button key={lang} onClick={() => handleLangChange(lang)} style={activeLang === lang ? styles.activeTabPill : styles.tabPill}>{lang}</button>
-        ))}
-      </div>
-      <CodeEditor activeLang={activeLang} currentCode={currentCode} setCurrentCode={setCurrentCode} />
-      <button style={styles.saveCodesBtn} onClick={handleSaveCodes}>💾 Save Codes</button>
 
-      {/* Full Save */}
-      <button style={styles.submitBtn} onClick={handleUpdate}>✅ Save All</button>
+      {activeSection === 'basic' && (
+        <BasicDetails
+          title={title}
+          setTitle={setTitle}
+          description={description}
+          setDescription={setDescription}
+          difficulty={difficulty}
+          setDifficulty={setDifficulty}
+          showDropdown={showDropdown}
+          setShowDropdown={setShowDropdown}
+          difficulties={difficulties}
+          showTagDropdown={showTagDropdown}
+          setShowTagDropdown={setShowTagDropdown}
+          selectedTags={selectedTags}
+          setSelectedTags={setSelectedTags}
+          constraints={constraints}
+          setConstraints={setConstraints}
+        />
+      )}
+
+      {activeSection === 'testcases' && (
+        <TestCases
+          examples={examples}
+          setExamples={setExamples}
+          testCases={testCases}
+          setTestCases={setTestCases}
+          updateExamples={(i, f, v) => {
+            const arr = [...examples]; arr[i][f] = v; setExamples(arr);
+          }}
+          removeExample={(i) => setExamples(ex => ex.filter((_, idx) => idx !== i))}
+          updateTestCases={(i, f, v) => {
+            const arr = [...testCases]; arr[i][f] = v; setTestCases(arr);
+          }}
+          removeTestCase={(i) => setTestCases(tc => tc.filter((_, idx) => idx !== i))}
+        />
+      )}
+
+      {activeSection === 'codes' && (
+        <CodeEditorPanel
+          handleTabChange={handleTabChange}
+          languages={languages}
+          handleLangChange={handleLangChange}
+          activeCodeTab={activeCodeTab}
+          activeLang={activeLang}
+          currentCode={currentCode}
+          setCurrentCode={setCurrentCode}
+          handleSubmit={handleUpdate}
+        />
+      )}
     </div>
   );
 }
 
 const styles = {
-  // ... existing styles ...
-  saveCodesBtn: {
-    background: '#facc15',
-    color: '#000',
-    padding: '10px 20px',
-    border: 'none',
-    borderRadius: '6px',
-    marginTop: '12px',
-    cursor: 'pointer',
-    fontWeight: 'bold'
-  },
-  submitBtn: {
-    background: '#22c55e',
-    color: '#000',
-    padding: '12px 20px',
-    border: 'none',
-    borderRadius: '6px',
-    marginTop: '16px',
-    cursor: 'pointer',
-    fontWeight: 'bold'
-  }
+  container: { position: 'relative', padding: 30, width: '100%', margin: '0 auto', fontFamily: 'sans-serif', backgroundColor: '#10141a', color: '#e0f7fa', borderRadius: 8 },
+  heading: { fontSize: 28, marginBottom: 20, fontWeight: 'bold', color: '#4dd0e1' },
+  sectionTabs: { display: 'flex', gap: 16, marginBottom: 24 },
+  sectionTab: { padding: '8px 16px', background: '#263238', border: 'none', borderRadius: 6, cursor: 'pointer', color: '#90caf9' },
+  activeSectionTab: { padding: '8px 16px', background: '#00e5ff', border: 'none', borderRadius: 6, cursor: 'pointer', color: '#000', fontWeight: 'bold' },
 };

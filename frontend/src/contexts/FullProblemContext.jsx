@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFullQuestionById } from '../services/questionService';
+import { useAuth } from './AuthContext';
 
 const FullProblemContext = createContext();
 
@@ -9,6 +10,9 @@ export const FullProblemProvider = ({ children }) => {
   const [problem, setProblem] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+    const {isLoggedIn} = useAuth();
+
+  
 
   useEffect(() => {
     if (!questionId) return;
@@ -23,7 +27,7 @@ export const FullProblemProvider = ({ children }) => {
         setError(err);
         setLoading(false);
       });
-  }, [questionId]);
+  }, [questionId, isLoggedIn]);
 
   return (
     <FullProblemContext.Provider value={{ problem, loading, error }}>

@@ -17,7 +17,7 @@ const AdminProblemsPage = () => {
   const uniqueTags = [...new Set(problems.flatMap(p => p.tags))];
 
   const handleEditQuestion = (problem) => {
-    navigate(`/admin/edit-question/${problem._id}`)
+    navigate(`/admin/problems/${problem._id}/edit`)
   }
 
   const filteredProblems = problems.filter(problem => {

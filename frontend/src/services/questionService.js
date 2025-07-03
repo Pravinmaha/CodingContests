@@ -15,6 +15,12 @@ export const getFullQuestionById = async (id) => {
   return response.data;
 };
 
+export const updateQuestion = async (questionId, questionData) => {
+  const response = await api.put(`/questions/${questionId}`, questionData);
+  return response.data;
+};
+
+
 // export const deleteQuestion = async (id) => {
 //   const response = await api.delete(`/questions/${id}`);
 //   return response.data;

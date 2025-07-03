@@ -8,7 +8,7 @@ const AdminLayout = () => {
         <h2 style={styles.logo}>🛠 Admin</h2>
         <nav style={styles.nav}>
           {[
-            { label: 'Dashboard', path: '/admin' },
+            // { label: 'Dashboard', path: '/admin' },
             { label: 'Contests', path: '/admin/contests' },
             { label: 'Problems', path: '/admin/problems' },
           ].map((item, i) => (

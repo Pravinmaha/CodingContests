@@ -6,7 +6,7 @@ const QuestionPageLayout = () => {
     const { contest, loading } = useFullContest();
     const navigate = useNavigate();
     const { questionId } = useParams(); // ⬅️ get active question id from URL
-    const [timeLeft, setTimeLeft] = useState("");
+    const [timeLeft, setTimeLeft] = useState("        ");
 
     useEffect(() => {
         if (!contest || !contest.startTime || !contest.endTime) return;
@@ -31,14 +31,18 @@ const QuestionPageLayout = () => {
         return () => clearInterval(interval);
     }, [contest]);
 
-    if (loading || !contest) return <div style={styles.loading}>Loading Contest...</div>;
+    if (loading || !contest) return <div style={styles.navbar}>
+        <h2>
+            Loading Contest...
+        </h2>
+    </div>
 
     return (
         <>
             {/* Top Navbar */}
             <header style={styles.navbar}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <h2 style={styles.logo} onClick={() => navigate(`/contests/${contest._id}`)}>🔥 {contest.title}</h2>
+                    <h2 style={styles.logo} onClick={() => navigate(`/contests/${contest._id}/questions`)}>🔥 {contest.title}</h2>
                 </div>
 
                 {/* Question Buttons */}
@@ -64,9 +68,16 @@ const QuestionPageLayout = () => {
                     })}
                 </aside>
 
-                <div style={styles.meta}>
-                    <p>⏱ </p>
-                    <strong>{timeLeft}</strong>
+                <div style={styles.rightWrapper}>
+
+                    <div style={{ ...styles.questionCard, fontSize: '18px', padding: '5px 16px' }} onClick={() => {
+                        navigate(`/contests/${contest._id}/leaderboard`);
+                    }}>LeaderBoard</div>
+
+                    <div style={styles.meta}>
+                        <p>⏱ </p>
+                        <strong>{timeLeft}</strong>
+                    </div>
                 </div>
             </header>
 
@@ -105,6 +116,10 @@ const styles = {
         fontWeight: 'bold',
         color: '#ffa726',
         cursor: 'pointer'
+    },
+    rightWrapper: {
+        display: 'flex',
+        gap: '20px'
     },
     meta: {
         display: 'flex',

@@ -232,6 +232,11 @@ export const suspendUserInContest = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
+    if(req.user.userId !== contest.createdBy?.toString()){
+      return res.status(403).json({ message: 'Unauthorised access' });
+
+    }
+
     const existingEntry = contest.registeredUsers.find(
       (entry) => entry.user.toString() === user._id.toString()
     );
@@ -265,6 +270,11 @@ export const unsuspendUserInContest = async (req, res) => {
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
+    }
+
+    if(req.user.userId !== contest.createdBy?.toString()){
+      return res.status(403).json({ message: 'Unauthorised access' });
+
     }
 
     const existingEntry = contest.registeredUsers.find(

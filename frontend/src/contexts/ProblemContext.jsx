@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState, useContext } from 'react';
 import { getAllQuestions } from '../services/questionService'; // Adjust path if needed
+import { useAuth } from './AuthContext';
 
 const ProblemsContext = createContext();
 
@@ -7,6 +8,9 @@ export const ProblemsProvider = ({ children }) => {
   const [problems, setProblems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+    const {isLoggedIn} = useAuth();
+
+  
 
   useEffect(() => {
     getAllQuestions()
@@ -19,7 +23,7 @@ export const ProblemsProvider = ({ children }) => {
         setError(err);
         setLoading(false);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <ProblemsContext.Provider value={{ problems, loading, error }}>

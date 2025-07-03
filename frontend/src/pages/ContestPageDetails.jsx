@@ -78,7 +78,7 @@ export default function ContestPageDetails() {
         }).format(new Date(date));
 
     if (loading) {
-        return <div style={styles.page}><div style={styles.loading}>Loading contest...</div></div>;
+        return <div style={styles.page}><div style={styles.card}>Loading contest...</div></div>;
     }
 
 

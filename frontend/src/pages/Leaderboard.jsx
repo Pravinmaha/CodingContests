@@ -1,59 +1,133 @@
+import React, { useEffect, useState } from 'react';
+import { getLeaderboard } from '../services/leaderboardService';
 import { useParams } from 'react-router-dom';
 
-export default function LeaderboardPage() {
-  const { id } = useParams();
-  const data = [
-    { user: 'Alice', score: 100, time: '8:45' },
-    { user: 'Bob', score: 80, time: '8:50' },
-  ];
+const LeaderboardTable = () => {
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [questionIds, setQuestionIds] = useState([]);
+  const { contestId } = useParams();
+
+  const fetchData = async () => {
+    const data = await getLeaderboard(contestId);
+    const qSet = new Set();
+    data?.forEach(entry => {
+      Object.keys(entry.questions || {}).forEach(qid => qSet.add(qid));
+    });
+    setQuestionIds([...qSet]);
+    setLeaderboard(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [contestId]);
+
+  const formatTime = (totalSeconds) => {
+    const min = Math.floor(totalSeconds / 60);
+    const sec = totalSeconds % 60;
+    return `${min}m ${sec}s`;
+  };
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>Leaderboard for Contest {id}</h1>
-      <table style={styles.table}>
-        <thead>
-          <tr style={styles.headerRow}>
-            <th style={styles.cell}>#</th>
-            <th style={styles.cell}>User</th>
-            <th style={styles.cell}>Score</th>
-            <th style={styles.cell}>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((entry, idx) => (
-            <tr key={idx}>
-              <td style={styles.cell}>{idx + 1}</td>
-              <td style={styles.cell}>{entry.user}</td>
-              <td style={styles.cell}>{entry.score}</td>
-              <td style={styles.cell}>{entry.time}</td>
+      <h2 style={styles.heading}>🏆 Contest Leaderboard</h2>
+      <div style={{ overflowX: 'auto' }}>
+        <table style={styles.table}>
+          <thead>
+            <tr>
+              <th style={styles.th}>Rank</th>
+              <th style={styles.th}>User</th>
+              <th style={styles.th}>Score</th>
+              <th style={styles.th}>Time</th>
+              {questionIds.map((qid, index) => (
+                <th key={qid} style={styles.th}>Q{index + 1}</th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {leaderboard.map((entry, idx) => (
+              <tr key={idx} style={idx % 2 === 0 ? styles.rowEven : styles.rowOdd}>
+                <td style={styles.td}>{idx + 1}</td>
+                <td style={styles.td}>{entry.user}</td>
+                <td style={styles.td}>{entry.totalScore}</td>
+                <td style={styles.td}>{formatTime(entry.totalTime)}</td>
+                {questionIds.map((qid) => {
+                  const q = entry.questions[qid];
+                  return (
+                    <td key={qid} style={styles.td}>
+                      {q?.accepted ? (
+                        <div
+                          style={styles.codeTooltip}
+                          title={q.acceptedCode}
+                        >
+                          {formatTime(q.time)}<br />
+                          <small style={{ color: '#ccc' }}>+{q.penaltyCount * 5}min</small>
+                        </div>
+                      ) : (
+                        <span style={styles.unattempted}>–</span>
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
-}
+};
 
+// 🔥 Dark Mode Styles
 const styles = {
   container: {
-    padding: '16px',
+    backgroundColor: '#121212',
+    color: '#eee',
+    padding: '2rem',
+    minHeight: '100vh',
     fontFamily: 'Arial, sans-serif',
   },
   heading: {
-    fontSize: '20px',
+    marginBottom: '1rem',
+    fontSize: '1.8rem',
     fontWeight: 'bold',
-    marginBottom: '16px',
+    textAlign: 'center',
+    color: '#00d8ff',
   },
   table: {
-    width: '100%',
     borderCollapse: 'collapse',
+    width: '100%',
+    backgroundColor: '#1e1e1e',
   },
-  headerRow: {
-    backgroundColor: '#f0f0f0',
+  th: {
+    border: '1px solid #333',
+    padding: '12px',
+    backgroundColor: '#2c2c2c',
+    fontWeight: 'bold',
+    color: '#00d8ff',
+    textAlign: 'center',
   },
-  cell: {
-    border: '1px solid #ccc',
+  td: {
+    border: '1px solid #333',
     padding: '10px',
-    textAlign: 'left',
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+    fontSize: '0.95rem',
+  },
+  rowEven: {
+    backgroundColor: '#1e1e1e',
+  },
+  rowOdd: {
+    backgroundColor: '#252525',
+  },
+  codeTooltip: {
+    cursor: 'pointer',
+    color: '#66ff99',
+    fontWeight: 'bold',
+  },
+  unattempted: {
+    color: '#666',
+    fontStyle: 'italic',
   },
 };
+
+export default LeaderboardTable;

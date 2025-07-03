@@ -5,18 +5,16 @@ export default function AllContestsPage() {
   const [tab, setTab] = useState('upcoming');
   const { allContests, loading } = useAllContests();
 
-  if (loading) return <div style={styles.loading}>Contests are loading...</div>;
-
   const now = Date.now();
 
   const filteredContests =
     tab === 'past'
       ? allContests.filter(
-          (c) => new Date(c.endTime).getTime() + c.duration * 60000 < now
-        )
+        (c) => new Date(c.endTime).getTime() + c.duration * 60000 < now
+      )
       : allContests.filter(
-          (c) => new Date(c.endTime).getTime() + c.duration * 60000 >= now
-        );
+        (c) => new Date(c.endTime).getTime() + c.duration * 60000 >= now
+      );
 
   return (
     <div style={styles.page}>
@@ -38,27 +36,37 @@ export default function AllContestsPage() {
           </button>
         </div>
 
-        <div style={styles.contestList}>
-          {filteredContests.map((contest) => (
-            <div key={contest._id} style={styles.card}>
-              <div style={styles.cardHeader}>
-                <h2 style={styles.cardTitle}>{contest.title}</h2>
-                <a href={`/contests/${contest._id}/questions`} style={styles.viewBtn}>
-                  View →
-                </a>
-              </div>
-              <p style={styles.cardMeta}>
-                📅 {new Date(contest.startTime).toLocaleString()}
-              </p>
-              <p style={styles.cardMeta}>⏱️ Duration: {contest.duration} mins</p>
-              {contest.isPublished ? (
-                <span style={styles.publishedBadge}>Published</span>
-              ) : (
-                <span style={styles.draftBadge}>Draft</span>
-              )}
+        {loading ?
+          <div style={styles.contestList}>
+            <div style={styles.card}>
+              Loading...
             </div>
-          ))}
-        </div>
+          </div>
+          :
+          <div style={styles.contestList}>
+            {filteredContests?.length > 0 ? filteredContests.map((contest) => (
+              <div key={contest._id} style={styles.card}>
+                <div style={styles.cardHeader}>
+                  <h2 style={styles.cardTitle}>{contest.title}</h2>
+                  <a href={`/contests/${contest._id}/questions`} style={styles.viewBtn}>
+                    View →
+                  </a>
+                </div>
+                <p style={styles.cardMeta}>
+                  📅 {new Date(contest.startTime).toLocaleString()}
+                </p>
+                <p style={styles.cardMeta}>⏱️ Duration: {contest.duration} mins</p>
+              </div>
+            ))
+              :
+              <div style={styles.card}>
+                <div style={styles.cardHeader}>
+                  <p style={styles.cardMeta}>No Upcoming Contests</p>
+                </div>
+              </div>
+            }
+          </div>
+        }
       </div>
     </div>
   );
@@ -82,11 +90,6 @@ const styles = {
     fontWeight: 'bold',
     marginBottom: '24px',
     color: '#ffa726',
-  },
-  loading: {
-    padding: '2rem',
-    color: '#ccc',
-    textAlign: 'center',
   },
   tabs: {
     display: 'flex',
@@ -133,6 +136,10 @@ const styles = {
     fontSize: '20px',
     fontWeight: 'bold',
     color: '#f5f5f5',
+  },
+  btnWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
   },
   viewBtn: {
     backgroundColor: '#00e5ff',

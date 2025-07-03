@@ -15,7 +15,6 @@ export default function QuestionPage() {
   const [runError, setRunError] = useState('');
   const [activeMainView, setActiveMainView] = useState('testcases');
   const [isExpanded, setIsExpanded] = useState(false);
-  const [stdouts, setStdouts] = useState([]);
 
   const { contestId } = useParams();
 
@@ -32,14 +31,24 @@ export default function QuestionPage() {
   function parseJavaOutput(rawOutput) {
     if (typeof rawOutput !== 'string') return [];
 
-    // const lines = rawOutput.replace(/\r\n/g, '\n').trim().split('\n');
-    const lines = rawOutput.replace("[", "").replace("]", "").split(",");
-    // const userStdout = rawOutput.substring(0, rawOutput.indexOf("actualOutput"));
-    // setStdouts(userStdout);
+    // const lines = rawOutput.replace("[", "").replace("]", "").split(",");
+
+    const trimmed = rawOutput.slice(1, -1);
+
+    const entries = trimmed
+      .split(/,\s*actualOutput=/)
+      .map((entry, index) => {
+        const text = index === 0 ? entry : 'actualOutput=' + entry;
+
+        return text
+          .trim()
+          .replace(/\n/g, '\n')
+          .replace(/\s+$/, ''); // remove trailing spaces
+      });
 
     const results = [];
-    for (let i = 0; i < lines.length; i++) {
-      const outputs = lines[i].replace(/\r\n/g, '\n').trim().split('\n');
+    for (let i = 0; i < entries.length; i++) {
+      const outputs = entries[i].replace(/\r\n/g, '\n').trim().split('\n');
       const actual = outputs[0]?.split('=')[1]?.trim();
       const expected = outputs[1]?.split('=')[1]?.trim();
       const stdout = outputs[2]?.split('=')[1]?.trim();
@@ -52,18 +61,6 @@ export default function QuestionPage() {
         });
       }
     }
-
-    // for (let i = 0; i < lines.length; i += 2) {
-    //   const actual = lines[i]?.split('=')[1]?.trim();
-    //   const expected = lines[i + 1]?.split('=')[1]?.trim();
-
-    //   if (actual !== undefined && expected !== undefined) {
-    //     results.push({
-    //       actualOutput: actual,
-    //       expectedOutput: expected,
-    //     });
-    //   }
-    // }
     setRunResults(results)
 
     return results;
@@ -82,20 +79,20 @@ export default function QuestionPage() {
 
   const handleRun = () => {
     runCode(problem?._id, language, code, allInputs)
-    .then((data) => {
-      console.log(data)
-      parseJavaOutput(data.output)
-      setRunError('')
-      setActiveMainView("results")
-      setIsExpanded(true);
-      
-    })
-    .catch((err) => {
-      console.log(err)
-      setRunError(err.response.data.message)
-      setActiveMainView("results")
-      setIsExpanded(true);
-    })
+      .then((data) => {
+        console.log(data)
+        parseJavaOutput(data.output)
+        setRunError('')
+        setActiveMainView("results")
+        setIsExpanded(true);
+
+      })
+      .catch((err) => {
+        console.log(err)
+        setRunError(err.response.data.message)
+        setActiveMainView("results")
+        setIsExpanded(true);
+      })
   }
 
 
@@ -103,16 +100,16 @@ export default function QuestionPage() {
     submitCode(problem?._id, language, code, contestId)
       .then(async (data) => {
         // alert("Question submitted");
-        if(contestId)
-        navigate(`/contests/${contestId}/questions/${problem._id}/submissions/${data._id}`);
-      else
-      navigate(`/admin/problems/${problem._id}/submissions/${data._id}`)
+        if (contestId)
+          navigate(`/contests/${contestId}/questions/${problem._id}/submissions/${data._id}`);
+        else
+          navigate(`/admin/problems/${problem._id}/submissions/${data._id}`)
       })
       .catch((err) => {
         setRunError(err?.response?.data?.message?.error);
         if (err?.response?.data?.message?.error) {
           setActiveMainView("results");
-          setIsExpanded(true)
+          setIsExpanded(true);
         }
       })
   }
@@ -156,13 +153,13 @@ export default function QuestionPage() {
   if (error) return <p>Error loading problem</p>;
 
   return (
-    <div style={{...styles.page, height: `${contestId ? '90vh':'100vh'}`,}}>
+    <div style={{ ...styles.page, height: `${contestId ? '90vh' : '100vh'}`, }}>
       {/* LEFT PANEL */}
       <div style={{ ...styles.left, width: `${leftWidth}%` }}>
         <div style={styles.tabButtons}>
           <button
             onClick={() => {
-              if(contestId) navigate(`/contests/${contestId}/questions/${problem._id}/`);
+              if (contestId) navigate(`/contests/${contestId}/questions/${problem._id}/`);
               else navigate(`/admin/problems/${problem._id}`)
             }}
             style={activeTab === 'description' ? styles.activeTabButton : styles.tabButton}
@@ -193,7 +190,6 @@ export default function QuestionPage() {
           setActiveMainView={setActiveMainView}
           runError={runError}
           results={runResults}
-          stdouts={stdouts}
           examples={problem?.examples}
           setAllInputs={setAllInputs}
         />

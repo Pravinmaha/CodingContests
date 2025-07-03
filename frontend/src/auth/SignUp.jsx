@@ -4,6 +4,7 @@ import { signup } from '../services/authService';
 
 const SignupPage = () => {
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const SignupPage = () => {
         setError('');
 
         try {
-            const data = await signup({ email, password, role: "user" });
+            const data = await signup({ email, name, password, role: "user" });
             const { user, token } = data;
 
             localStorage.setItem('userId', user._id);
@@ -114,6 +115,15 @@ const SignupPage = () => {
                     style={styles.input}
                 />
 
+                <label style={styles.label}>Name</label>
+                <input
+                    type="text"
+                    value={name}
+                    required
+                    onChange={(e) => setName(e.target.value)}
+                    style={styles.input}
+                />
+
                 <label style={styles.label}>Password</label>
                 <input
                     type="password"
@@ -137,6 +147,17 @@ const SignupPage = () => {
                 >
                     Sign Up
                 </button>
+                <div style={{ textAlign: 'center' }}>
+                    <br />
+                    <br />
+                    <hr />
+                    <br />
+
+                    <a href='/login' style={{ color: "#fff" }}>
+                        Login
+
+                    </a>
+                </div>
             </form>
         </div>
     );

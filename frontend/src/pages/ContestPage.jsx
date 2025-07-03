@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getContest, getFullContest, registerForContest } from '../services/contestService';
+import { getContest, registerForContest } from '../services/contestService';
 
 export default function ContestInfoPage() {
   const { contestId } = useParams();
@@ -118,8 +118,7 @@ export default function ContestInfoPage() {
             : <button onClick={handleRegister} style={styles.registerBtn}>
               📝 Register
             </button>}
-          <a href={`/contests/${contestId}/settings`} style={styles.iconBtn}>⚙️</a>
-          <a href={`/contests/${contestId}`} style={styles.iconBtn}>🔗</a>
+          <a href={`/contests/${contestId}/leaderboard`} style={styles.iconBtn}>LeaderBoard</a>
         </div>
 
         <div style={styles.description}>

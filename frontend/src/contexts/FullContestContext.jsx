@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFullContest } from '../services/contestService';
+import { useAuth } from './AuthContext';
 
 const FullContestContext = createContext();
 
@@ -10,6 +11,9 @@ export const FullContestProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [refresh, setRefresh] = useState(true);
+    const {isLoggedIn} = useAuth();
+
+  
 
   useEffect(() => {
     if (!contestId) return;
@@ -17,7 +21,7 @@ export const FullContestProvider = ({ children }) => {
     getFullContest(contestId)
       .then((data) => {
         setContest(data);
-        console.log(data)
+        // console.log(data)
         setLoading(false);
       })
       .catch((err) => {
@@ -25,7 +29,7 @@ export const FullContestProvider = ({ children }) => {
         setError(err);
         setLoading(false);
       });
-  }, [contestId, refresh]);
+  }, [contestId, refresh, isLoggedIn]);
 
   return (
     <FullContestContext.Provider value={{ contest, loading, error, setRefresh }}>

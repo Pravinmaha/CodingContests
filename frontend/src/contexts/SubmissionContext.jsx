@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSubmissions } from '../services/submissionService';
+import { useAuth } from './AuthContext';
 
 const SubmissionsContext = createContext();
 
@@ -9,7 +10,7 @@ export const SubmissionsProvider = ({ children }) => {
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const {isLoggedIn} = useAuth();
 
   useEffect(() => {
     if (!questionId) return;
@@ -25,7 +26,7 @@ export const SubmissionsProvider = ({ children }) => {
         setLoading(false);
       });
 
-  }, [questionId, submissionId]);
+  }, [questionId, submissionId, isLoggedIn]);
 
   return (
     <SubmissionsContext.Provider value={{ submissions, loading, error }}>

@@ -1,0 +1,58 @@
+.heading1 {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(to right, #00e5ff, #00c853);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+  }
+  
+  .heading2 {
+    font-size: 20px;
+    color: #4dd0e1;
+    border-bottom: 1px solid #4dd0e1;
+    margin-bottom: 6px;
+  }
+  
+  .bold {
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .italic {
+    font-style: italic;
+    color: #b0bec5;
+  }
+  
+  .inlineCode {
+    font-family: monospace;
+    background: #263238;
+    padding: 2px 6px;
+    border-radius: 6px;
+    color: #cfd8dc;
+  }
+
+  .codeBlock {
+    background: #1e1e1e;
+    color: #eee;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+    overflow-x: auto;
+    font-family: monospace;
+  }
+  
+  .divider {
+    border: none;
+    border-top: 1px solid #455a64;
+    margin: 16px 0;
+  }
+  
+  .quote {
+    font-style: italic;
+    color: #90a4ae;
+    border-left: 4px solid #4dd0e1;
+    padding-left: 10px;
+    margin: 8px 0;
+  }
+  

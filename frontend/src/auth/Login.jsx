@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/authService';
+import { useAuth } from '../contexts/AuthContext';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+
+    const { setIsLoggedIn } = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -20,8 +23,9 @@ const LoginPage = () => {
             localStorage.setItem('userId', user._id);
             localStorage.setItem('token', token);
             localStorage.setItem('role', user.role);
+            setIsLoggedIn(true);
             if (user.role === 'admin') {
-                navigate('/admin');
+                navigate('/admin/contests');
             }
             else {
                 navigate('/contests');
@@ -136,6 +140,17 @@ const LoginPage = () => {
                 >
                     Login
                 </button>
+                <div style={{ textAlign: 'center' }}>
+                    <br />
+                    <br />
+                    <hr />
+                    <br />
+
+                    <a href='/signup' style={{color:"#fff"}}>
+                        SignUp
+
+                    </a>
+                </div>
             </form>
         </div>
     );
