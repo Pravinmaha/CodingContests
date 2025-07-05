@@ -6,6 +6,7 @@ const SubmissionSchema = new mongoose.Schema({
   contest: { type: mongoose.Schema.Types.ObjectId, ref: 'Contest' },
   question: { type: mongoose.Schema.Types.ObjectId, ref: 'Question' },
   code: { type: String, required: true },
+  error: {type: String},
   testCases: [{
     testCase: { type: mongoose.Schema.Types.ObjectId, ref: 'TestCase' },
     status: { type: String, enum: ['Passed', 'Failed'] }

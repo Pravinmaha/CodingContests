@@ -82,12 +82,15 @@ export default function QuestionPage() {
       .then((data) => {
         console.log(data)
         parseJavaOutput(data.output)
-        setRunError('')
+        setRunError(data.stderr)
         setActiveMainView("results")
         setIsExpanded(true);
 
       })
       .catch((err) => {
+        if (err.status === 429) {
+          alert("Too many users are using this platform. Please try again tommorrow.");
+        }
         console.log(err)
         setRunError(err.response.data.message)
         setActiveMainView("results")

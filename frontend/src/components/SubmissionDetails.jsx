@@ -64,6 +64,7 @@ const SubmissionDetails = () => {
           <h3 style={styles.subheading}>Submitted Code</h3>
           <span style={styles.languageBadge}>{submission.language}</span>
         </div>
+        <div>{submission.error}</div>
         <SyntaxHighlighter
           language={submission.language}
           style={atomDark}
