@@ -9,4 +9,5 @@ export default defineConfig({
     port: 5173,
     allowedHosts: ['dcode-frontend-op62.onrender.com', 'https://d-code-one.vercel.app/']
   },
+  base: '/',
 })
