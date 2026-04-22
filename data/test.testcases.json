@@ -1,0 +1,62 @@
+[
+{
+  "_id": {
+    "$oid": "6856585f2c3edcaa8e41cff4"
+  },
+  "questionId": {
+    "$oid": "6868e36cf9b98a84ef2e4eb5"
+  },
+  "input": "12\n10",
+  "output": "2",
+  "isPublic": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856585f2c3edcaa8e41cff7"
+  },
+  "questionId": {
+    "$oid": "6868e36cf9b98a84ef2e4eb5"
+  },
+  "input": "32\n-100",
+  "output": "132",
+  "isPublic": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856585f2c3edcaa8e41cff8"
+  },
+  "questionId": {
+    "$oid": "6868e36cf9b98a84ef2e4eb5"
+  },
+  "input": "52\n42",
+  "output": "10",
+  "isPublic": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856585f2c3edcaa8e41cff6"
+  },
+  "questionId": {
+    "$oid": "6868e36cf9b98a84ef2e4eb5"
+  },
+  "input": "-23\n21",
+  "output": "44",
+  "isPublic": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856585f2c3edcaa8e41cff5"
+  },
+  "questionId": {
+    "$oid": "6868e36cf9b98a84ef2e4eb5"
+  },
+  "input": "66\n12",
+  "output": "54",
+  "isPublic": false,
+  "__v": 0
+}
+]

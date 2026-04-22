@@ -1,0 +1,401 @@
+[{
+  "_id": {
+    "$oid": "685801726f84e337d05c958e"
+  },
+  "title": "DSA ShowDown 1.O",
+  "description": "ShowDown organised by SPARK Club of CSE Dept.",
+  "startTime": {
+    "$date": "2025-06-23T13:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-06-23T13:45:00.000Z"
+  },
+  "duration": 30,
+  "isPublic": false,
+  "questions": [
+    {
+      "question": {
+        "$oid": "68555e9a153d09506e517d26"
+      },
+      "score": 15
+    },
+    {
+      "question": {
+        "$oid": "6856585e2c3edcaa8e41cfeb"
+      },
+      "score": 20
+    }
+  ],
+  "createdBy": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "isPublished": true,
+  "registeredUsers": [],
+  "createdAt": {
+    "$date": "2025-06-22T13:13:22.344Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "title": "DSA ShowDown 2.O",
+  "description": "DSA contest organised by SPARK Club",
+  "startTime": {
+    "$date": "2025-06-23T11:30:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-06-23T12:30:00.000Z"
+  },
+  "duration": 60,
+  "isPublic": true,
+  "questions": [
+    {
+      "question": {
+        "$oid": "68555e9a153d09506e517d26"
+      },
+      "score": 10
+    },
+    {
+      "question": {
+        "$oid": "6856585e2c3edcaa8e41cfeb"
+      },
+      "score": 20
+    },
+    {
+      "question": {
+        "$oid": "68565a442c3edcaa8e41d015"
+      },
+      "score": 30
+    }
+  ],
+  "createdBy": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "isPublished": true,
+  "registeredUsers": [],
+  "createdAt": {
+    "$date": "2025-06-22T16:20:30.450Z"
+  },
+  "__v": 7
+},
+{
+  "_id": {
+    "$oid": "68585fff6a272c52ffa6cfe1"
+  },
+  "title": "DSA ShowDown 3.O",
+  "description": "This is test DSA Contest by Students please be honest and enjoy.",
+  "startTime": {
+    "$date": "2025-06-23T18:30:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-06-23T20:00:00.000Z"
+  },
+  "duration": 90,
+  "isPublic": true,
+  "questions": [
+    {
+      "$oid": "68565a442c3edcaa8e41d015"
+    }
+  ],
+  "createdBy": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "isPublished": false,
+  "registeredUsers": [
+    {
+      "user": {
+        "$oid": "68593f8b18ac2152bac422a6"
+      },
+      "status": "registered",
+      "_id": {
+        "$oid": "6859ac5d55b2c8bef8149bd9"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-22T19:56:47.620Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6859858255b2c8bef8148521"
+  },
+  "title": "DSA ShowDown 4.O",
+  "description": "This is description",
+  "startTime": {
+    "$date": "2025-06-27T14:30:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-06-27T16:30:00.000Z"
+  },
+  "duration": 120,
+  "isPublic": true,
+  "questions": [
+    {
+      "question": {
+        "$oid": "6856585e2c3edcaa8e41cfeb"
+      },
+      "score": 10
+    },
+    {
+      "question": {
+        "$oid": "68565a442c3edcaa8e41d015"
+      },
+      "score": 20
+    }
+  ],
+  "createdBy": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "isPublished": true,
+  "registeredUsers": [
+    {
+      "user": {
+        "$oid": "68593f8b18ac2152bac422a6"
+      },
+      "status": "unsuspended",
+      "_id": {
+        "$oid": "685bd7dd66eea6150a0b7fe0"
+      }
+    },
+    {
+      "user": {
+        "$oid": "685556452f333218e7897225"
+      },
+      "status": "suspended",
+      "_id": {
+        "$oid": "6860271f75e88b7e7c0523e7"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-23T16:49:06.926Z"
+  },
+  "__v": 6
+},
+{
+  "_id": {
+    "$oid": "685b02d1bb5eb8f8c91d1aff"
+  },
+  "title": "DSA ShowDown 5.O",
+  "description": "DSA ShowDown organised by SPARK Club",
+  "startTime": {
+    "$date": "2025-06-30T02:30:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-06-30T04:00:00.000Z"
+  },
+  "duration": 90,
+  "isPublic": true,
+  "questions": [
+    {
+      "_id": {
+        "$oid": "685d2ebb7c5c8b56fc5a7845"
+      },
+      "question": {
+        "$oid": "6859be5af45b9f9564c47f52"
+      },
+      "score": 15
+    },
+    {
+      "_id": {
+        "$oid": "685d2ebb7c5c8b56fc5a7846"
+      },
+      "question": {
+        "$oid": "68565a442c3edcaa8e41d015"
+      },
+      "score": 30
+    }
+  ],
+  "createdBy": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "isPublished": true,
+  "registeredUsers": [],
+  "createdAt": {
+    "$date": "2025-06-24T19:56:01.017Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "685be90f9b837f18fa14327f"
+  },
+  "title": "DSA ShowDown 6.O",
+  "description": "Exclusive DSA contest organised by SPARK Club ",
+  "startTime": {
+    "$date": "2025-06-27T14:30:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-06-27T15:30:00.000Z"
+  },
+  "duration": 60,
+  "isPublic": true,
+  "questions": [
+    {
+      "question": {
+        "$oid": "68565a442c3edcaa8e41d015"
+      },
+      "score": 10,
+      "_id": {
+        "$oid": "685be90f9b837f18fa143280"
+      }
+    },
+    {
+      "question": {
+        "$oid": "6859be5af45b9f9564c47f52"
+      },
+      "score": 20,
+      "_id": {
+        "$oid": "685be90f9b837f18fa143281"
+      }
+    }
+  ],
+  "createdBy": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "isPublished": false,
+  "registeredUsers": [],
+  "createdAt": {
+    "$date": "2025-06-25T12:18:23.997Z"
+  },
+  "__v": 6
+},
+{
+  "_id": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "title": "Dummy",
+  "description": "This is kjdncks",
+  "startTime": {
+    "$date": "2025-06-26T10:30:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-06-26T12:00:00.000Z"
+  },
+  "duration": 90,
+  "isPublic": true,
+  "questions": [
+    {
+      "question": {
+        "$oid": "68565a442c3edcaa8e41d015"
+      },
+      "score": 10,
+      "_id": {
+        "$oid": "685c395b7fb0b7f4054ab610"
+      }
+    },
+    {
+      "question": {
+        "$oid": "6859be5af45b9f9564c47f52"
+      },
+      "score": 10,
+      "_id": {
+        "$oid": "685c395b7fb0b7f4054ab611"
+      }
+    },
+    {
+      "question": {
+        "$oid": "685cec8235158b4e9989569d"
+      },
+      "score": 20,
+      "_id": {
+        "$oid": "685d30da7c5c8b56fc5a7dcc"
+      }
+    },
+    {
+      "question": {
+        "$oid": "685d2c8b7c5c8b56fc5a762b"
+      },
+      "score": 25,
+      "_id": {
+        "$oid": "68667fb85afa03d2bcfe5599"
+      }
+    }
+  ],
+  "createdBy": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "isPublished": true,
+  "registeredUsers": [
+    {
+      "user": {
+        "$oid": "68593f8b18ac2152bac422a6"
+      },
+      "status": "registered",
+      "_id": {
+        "$oid": "685c416d7fb0b7f4054ac7b6"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-25T18:00:59.048Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "68613986364c10648d6f8dd2"
+  },
+  "title": "Dummy 2",
+  "description": "This is contest",
+  "startTime": {
+    "$date": "2025-06-29T13:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-06-29T15:00:00.000Z"
+  },
+  "duration": 120,
+  "isPublic": true,
+  "questions": [
+    {
+      "question": {
+        "$oid": "68565a442c3edcaa8e41d015"
+      },
+      "score": 10,
+      "_id": {
+        "$oid": "68613986364c10648d6f8dd3"
+      }
+    },
+    {
+      "question": {
+        "$oid": "6859be5af45b9f9564c47f52"
+      },
+      "score": 15,
+      "_id": {
+        "$oid": "68613986364c10648d6f8dd4"
+      }
+    },
+    {
+      "question": {
+        "$oid": "685cec8235158b4e9989569d"
+      },
+      "score": 20,
+      "_id": {
+        "$oid": "68613986364c10648d6f8dd5"
+      }
+    }
+  ],
+  "createdBy": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "isPublished": true,
+  "registeredUsers": [
+    {
+      "user": {
+        "$oid": "68593f8b18ac2152bac422a6"
+      },
+      "status": "registered",
+      "_id": {
+        "$oid": "686139a1364c10648d6f8e30"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-29T13:03:02.374Z"
+  },
+  "__v": 1
+}]

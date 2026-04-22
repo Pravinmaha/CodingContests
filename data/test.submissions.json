@@ -1,0 +1,3325 @@
+[{
+  "_id": {
+    "$oid": "685a9353f6df29642139defc"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "int mult(int a, int b) {\n    return a-b;\n}\n",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a9353f6df29642139defd"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a9353f6df29642139defe"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a9353f6df29642139deff"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a9353f6df29642139df00"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a9353f6df29642139df01"
+      }
+    }
+  ],
+  "language": "cpp",
+  "verdict": "Wrong Answer",
+  "executionTime": 0,
+  "memoryUsed": 3,
+  "createdAt": {
+    "$date": "2025-06-24T12:00:19.259Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685a93abf6df29642139df14"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685a93abf6df29642139df15"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685a93abf6df29642139df16"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685a93abf6df29642139df17"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685a93abf6df29642139df18"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685a93abf6df29642139df19"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 10,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T12:01:47.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685a93b7f6df29642139df20"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a-b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a93b7f6df29642139df21"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a93b7f6df29642139df22"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a93b7f6df29642139df23"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a93b7f6df29642139df24"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685a93b7f6df29642139df25"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T12:01:59.955Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aea882cb5eae6e7da3e91"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685aea882cb5eae6e7da3e92"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685aea882cb5eae6e7da3e93"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685aea882cb5eae6e7da3e94"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685aea882cb5eae6e7da3e95"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685aea882cb5eae6e7da3e96"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T18:12:24.717Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aebd62cb5eae6e7da43ab"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return 5*a;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685aebd62cb5eae6e7da43ac"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685aebd62cb5eae6e7da43ad"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685aebd62cb5eae6e7da43ae"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685aebd62cb5eae6e7da43af"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685aebd62cb5eae6e7da43b0"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T18:17:58.705Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685af43acbe04ffdf23a6765"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return 125;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af43acbe04ffdf23a6766"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af43acbe04ffdf23a6767"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af43acbe04ffdf23a6768"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af43acbe04ffdf23a6769"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af43acbe04ffdf23a676a"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T18:53:46.909Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685af47acbe04ffdf23a6ad5"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return 452;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af47acbe04ffdf23a6ad6"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af47acbe04ffdf23a6ad7"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af47acbe04ffdf23a6ad8"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af47acbe04ffdf23a6ad9"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af47acbe04ffdf23a6ada"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 10,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T18:54:50.153Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685af4abcbe04ffdf23a6b77"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return 5215;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af4abcbe04ffdf23a6b78"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af4abcbe04ffdf23a6b79"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af4abcbe04ffdf23a6b7a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af4abcbe04ffdf23a6b7b"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af4abcbe04ffdf23a6b7c"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T18:55:39.731Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685af4f6cbe04ffdf23a6e92"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af4f6cbe04ffdf23a6e93"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af4f6cbe04ffdf23a6e94"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af4f6cbe04ffdf23a6e95"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af4f6cbe04ffdf23a6e96"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af4f6cbe04ffdf23a6e97"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T18:56:54.638Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685af8552e3fab84e81261f8"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af8552e3fab84e81261f9"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af8552e3fab84e81261fa"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af8552e3fab84e81261fb"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af8552e3fab84e81261fc"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af8552e3fab84e81261fd"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 8,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T19:11:17.039Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685af8602e3fab84e8126259"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a+b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af8602e3fab84e812625a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af8602e3fab84e812625b"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af8602e3fab84e812625c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af8602e3fab84e812625d"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af8602e3fab84e812625e"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 8,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T19:11:28.308Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685af95a2e3fab84e81268fd"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af95a2e3fab84e81268fe"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af95a2e3fab84e81268ff"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af95a2e3fab84e8126900"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af95a2e3fab84e8126901"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685af95a2e3fab84e8126902"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 10,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-06-24T19:15:38.276Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685af9c62e3fab84e8127176"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a+b*5;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af9c62e3fab84e8127177"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af9c62e3fab84e8127178"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af9c62e3fab84e8127179"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af9c62e3fab84e812717a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685af9c62e3fab84e812717b"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T19:17:26.709Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685afbcd2e3fab84e8127cf5"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afbcd2e3fab84e8127cf6"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afbcd2e3fab84e8127cf7"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afbcd2e3fab84e8127cf8"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afbcd2e3fab84e8127cf9"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afbcd2e3fab84e8127cfa"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 8,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T19:26:05.328Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685afcd92e3fab84e8128048"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n        return a*5;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685afcd92e3fab84e8128049"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685afcd92e3fab84e812804a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685afcd92e3fab84e812804b"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685afcd92e3fab84e812804c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685afcd92e3fab84e812804d"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 8,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T19:30:33.106Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685afce22e3fab84e8128162"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n        return a*b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afce22e3fab84e8128163"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afce22e3fab84e8128164"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afce22e3fab84e8128165"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afce22e3fab84e8128166"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685afce22e3fab84e8128167"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T19:30:42.204Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685b0249bb5eb8f8c91d1818"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a+b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685b0249bb5eb8f8c91d1819"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685b0249bb5eb8f8c91d181a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685b0249bb5eb8f8c91d181b"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685b0249bb5eb8f8c91d181c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685b0249bb5eb8f8c91d181d"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 8,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-24T19:53:45.892Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685b0265bb5eb8f8c91d1954"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "int mult(int a, int b) {\n    return a*b;\n}\n",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685b0265bb5eb8f8c91d1955"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685b0265bb5eb8f8c91d1956"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685b0265bb5eb8f8c91d1957"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685b0265bb5eb8f8c91d1958"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685b0265bb5eb8f8c91d1959"
+      }
+    }
+  ],
+  "language": "cpp",
+  "verdict": "Accepted",
+  "executionTime": 0,
+  "memoryUsed": 3,
+  "createdAt": {
+    "$date": "2025-06-24T19:54:13.276Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685c41817fb0b7f4054ac7d4"
+  },
+  "user": {
+    "$oid": "68593f8b18ac2152bac422a6"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41817fb0b7f4054ac7d5"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41817fb0b7f4054ac7d6"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41817fb0b7f4054ac7d7"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41817fb0b7f4054ac7d8"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41817fb0b7f4054ac7d9"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 7,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-25T18:35:45.589Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685c41dc7fb0b7f4054ac9b5"
+  },
+  "user": {
+    "$oid": "68593f8b18ac2152bac422a6"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         int prod = a*b;\n         return prod;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41dc7fb0b7f4054ac9b6"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41dc7fb0b7f4054ac9b7"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41dc7fb0b7f4054ac9b8"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41dc7fb0b7f4054ac9b9"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c41dc7fb0b7f4054ac9ba"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 7,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-25T18:37:16.226Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685c440f6ce149810ecc4313"
+  },
+  "user": {
+    "$oid": "68593f8b18ac2152bac422a6"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "code": "class Solution{\n    public int[] generateArray(int n){\n        int[] arr = new int[n];\n        for(int i =0; i < n; i++){\n            arr[i] = i;\n        }\n        return arr;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5c"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685c440f6ce149810ecc4314"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5d"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685c440f6ce149810ecc4315"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685c440f6ce149810ecc4316"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685c440f6ce149810ecc4317"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-25T18:46:39.746Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685c44186ce149810ecc4355"
+  },
+  "user": {
+    "$oid": "68593f8b18ac2152bac422a6"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "code": "class Solution{\n    public int[] generateArray(int n){\n        int[] arr = new int[n];\n        for(int i =0; i < n; i++){\n            arr[i] = i+1;\n        }\n        return arr;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5c"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c44186ce149810ecc4356"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5d"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c44186ce149810ecc4357"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c44186ce149810ecc4358"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685c44186ce149810ecc4359"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 9,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-25T18:46:48.383Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685cf6be3e70c0c3b046ac0a"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr) sum += x;\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cf6be3e70c0c3b046ac0b"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cf6be3e70c0c3b046ac0c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cf6be3e70c0c3b046ac0d"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cf6be3e70c0c3b046ac0e"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 11,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-26T07:29:02.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685cf7023e70c0c3b046ac3d"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr) sum += x;\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cf7023e70c0c3b046ac3e"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cf7023e70c0c3b046ac3f"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cf7023e70c0c3b046ac40"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cf7023e70c0c3b046ac41"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 13,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-26T07:30:10.088Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685cfa843e70c0c3b046ad4c"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        \n        return 10;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfa843e70c0c3b046ad4d"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfa843e70c0c3b046ad4e"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfa843e70c0c3b046ad4f"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfa843e70c0c3b046ad50"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 11,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-26T07:45:08.292Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685cfa953e70c0c3b046ad9f"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        \n        return -181;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfa953e70c0c3b046ada0"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfa953e70c0c3b046ada1"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfa953e70c0c3b046ada2"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfa953e70c0c3b046ada3"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 11,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-06-26T07:45:25.540Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685cfbad7c13d8b8c03b39eb"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        \n        return -181;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfbad7c13d8b8c03b39ec"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfbad7c13d8b8c03b39ed"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfbad7c13d8b8c03b39ee"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685cfbad7c13d8b8c03b39ef"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 90,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-26T07:50:05.275Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685cfbdd7c13d8b8c03b3aaa"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n         for(int x : arr) sum += x;\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfbdd7c13d8b8c03b3aab"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfbdd7c13d8b8c03b3aac"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfbdd7c13d8b8c03b3aad"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfbdd7c13d8b8c03b3aae"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 90,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-26T07:50:53.094Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685cfcaa46bb77f5996a627a"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        System.out.println(\"dskcnd\");\n        for(int x : arr) sum += x;\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfcaa46bb77f5996a627b"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfcaa46bb77f5996a627c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfcaa46bb77f5996a627d"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfcaa46bb77f5996a627e"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 110,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-06-26T07:54:18.394Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685cfcbd46bb77f5996a62dd"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr) sum += x;\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfcbd46bb77f5996a62de"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfcbd46bb77f5996a62df"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfcbd46bb77f5996a62e0"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685cfcbd46bb77f5996a62e1"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 110,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-06-26T07:54:37.364Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685d2e347c5c8b56fc5a7710"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr) sum += x;\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685d2e347c5c8b56fc5a7711"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685d2e347c5c8b56fc5a7712"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685d2e347c5c8b56fc5a7713"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "685d2e347c5c8b56fc5a7714"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 100,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-06-26T11:25:40.084Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685d30eb7c5c8b56fc5a7e2e"
+  },
+  "user": {
+    "$oid": "68593f8b18ac2152bac422a6"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        return 0;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685d30eb7c5c8b56fc5a7e2f"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685d30eb7c5c8b56fc5a7e30"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685d30eb7c5c8b56fc5a7e31"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "685d30eb7c5c8b56fc5a7e32"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 100,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-26T11:37:15.261Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68613a3d364c10648d6f8fc4"
+  },
+  "user": {
+    "$oid": "68593f8b18ac2152bac422a6"
+  },
+  "contest": {
+    "$oid": "68613986364c10648d6f8dd2"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr) sum += x;\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613a3d364c10648d6f8fc5"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613a3d364c10648d6f8fc6"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613a3d364c10648d6f8fc7"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613a3d364c10648d6f8fc8"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 110,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-29T13:06:05.195Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68613a61364c10648d6f9077"
+  },
+  "user": {
+    "$oid": "68593f8b18ac2152bac422a6"
+  },
+  "contest": {
+    "$oid": "68613986364c10648d6f8dd2"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr) sum += x;\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613a61364c10648d6f9078"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613a61364c10648d6f9079"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613a61364c10648d6f907a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613a61364c10648d6f907b"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 130,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-06-29T13:06:41.899Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68613a79364c10648d6f90de"
+  },
+  "user": {
+    "$oid": "68593f8b18ac2152bac422a6"
+  },
+  "contest": {
+    "$oid": "68613986364c10648d6f8dd2"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr) sum += x;\n        return sum*2;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68613a79364c10648d6f90df"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68613a79364c10648d6f90e0"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68613a79364c10648d6f90e1"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68613a79364c10648d6f90e2"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 110,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-29T13:07:05.803Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68613af7364c10648d6f929b"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68613986364c10648d6f8dd2"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr) sum += x;\n        return sum*sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68613af7364c10648d6f929c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68613af7364c10648d6f929d"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68613af7364c10648d6f929e"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68613af7364c10648d6f929f"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 110,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-06-29T13:09:11.652Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68613afb364c10648d6f9348"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68613986364c10648d6f8dd2"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr) sum += x;\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613afb364c10648d6f9349"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613afb364c10648d6f934a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613afb364c10648d6f934b"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68613afb364c10648d6f934c"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 100,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-06-29T13:09:15.988Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667a485afa03d2bcfe408b"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68555e9a153d09506e517d26"
+  },
+  "code": "class Solution {\n    public int add(int a, int b) {\n        return a+b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68555e9a153d09506e517d30"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667a485afa03d2bcfe408c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68555e9a153d09506e517d32"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667a485afa03d2bcfe408d"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68555e9a153d09506e517d31"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667a485afa03d2bcfe408e"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 70,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-07-03T12:40:40.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667a5a5afa03d2bcfe40db"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "68555e9a153d09506e517d26"
+  },
+  "code": "class Solution {\n    public int add(int a, int b) {\n        return a-b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68555e9a153d09506e517d30"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667a5a5afa03d2bcfe40dc"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68555e9a153d09506e517d32"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667a5a5afa03d2bcfe40dd"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68555e9a153d09506e517d31"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667a5a5afa03d2bcfe40de"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 100,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-07-03T12:40:58.824Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667acb5afa03d2bcfe428e"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "6856585e2c3edcaa8e41cfeb"
+  },
+  "code": "class Solution{\n    public int diff(int a, int b){\n         return a-b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff4"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667acb5afa03d2bcfe428f"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667acb5afa03d2bcfe4290"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667acb5afa03d2bcfe4291"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff6"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667acb5afa03d2bcfe4292"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff5"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667acb5afa03d2bcfe4293"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 80,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-07-03T12:42:51.819Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667b015afa03d2bcfe430c"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "6856585e2c3edcaa8e41cfeb"
+  },
+  "code": "class Solution{\n    public int diff(int a, int b){\n         return a-b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff4"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b015afa03d2bcfe430d"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b015afa03d2bcfe430e"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b015afa03d2bcfe430f"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff6"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667b015afa03d2bcfe4310"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff5"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b015afa03d2bcfe4311"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 80,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-07-03T12:43:45.571Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667b0c5afa03d2bcfe434e"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "6856585e2c3edcaa8e41cfeb"
+  },
+  "code": "class Solution{\n    public int diff(int a, int b){\n         return a-b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff4"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b0c5afa03d2bcfe434f"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b0c5afa03d2bcfe4350"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b0c5afa03d2bcfe4351"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff6"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667b0c5afa03d2bcfe4352"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff5"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b0c5afa03d2bcfe4353"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 90,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-07-03T12:43:56.109Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667b205afa03d2bcfe4396"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "68582d4eedea2e1f49087c50"
+  },
+  "question": {
+    "$oid": "6856585e2c3edcaa8e41cfeb"
+  },
+  "code": "class Solution{\n    public int diff(int a, int b){\n         return Math.abs(a-b);\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff4"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b205afa03d2bcfe4397"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b205afa03d2bcfe4398"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b205afa03d2bcfe4399"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b205afa03d2bcfe439a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6856585f2c3edcaa8e41cff5"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667b205afa03d2bcfe439b"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 80,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-07-03T12:44:16.086Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c975afa03d2bcfe4809"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667c975afa03d2bcfe480a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667c975afa03d2bcfe480b"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667c975afa03d2bcfe480c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667c975afa03d2bcfe480d"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667c975afa03d2bcfe480e"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 90,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-07-03T12:50:31.078Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c9f5afa03d2bcfe495f"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "code": "class Solution{\n    public int mult(int a, int b){\n         return a-b;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667c9f5afa03d2bcfe4960"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d01f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667c9f5afa03d2bcfe4961"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d021"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667c9f5afa03d2bcfe4962"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d020"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667c9f5afa03d2bcfe4963"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "68565a442c3edcaa8e41d022"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667c9f5afa03d2bcfe4964"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 90,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-07-03T12:50:39.988Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667ebf5afa03d2bcfe4f99"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "code": "class Solution{\n    public int[] generateArray(int n){\n        int[] ans = new int[n];\n        for(int i = 0; i < n; i++){\n            ans[i] = i+1;\n        }\n        return ans;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5d"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667ebf5afa03d2bcfe4f9a"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5c"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667ebf5afa03d2bcfe4f9b"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5f"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667ebf5afa03d2bcfe4f9c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5e"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667ebf5afa03d2bcfe4f9d"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 90,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-07-03T12:59:43.153Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667ecb5afa03d2bcfe4fed"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "code": "class Solution{\n    public int[] generateArray(int n){\n        int[] ans = new int[n];\n        for(int i = 0; i < n; i++){\n            ans[i] = i;\n        }\n        return ans;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5d"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667ecb5afa03d2bcfe4fee"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5c"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667ecb5afa03d2bcfe4fef"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5f"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667ecb5afa03d2bcfe4ff0"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "6859be5af45b9f9564c47f5e"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "68667ecb5afa03d2bcfe4ff1"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 70,
+  "memoryUsed": 42,
+  "createdAt": {
+    "$date": "2025-07-03T12:59:55.638Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667f4b5afa03d2bcfe5142"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "code": "class Solution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr){\n            sum += x;\n        }\n        return sum;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a8"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667f4b5afa03d2bcfe5143"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a6"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667f4b5afa03d2bcfe5144"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a9"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667f4b5afa03d2bcfe5145"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685cec8335158b4e998956a7"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "68667f4b5afa03d2bcfe5146"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 110,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-07-03T13:02:03.838Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682365afa03d2bcfe5755"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "685d2c8b7c5c8b56fc5a762b"
+  },
+  "code": "class Solution{\n    public boolean isSumDivisibleByK(int[] nums, int k){\n        return true;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7635"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "686682365afa03d2bcfe5756"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7636"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "686682365afa03d2bcfe5757"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7634"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "686682365afa03d2bcfe5758"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 90,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-07-03T13:14:30.083Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682455afa03d2bcfe578b"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "685d2c8b7c5c8b56fc5a762b"
+  },
+  "code": "class Solution{\n    public boolean isSumDivisibleByK(int[] nums, int k){\n        return false;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7635"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "686682455afa03d2bcfe578c"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7636"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "686682455afa03d2bcfe578d"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7634"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "686682455afa03d2bcfe578e"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 70,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-07-03T13:14:45.871Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682645afa03d2bcfe57bf"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "685d2c8b7c5c8b56fc5a762b"
+  },
+  "code": "class Solution{\n    public boolean isSumDivisibleByK(int[] nums, int k){\n        int sum = 0;\n        for(int x : nums) sum += x;\n\n        return sum % k == 0;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7635"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "686682645afa03d2bcfe57c0"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7636"
+      },
+      "status": "Failed",
+      "_id": {
+        "$oid": "686682645afa03d2bcfe57c1"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7634"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "686682645afa03d2bcfe57c2"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Wrong Answer",
+  "executionTime": 90,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-07-03T13:15:16.803Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6866828f5afa03d2bcfe5823"
+  },
+  "user": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "contest": {
+    "$oid": "685c395b7fb0b7f4054ab60f"
+  },
+  "question": {
+    "$oid": "685d2c8b7c5c8b56fc5a762b"
+  },
+  "code": "class Solution{\n    public boolean isSumDivisibleByK(int[] nums, int k){\n        int sum = 0;\n        for(int x : nums) sum += x;\n\n        return sum % k == 0;\n    }\n}",
+  "testCases": [
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7635"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "6866828f5afa03d2bcfe5824"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7636"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "6866828f5afa03d2bcfe5825"
+      }
+    },
+    {
+      "testCase": {
+        "$oid": "685d2c8b7c5c8b56fc5a7634"
+      },
+      "status": "Passed",
+      "_id": {
+        "$oid": "6866828f5afa03d2bcfe5826"
+      }
+    }
+  ],
+  "language": "java",
+  "verdict": "Accepted",
+  "executionTime": 110,
+  "memoryUsed": 43,
+  "createdAt": {
+    "$date": "2025-07-03T13:15:59.688Z"
+  },
+  "__v": 0
+}]

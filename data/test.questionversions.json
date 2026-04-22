@@ -1,0 +1,731 @@
+[{
+  "_id": {
+    "$oid": "6859be37f45b9f9564c47f42"
+  },
+  "questionId": {
+    "$oid": "6859be37f45b9f9564c47f3c"
+  },
+  "language": "cpp",
+  "referenceSolution": "class RefSolution {\npublic:\n    std::vector<int> generateArray(int n) {\n        std::vector<int> arr(n);\n        for (int i = 0; i < n; i++) {\n            arr[i] = i + 1;\n        }\n        return arr;\n    }\n};\n",
+  "starterCode": "class Solution {\npublic:\n    std::vector<int> generateArray(int n) {\n        \n    }\n};\n",
+  "runnerCode": "#include <iostream>\n#include <vector>\n#include <string>\n\nusing namespace std;\n\n// RUNNER_CODE\n\n\nint main() {\n    string str;\n    RefSolution refSol;\n    Solution sol;\n\n    while (getline(cin, str)) {\n        int n = stoi(str);\n\n        if (n < 1 || n > 100) {\n            cout << \"Invalid TestCase \" << n << \" \" << endl;\n            break;\n        }\n\n        vector<int> actualOutput = sol.generateArray(n);\n        vector<int> expectedOutput = refSol.generateArray(n);\n\n\n        cout << \"actualOutput=[\";\n        for (size_t i = 0; i < actualOutput.size(); ++i) {\n            cout << actualOutput[i];\n            if (i != actualOutput.size() - 1) cout << \", \";\n        }\n        cout << \"]\" << endl;\n\n        cout << \"expectedOutput=[\";\n        for (size_t i = 0; i < expectedOutput.size(); ++i) {\n            cout << expectedOutput[i];\n            if (i != expectedOutput.size() - 1) cout << \", \";\n        }\n        cout << \"]\" << endl;\n    }\n\n    return 0;\n}\n",
+  "submitCode": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> generateArray(int n); // Assume it's defined elsewhere\n\n// SUBMIT_CODE\n\n\nint main() {\n    string input, output;\n    stringstream result;\n\n    while (getline(cin, input) && getline(cin, output)) {\n        int n = stoi(input);\n\n        if (n < 1 || n > 100) {\n            result << \"Invalid TestCase \" << n << \" \" << endl;\n            break;\n        }\n\n        vector<int> actualOutput = generateArray(n);\n\n        stringstream arrStr;\n        arrStr << \"[\";\n        for (size_t i = 0; i < actualOutput.size(); i++) {\n            arrStr << actualOutput[i];\n            if (i != actualOutput.size() - 1) arrStr << \",\";\n        }\n        arrStr << \"]\";\n\n        string expected = output;\n        expected.erase(remove_if(expected.begin(), expected.end(), ::isspace), expected.end());\n        string actual = arrStr.str();\n        actual.erase(remove_if(actual.begin(), actual.end(), ::isspace), actual.end());\n\n        if (expected == actual)\n            result << \"Passed\\n\";\n        else\n            result << \"Failed\\n\";\n    }\n\n    cout << result.str();\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-06-23T20:51:03.234Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859be37f45b9f9564c47f41"
+  },
+  "questionId": {
+    "$oid": "6859be37f45b9f9564c47f3c"
+  },
+  "language": "c",
+  "referenceSolution": "void generateArray(int* arr, int n) {\n    for (int i = 0; i < n; i++) {\n        arr[i] = i + 1;\n    }\n}\n",
+  "starterCode": "void generateArray(int* arr, int n) {\n    \n}\n",
+  "runnerCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// RUNNER_CODE\n\nint main() {\n    char str[100];\n    while (fgets(str, sizeof(str), stdin)) {\n        int n = atoi(str);\n\n        if (n < 1 || n > 100) {\n            printf(\"Invalid TestCase %d \\n\", n);\n            break;\n        }\n\n        int actualOutput[100];\n        int expectedOutput[100];\n\n\n        printf(\"actualOutput=[\");\n        for (int i = 0; i < n; i++) {\n            printf(\"%d\", actualOutput[i]);\n            if (i != n - 1) printf(\", \");\n        }\n        printf(\"]\\n\");\n\n        printf(\"expectedOutput=[\");\n        for (int i = 0; i < n; i++) {\n            printf(\"%d\", expectedOutput[i]);\n            if (i != n - 1) printf(\", \");\n        }\n        printf(\"]\\n\");\n    }\n\n    return 0;\n}\n",
+  "submitCode": "// SUBMIT_CODE\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint* generateArray(int n); // Assume it's defined elsewhere\n\n// SUBMIT_CODE\n\n\nint main() {\n    char input[1000];\n    char output[1000];\n    char result[10000] = \"\";\n\n    while (fgets(input, sizeof(input), stdin) && fgets(output, sizeof(output), stdin)) {\n        int n = atoi(input);\n\n        if (n < 1 || n > 100) {\n            sprintf(result + strlen(result), \"Invalid TestCase %d \\n\", n);\n            break;\n        }\n\n        int* actualOutput = generateArray(n);\n\n        char arrStr[1000] = \"[\";\n        for (int i = 0; i < n; i++) {\n            char num[10];\n            sprintf(num, \"%d\", actualOutput[i]);\n            strcat(arrStr, num);\n            if (i != n - 1) strcat(arrStr, \",\");\n        }\n        strcat(arrStr, \"]\");\n\n        // Remove whitespace from both output and arrStr\n        char cleanedOutput[1000], cleanedArr[1000];\n        int ci = 0, cj = 0;\n        for (int i = 0; output[i]; i++)\n            if (output[i] != ' ' && output[i] != '\\n') cleanedOutput[ci++] = output[i];\n        cleanedOutput[ci] = '\\0';\n\n        for (int i = 0; arrStr[i]; i++)\n            if (arrStr[i] != ' ') cleanedArr[cj++] = arrStr[i];\n        cleanedArr[cj] = '\\0';\n\n        if (strcmp(cleanedOutput, cleanedArr) == 0)\n            strcat(result, \"Passed\\n\");\n        else\n            strcat(result, \"Failed\\n\");\n\n        free(actualOutput);\n    }\n\n    printf(\"%s\", result);\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-06-23T20:51:03.233Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859be37f45b9f9564c47f44"
+  },
+  "questionId": {
+    "$oid": "6859be37f45b9f9564c47f3c"
+  },
+  "language": "python",
+  "referenceSolution": "class RefSolution:\n    def generateArray(self, n):\n        arr = [0] * n\n        for i in range(n):\n            arr[i] = i + 1\n        return arr\n",
+  "starterCode": "class Solution:\n    def generateArray(self, n):\n        \n",
+  "runnerCode": "\nimport sys\n\n# RUNNER_CODE\n\n\nrefSol = RefSolution()\nsol = Solution()\n\nsb = \"\"\n\nfor line in sys.stdin:\n    line = line.strip()\n    if not line:\n        continue\n\n    n = int(line)\n\n    if n < 1 or n > 100:\n        sb += f\"Invalid TestCase {n} \\n\"\n        print(sb, end=\"\")\n        break\n\n    actualOutput = sol.generateArray(n)\n    sb += f\"actualOutput={actualOutput}\\n\"\n\n    expectedOutput = refSol.generateArray(n)\n    sb += f\"expectedOutput={expectedOutput}\\n\"\n\nprint(sb, end=\"\")\n",
+  "submitCode": "import sys\n\n# SUBMIT_CODE\n\nsol = Solution()\n\nlines = sys.stdin.read().splitlines()\nsb = \"\"\n\ni = 0\nwhile i + 1 < len(lines):\n    input_line = lines[i].strip()\n    output_line = lines[i+1].strip()\n    i += 2\n\n    n = int(input_line)\n\n    if n < 1 or n > 100:\n        sb += f\"Invalid TestCase {n} \\n\"\n        break\n\n    actualOutput = sol.generateArray(n)\n    arrStr = str(actualOutput).replace(\" \", \"\")\n\n    if output_line.replace(\" \", \"\") == arrStr:\n        sb += \"Passed\\n\"\n    else:\n        sb += \"Failed\\n\"\n\nprint(sb, end=\"\")\n",
+  "createdAt": {
+    "$date": "2025-06-23T20:51:03.235Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859be37f45b9f9564c47f43"
+  },
+  "questionId": {
+    "$oid": "6859be37f45b9f9564c47f3c"
+  },
+  "language": "java",
+  "referenceSolution": "class RefSolution{\n    public int[] generateArray(int n){\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++){\n            arr[i] = i+1;\n        }\n        return arr;\n    }\n}",
+  "starterCode": "class Solution{\n    public int[] generateArray(int n){\n\n    }\n}",
+  "runnerCode": "import java.util.*;\n\n// RUNNER_CODE\n\nclass Main{\n    public static void main(String[] args){\n        \n        Scanner sc = new Scanner(System.in);\n\n        RefSolution refSol = new RefSolution();\n        Solution sol = new Solution();\n\n        String str = \"\";\n\n        StringBuilder sb = new StringBuilder();\n\n        while(true){\n            if (!sc.hasNextLine()) break;\n\n            str = sc.nextLine();\n\n            int n = Integer.parseInt(str);\n\n            if(n < 1 || n > 100){\n                sb.append(\"Invalid TestCase \"+n+\" \"+\"\\n\");\n                break;\n            }\n\n            int[] actualOutput = sol.generateArray(n);\n            sb.append(\"actualOutput=\"+Arrays.toString(actualOutput)+\"\\n\");\n            \n            int expectedOutput[] = refSol.generateArray(n);\n            sb.append(\"expectedOutput=\"+Arrays.toString(expectedOutput)+\"\\n\");\n\n        }\n\n        System.out.println(sb.toString());\n    }\n}",
+  "submitCode": "import java.util.*;\n\n// SUBMIT_CODE\n\nclass Main{\n    public static void main(String[] args){\n        \n        Scanner sc = new Scanner(System.in);\n\n        RefSolution refSol = new RefSolution();\n        Solution sol = new Solution();\n\n        String input = \"\";\n        String output = \"\";\n\n        StringBuilder sb = new StringBuilder();\n\n        while(true){\n            if (!sc.hasNextLine()) break;\n\n            input = sc.nextLine();\n            output = sc.nextLine();\n\n            int n = Integer.parseInt(str);\n\n            if(n < 1 || n > 100){\n                sb.append(\"Invalid TestCase \"+n+\" \"+\"\\n\");\n                break;\n            }\n\n            int[] actualOutput = sol.generateArray(n);\n            String arrStr = Arrays.toString().replace(\" \", \"\");\n            if(output.replace(\" \", \"\").equals(arrStr)){\n                sb.append(\"Passed\\n\");\n            }\n            else{\n                sb.append(\"Failed\\n\");\n            }\n\n        }\n\n        System.out.println(sb.toString());\n    }\n}",
+  "createdAt": {
+    "$date": "2025-06-23T20:51:03.234Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667afa5afa03d2bcfe42f5"
+  },
+  "questionId": {
+    "$oid": "6856585e2c3edcaa8e41cfeb"
+  },
+  "language": "java",
+  "referenceSolution": "class RefSolution{\n    public int diff(int a, int b){\n         return (a-b) < 0 ? b-a : a-b;\n    }\n}",
+  "starterCode": "class Solution{\n    public int diff(int a, int b){\n         \n    }\n}",
+  "runnerCode": "import java.util.*;\n\n// RUNNER_CODE\n\nclass Main{\n      public static void main(String[] args){\n            Scanner sc = new Scanner(System.in);\n\n            RefSolution refsol = new RefSolution();\n            Solution sol = new Solution();\n\n            List<String> outputLines = new ArrayList<>();\n\n            while(sc.hasNextLine()){\n                 int a = Integer.parseInt(sc.nextLine().trim());\n                 int b = Integer.parseInt(sc.nextLine().trim());\n\n                 if(a < -100 || a > 100){\n                      outputLines.add(\"Invalid TestCase\");\n                      return;\n                 }\n                 if(b < -100 || b > 100){\n                      outputLines.add(\"Invalid TestCase\");\n                      return;\n                 }\n\n                 int actualOutput = sol.diff(a,b);\n                 int expectedOutput = refsol.diff(a,b);\n                 outputLines.add(String.format(\"actualOutput=%d\\nexpectedOutput=%d\\nuserPrints=\\n\", actualOutput, expectedOutput));\n            }\n            System.out.println(outputLines);\n      }\n}",
+  "submitCode": "import java.util.*;\n\n// SUBMIT_CODE\n\nclass Main{\n    public static void main(String[] args){\n          Scanner sc = new Scanner(System.in);\n          Solution sol = new Solution();\n\n          List<String> outputLines = new ArrayList<>();\n\n          while(sc.hasNextLine()){\n               int a = Integer.parseInt(sc.nextLine().trim());\n               int b = Integer.parseInt(sc.nextLine().trim()); \n               int diff = Integer.parseInt(sc.nextLine().trim());\n               if(diff == sol.diff(a,b)){\n                    outputLines.add(\"Passed\");\n               }\n               else{\n                    outputLines.add(\"Failed\");\n               }\n          }\n          System.out.println(outputLines);\n    }\n}",
+  "createdAt": {
+    "$date": "2025-07-03T12:43:38.049Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667afa5afa03d2bcfe42f6"
+  },
+  "questionId": {
+    "$oid": "6856585e2c3edcaa8e41cfeb"
+  },
+  "language": "python",
+  "referenceSolution": "def ref_diff(a, b):\n    return (b - a) if (a - b) < 0 else (a - b)\n",
+  "starterCode": "def diff(a, b):\n    \n",
+  "runnerCode": "const readline = require('readline');\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\n## RUNNER_CODE\n\nlet lines = [];\nlet result = '';\n\nrl.on('line', (line) => {\n    if (line.trim() === '') {\n        console.log(result);\n        process.exit(0);\n    }\n\n    lines.push(line.trim());\n\n    if (lines.length === 2) {\n        const a = parseInt(lines[0]);\n        const b = parseInt(lines[1]);\n\n        if (a > -100 || a < 100 || b > -100 || b < 100) {\n            result += 'Invalid TestCase\\n';\n            console.log(result);\n            process.exit(0);\n        }\n\n        result += `${a}${b}${diff(a, b)}${refDiff(a, b)}`;\n        lines = [];\n    }\n});\n",
+  "submitCode": "# RUNNER_CODE\n\nresult = \"\"\n\nwhile True:\n    try:\n        s1 = input().strip()\n        if s1 == \"\":\n            print(result)\n            break\n\n        s2 = input().strip()\n        s3 = input().strip()\n\n        a = int(s1)\n        b = int(s2)\n        expected = int(s3)\n\n        if expected == diff(a, b):\n            result += \"Passed\\n\"\n        else:\n            result += \"Failed\\n\"\n            print(result)\n            break\n    except EOFError:\n        break\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:43:38.049Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667afa5afa03d2bcfe42f3"
+  },
+  "questionId": {
+    "$oid": "6856585e2c3edcaa8e41cfeb"
+  },
+  "language": "c",
+  "referenceSolution": "int refDiff(int a, int b) {\n    return (a - b) < 0 ? b - a : a - b;\n}\n",
+  "starterCode": "int diff(int a, int b) {\n     \n}\n",
+  "runnerCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// RUNNER_CODE\n\nint main() {\n    char s1[100], s2[100];\n    char result[10000] = \"\";\n\n    while (1) {\n        if (!fgets(s1, sizeof(s1), stdin)) break;\n        if (strlen(s1) == 1) { // only newline\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        if (!fgets(s2, sizeof(s2), stdin)) break;\n\n        int a = atoi(s1);\n        int b = atoi(s2);\n\n        if (a > -100 || a < 100) {\n            strcat(result, \"Invalid TestCase\\n\");\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        if (b > -100 || b < 100) {\n            strcat(result, \"Invalid TestCase\\n\");\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        char temp[100];\n        sprintf(temp, \"%d%d%d%d\", a, b, diff(a, b), refDiff(a, b));\n        strcat(result, temp);\n    }\n\n    return 0;\n}\n",
+  "submitCode": "#include <stdio.h>\n#include <stdlib.h>\n\n// RUNNER_CODE\n\nint main() {\n    char s1[100], s2[100], s3[100];\n    char result[10000] = \"\";\n\n    while (1) {\n        if (!fgets(s1, sizeof(s1), stdin) || s1[0] == '\\n') {\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        fgets(s2, sizeof(s2), stdin);\n        fgets(s3, sizeof(s3), stdin);\n\n        int a = atoi(s1);\n        int b = atoi(s2);\n        int expected = atoi(s3);\n\n        if (expected == diff(a, b)) {\n            strcat(result, \"Passed\\n\");\n        } else {\n            strcat(result, \"Failed\\n\");\n            printf(\"%s\", result);\n            return 0;\n        }\n    }\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:43:38.049Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667afa5afa03d2bcfe42f4"
+  },
+  "questionId": {
+    "$oid": "6856585e2c3edcaa8e41cfeb"
+  },
+  "language": "cpp",
+  "referenceSolution": "int refDiff(int a, int b) {\n    return (a - b) < 0 ? b - a : a - b;\n}\n",
+  "starterCode": "int diff(int a, int b) {\n    \n}\n",
+  "runnerCode": "#include <iostream>\n#include <string>\nusing namespace std;\n\n// RUNER_CODE\n\nint main() {\n    string s1, s2, result;\n\n    while (true) {\n        getline(cin, s1);\n        if (s1.empty()) {\n            cout << result;\n            return 0;\n        }\n\n        getline(cin, s2);\n        int a = stoi(s1);\n        int b = stoi(s2);\n\n        if (a > -100 || a < 100) {\n            result += \"Invalid TestCase\\n\";\n            cout << result;\n            return 0;\n        }\n\n        if (b > -100 || b < 100) {\n            result += \"Invalid TestCase\\n\";\n            cout << result;\n            return 0;\n        }\n\n        result += to_string(a) + to_string(b);\n        result += to_string(diff(a, b)) + to_string(refDiff(a, b));\n    }\n}\n",
+  "submitCode": "#include <iostream>\n#include <string>\nusing namespace std;\n\n// RUNNER_CODE\n\nint main() {\n    string s1, s2, s3, result;\n\n    while (true) {\n        getline(cin, s1);\n        if (s1.empty()) {\n            cout << result;\n            return 0;\n        }\n\n        getline(cin, s2);\n        getline(cin, s3);\n\n        int a = stoi(s1);\n        int b = stoi(s2);\n        int expected = stoi(s3);\n\n        if (expected == diff(a, b)) {\n            result += \"Passed\\n\";\n        } else {\n            result += \"Failed\\n\";\n            cout << result;\n            return 0;\n        }\n    }\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:43:38.049Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667afa5afa03d2bcfe42f7"
+  },
+  "questionId": {
+    "$oid": "6856585e2c3edcaa8e41cfeb"
+  },
+  "language": "js",
+  "referenceSolution": "function refDiff(a, b) {\n    return (a - b) < 0 ? b - a : a - b;\n}\n",
+  "starterCode": "function diff(a, b) {\n    \n}\n",
+  "runnerCode": "// RUNNER_CODE\n\nresult = \"\"\n\nwhile True:\n    try:\n        s1 = input()\n        if s1.strip() == \"\":\n            print(result)\n            break\n        s2 = input()\n        a = int(s1)\n        b = int(s2)\n\n        if a > -100 or a < 100:\n            result += \"Invalid TestCase\\n\"\n            print(result)\n            break\n        if b > -100 or b < 100:\n            result += \"Invalid TestCase\\n\"\n            print(result)\n            break\n\n        result += f\"{a}{b}{diff(a, b)}{ref_diff(a, b)}\"\n    except EOFError:\n        break\n",
+  "submitCode": "// RUNNER_CODE\n\nconst readline = require('readline');\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\nlet lines = [];\nlet result = '';\n\nrl.on('line', (line) => {\n    if (line.trim() === '') {\n        console.log(result);\n        process.exit(0);\n    }\n\n    lines.push(line.trim());\n\n    if (lines.length === 3) {\n        const a = parseInt(lines[0]);\n        const b = parseInt(lines[1]);\n        const expected = parseInt(lines[2]);\n\n        if (expected === diff(a, b)) {\n            result += 'Passed\\n';\n        } else {\n            result += 'Failed\\n';\n            console.log(result);\n            process.exit(0);\n        }\n\n        lines = [];\n    }\n});\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:43:38.049Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47d8"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "c",
+  "referenceSolution": "int refMult(int a, int b) {\n    return a*b;\n}\n",
+  "starterCode": "int diff(int a, int b) {\n     \n}\n",
+  "runnerCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// RUNNER_CODE\n\nint main() {\n    char s1[100], s2[100];\n    char result[10000] = \"\";\n\n    while (1) {\n        if (!fgets(s1, sizeof(s1), stdin)) break;\n        if (strlen(s1) == 1) { // only newline\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        if (!fgets(s2, sizeof(s2), stdin)) break;\n\n        int a = atoi(s1);\n        int b = atoi(s2);\n\n        if (a > -100 || a < 100) {\n            strcat(result, \"Invalid TestCase\\n\");\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        if (b > -100 || b < 100) {\n            strcat(result, \"Invalid TestCase\\n\");\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        char temp[100];\n        sprintf(temp, \"%d\\n%d\\n%d\\n%d\\n\", a, b, mult(a, b), refMult(a, b));\n        strcat(result, temp);\n    }\n\n    return 0;\n}\n",
+  "submitCode": "#include <stdio.h>\n#include <stdlib.h>\n\n// RUNNER_CODE\n\nint main() {\n    char s1[100], s2[100], s3[100];\n    char result[10000] = \"\";\n\n    while (1) {\n        if (!fgets(s1, sizeof(s1), stdin) || s1[0] == '\\n') {\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        fgets(s2, sizeof(s2), stdin);\n        fgets(s3, sizeof(s3), stdin);\n\n        int a = atoi(s1);\n        int b = atoi(s2);\n        int expected = atoi(s3);\n\n        if (expected == mult(a, b)) {\n            strcat(result, \"Passed\\n\");\n        } else {\n            strcat(result, \"Failed\\n\");\n            printf(\"%s\", result);\n            return 0;\n        }\n    }\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47da"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "java",
+  "referenceSolution": "class RefSolution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "starterCode": "class Solution{\n    public int mult(int a, int b){\n         \n    }\n}",
+  "runnerCode": "import java.util.*;\n\n// RUNNER_CODE\n\nclass Main{\n      public static void main(String[] args){\n            Scanner sc = new Scanner(System.in);\n            \n            RefSolution refsol = new RefSolution();\n            Solution sol = new Solution();\n            \n            List<String> outputLines = new ArrayList<>();\n            \n            while(sc.hasNextLine()){\n                 \n                 int a = Integer.parseInt(sc.nextLine().trim());\n                 int b = Integer.parseInt(sc.nextLine().trim());\n                 if(a < -100 || a > 100){\n                      outputLines.add(\"Invalid TestCase \"+a+\" \"+b+\"\\n\");\n                      break;\n                 }\n                 if(b < -100 || b > 100){\n                      outputLines.add(\"Invalid TestCase \"+a+\" \"+b+\"\\n\");\n                      break;\n                 }\n                 int actualOutput = sol.mult(a,b);\n                 int expectedOutput = refsol.mult(a,b);\n                 outputLines.add(String.format(\"actualOutput=%d\\nexpectedOutput=%d\\nuserPrints=\\n\", actualOutput, expectedOutput));\n\n            }\n            System.out.println(outputLines);\n      }\n}",
+  "submitCode": "import java.util.*;\n\n// SUBMIT_CODE\n\nclass Main{\n    public static void main(String[] args){\n          Scanner sc = new Scanner(System.in);\n\n          Solution sol = new Solution();\n          List<String> outputLines = new ArrayList<>();\n\n          while(sc.hasNextLine()){\n               int a = Integer.parseInt(sc.nextLine().trim());\n               int b = Integer.parseInt(sc.nextLine().trim()); \n               int output = Integer.parseInt(sc.nextLine().trim());\n               if(output == sol.mult(a,b)){\n                    outputLines.add(\"Passed\");\n               }\n               else{\n                    outputLines.add(\"Failed\");\n               }\n          }\n          System.out.println(outputLines);\n    }\n}",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47d9"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "cpp",
+  "referenceSolution": "int refMult(int a, int b) {\n    return a*b;\n}\n",
+  "starterCode": "int mult(int a, int b) {\n    \n}\n",
+  "runnerCode": "#include <iostream>\n#include <string>\nusing namespace std;\n\n// RUNER_CODE\n\nint main() {\n    string s1, s2, result;\n\n    while (true) {\n        getline(cin, s1);\n        if (s1.empty()) {\n            cout << result;\n            return 0;\n        }\n\n        getline(cin, s2);\n        int a = stoi(s1);\n        int b = stoi(s2);\n\n        if (a > -100 || a < 100) {\n            result += \"Invalid TestCase\\n\";\n            cout << result;\n            return 0;\n        }\n\n        if (b > -100 || b < 100) {\n            result += \"Invalid TestCase\\n\";\n            cout << result;\n            return 0;\n        }\n\n        result += to_string(a) + to_string(b);\n        result += to_string(mult(a, b)) + to_string(refMult(a, b));\n    }\n}\n",
+  "submitCode": "#include <iostream>\n#include <string>\nusing namespace std;\n\n// SUBMIT_CODE\n\nint main() {\n    string s1, s2, s3, result;\n\n    while (true) {\n        getline(cin, s1);\n        if (s1.empty()) {\n            cout << result;\n            return 0;\n        }\n\n        getline(cin, s2);\n        getline(cin, s3);\n\n        int a = stoi(s1);\n        int b = stoi(s2);\n        int expected = stoi(s3);\n\n        if (expected == mult(a, b)) {\n            result += \"Passed\\n\";\n        } else {\n            result += \"Failed\\n\";\n        }\n        \n    }\n    cout << result;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47dc"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "js",
+  "referenceSolution": "function refMult(a, b) {\n    return a*b;\n}\n",
+  "starterCode": "function diff(a, b) {\n    \n}\n",
+  "runnerCode": "// RUNNER_CODE\n\nresult = \"\"\n\nwhile True:\n    try:\n        s1 = input()\n        if s1.strip() == \"\":\n            print(result)\n            break\n        s2 = input()\n        a = int(s1)\n        b = int(s2)\n\n        if a > -100 or a < 100:\n            result += \"Invalid TestCase\\n\"\n            print(result)\n            break\n        if b > -100 or b < 100:\n            result += \"Invalid TestCase\\n\"\n            print(result)\n            break\n\n        result += f\"{a}{b}{mult(a, b)}{ref_mult(a, b)}\"\n    except EOFError:\n        break\n",
+  "submitCode": "// RUNNER_CODE\n\nconst readline = require('readline');\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\nlet lines = [];\nlet result = '';\n\nrl.on('line', (line) => {\n    if (line.trim() === '') {\n        console.log(result);\n        process.exit(0);\n    }\n\n    lines.push(line.trim());\n\n    if (lines.length === 3) {\n        const a = parseInt(lines[0]);\n        const b = parseInt(lines[1]);\n        const expected = parseInt(lines[2]);\n\n        if (expected === mult(a, b)) {\n            result += 'Passed\\n';\n        } else {\n            result += 'Failed\\n';\n            console.log(result);\n            process.exit(0);\n        }\n\n        lines = [];\n    }\n});\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47db"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "python",
+  "referenceSolution": "def ref_mult(a, b):\n    return a*b\n",
+  "starterCode": "def diff(a, b):\n    \n",
+  "runnerCode": "const readline = require('readline');\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\n# RUNNER_CODE\n\nlet lines = [];\nlet result = '';\n\nrl.on('line', (line) => {\n    if (line.trim() === '') {\n        console.log(result);\n        process.exit(0);\n    }\n\n    lines.push(line.trim());\n\n    if (lines.length === 2) {\n        const a = parseInt(lines[0]);\n        const b = parseInt(lines[1]);\n\n        if (a > -100 || a < 100 || b > -100 || b < 100) {\n            result += 'Invalid TestCase\\n';\n            console.log(result);\n            process.exit(0);\n        }\n\n        result += `${a}${b}${mult(a, b)}${refmult(a, b)}`;\n        lines = [];\n    }\n});\n",
+  "submitCode": "# RUNNER_CODE\n\nresult = \"\"\n\nwhile True:\n    try:\n        s1 = input().strip()\n        if s1 == \"\":\n            print(result)\n            break\n\n        s2 = input().strip()\n        s3 = input().strip()\n\n        a = int(s1)\n        b = int(s2)\n        expected = int(s3)\n\n        if expected == mult(a, b):\n            result += \"Passed\\n\"\n        else:\n            result += \"Failed\\n\"\n            print(result)\n            break\n    except EOFError:\n        break\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47ee"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "java",
+  "referenceSolution": "class RefSolution{\n    public int mult(int a, int b){\n         return a*b;\n    }\n}",
+  "starterCode": "class Solution{\n    public int mult(int a, int b){\n         \n    }\n}",
+  "runnerCode": "import java.util.*;\n\n// RUNNER_CODE\n\nclass Main{\n      public static void main(String[] args){\n            Scanner sc = new Scanner(System.in);\n            \n            RefSolution refsol = new RefSolution();\n            Solution sol = new Solution();\n            \n            List<String> outputLines = new ArrayList<>();\n            \n            while(sc.hasNextLine()){\n                 \n                 int a = Integer.parseInt(sc.nextLine().trim());\n                 int b = Integer.parseInt(sc.nextLine().trim());\n                 if(a < -100 || a > 100){\n                      outputLines.add(\"Invalid TestCase \"+a+\" \"+b+\"\\n\");\n                      break;\n                 }\n                 if(b < -100 || b > 100){\n                      outputLines.add(\"Invalid TestCase \"+a+\" \"+b+\"\\n\");\n                      break;\n                 }\n                 int actualOutput = sol.mult(a,b);\n                 int expectedOutput = refsol.mult(a,b);\n                 outputLines.add(String.format(\"actualOutput=%d\\nexpectedOutput=%d\\nuserPrints=\\n\", actualOutput, expectedOutput));\n\n            }\n            System.out.println(outputLines);\n      }\n}",
+  "submitCode": "import java.util.*;\n\n// SUBMIT_CODE\n\nclass Main{\n    public static void main(String[] args){\n          Scanner sc = new Scanner(System.in);\n\n          Solution sol = new Solution();\n          List<String> outputLines = new ArrayList<>();\n\n          while(sc.hasNextLine()){\n               int a = Integer.parseInt(sc.nextLine().trim());\n               int b = Integer.parseInt(sc.nextLine().trim()); \n               int output = Integer.parseInt(sc.nextLine().trim());\n               if(output == sol.mult(a,b)){\n                    outputLines.add(\"Passed\");\n               }\n               else{\n                    outputLines.add(\"Failed\");\n               }\n          }\n          System.out.println(outputLines);\n    }\n}",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.402Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47ec"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "c",
+  "referenceSolution": "int refMult(int a, int b) {\n    return a*b;\n}\n",
+  "starterCode": "int diff(int a, int b) {\n     \n}\n",
+  "runnerCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// RUNNER_CODE\n\nint main() {\n    char s1[100], s2[100];\n    char result[10000] = \"\";\n\n    while (1) {\n        if (!fgets(s1, sizeof(s1), stdin)) break;\n        if (strlen(s1) == 1) { // only newline\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        if (!fgets(s2, sizeof(s2), stdin)) break;\n\n        int a = atoi(s1);\n        int b = atoi(s2);\n\n        if (a > -100 || a < 100) {\n            strcat(result, \"Invalid TestCase\\n\");\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        if (b > -100 || b < 100) {\n            strcat(result, \"Invalid TestCase\\n\");\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        char temp[100];\n        sprintf(temp, \"%d\\n%d\\n%d\\n%d\\n\", a, b, mult(a, b), refMult(a, b));\n        strcat(result, temp);\n    }\n\n    return 0;\n}\n",
+  "submitCode": "#include <stdio.h>\n#include <stdlib.h>\n\n// RUNNER_CODE\n\nint main() {\n    char s1[100], s2[100], s3[100];\n    char result[10000] = \"\";\n\n    while (1) {\n        if (!fgets(s1, sizeof(s1), stdin) || s1[0] == '\\n') {\n            printf(\"%s\", result);\n            return 0;\n        }\n\n        fgets(s2, sizeof(s2), stdin);\n        fgets(s3, sizeof(s3), stdin);\n\n        int a = atoi(s1);\n        int b = atoi(s2);\n        int expected = atoi(s3);\n\n        if (expected == mult(a, b)) {\n            strcat(result, \"Passed\\n\");\n        } else {\n            strcat(result, \"Failed\\n\");\n            printf(\"%s\", result);\n            return 0;\n        }\n    }\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.402Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47ef"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "python",
+  "referenceSolution": "def ref_mult(a, b):\n    return a*b\n",
+  "starterCode": "def diff(a, b):\n    \n",
+  "runnerCode": "const readline = require('readline');\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\n# RUNNER_CODE\n\nlet lines = [];\nlet result = '';\n\nrl.on('line', (line) => {\n    if (line.trim() === '') {\n        console.log(result);\n        process.exit(0);\n    }\n\n    lines.push(line.trim());\n\n    if (lines.length === 2) {\n        const a = parseInt(lines[0]);\n        const b = parseInt(lines[1]);\n\n        if (a > -100 || a < 100 || b > -100 || b < 100) {\n            result += 'Invalid TestCase\\n';\n            console.log(result);\n            process.exit(0);\n        }\n\n        result += `${a}${b}${mult(a, b)}${refmult(a, b)}`;\n        lines = [];\n    }\n});\n",
+  "submitCode": "# RUNNER_CODE\n\nresult = \"\"\n\nwhile True:\n    try:\n        s1 = input().strip()\n        if s1 == \"\":\n            print(result)\n            break\n\n        s2 = input().strip()\n        s3 = input().strip()\n\n        a = int(s1)\n        b = int(s2)\n        expected = int(s3)\n\n        if expected == mult(a, b):\n            result += \"Passed\\n\"\n        else:\n            result += \"Failed\\n\"\n            print(result)\n            break\n    except EOFError:\n        break\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.402Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47ed"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "cpp",
+  "referenceSolution": "int refMult(int a, int b) {\n    return a*b;\n}\n",
+  "starterCode": "int mult(int a, int b) {\n    \n}\n",
+  "runnerCode": "#include <iostream>\n#include <string>\nusing namespace std;\n\n// RUNER_CODE\n\nint main() {\n    string s1, s2, result;\n\n    while (true) {\n        getline(cin, s1);\n        if (s1.empty()) {\n            cout << result;\n            return 0;\n        }\n\n        getline(cin, s2);\n        int a = stoi(s1);\n        int b = stoi(s2);\n\n        if (a > -100 || a < 100) {\n            result += \"Invalid TestCase\\n\";\n            cout << result;\n            return 0;\n        }\n\n        if (b > -100 || b < 100) {\n            result += \"Invalid TestCase\\n\";\n            cout << result;\n            return 0;\n        }\n\n        result += to_string(a) + to_string(b);\n        result += to_string(mult(a, b)) + to_string(refMult(a, b));\n    }\n}\n",
+  "submitCode": "#include <iostream>\n#include <string>\nusing namespace std;\n\n// SUBMIT_CODE\n\nint main() {\n    string s1, s2, s3, result;\n\n    while (true) {\n        getline(cin, s1);\n        if (s1.empty()) {\n            cout << result;\n            return 0;\n        }\n\n        getline(cin, s2);\n        getline(cin, s3);\n\n        int a = stoi(s1);\n        int b = stoi(s2);\n        int expected = stoi(s3);\n\n        if (expected == mult(a, b)) {\n            result += \"Passed\\n\";\n        } else {\n            result += \"Failed\\n\";\n        }\n        \n    }\n    cout << result;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.402Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667c895afa03d2bcfe47f0"
+  },
+  "questionId": {
+    "$oid": "68565a442c3edcaa8e41d015"
+  },
+  "language": "js",
+  "referenceSolution": "function refMult(a, b) {\n    return a*b;\n}\n",
+  "starterCode": "function diff(a, b) {\n    \n}\n",
+  "runnerCode": "// RUNNER_CODE\n\nresult = \"\"\n\nwhile True:\n    try:\n        s1 = input()\n        if s1.strip() == \"\":\n            print(result)\n            break\n        s2 = input()\n        a = int(s1)\n        b = int(s2)\n\n        if a > -100 or a < 100:\n            result += \"Invalid TestCase\\n\"\n            print(result)\n            break\n        if b > -100 or b < 100:\n            result += \"Invalid TestCase\\n\"\n            print(result)\n            break\n\n        result += f\"{a}{b}{mult(a, b)}{ref_mult(a, b)}\"\n    except EOFError:\n        break\n",
+  "submitCode": "// RUNNER_CODE\n\nconst readline = require('readline');\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\nlet lines = [];\nlet result = '';\n\nrl.on('line', (line) => {\n    if (line.trim() === '') {\n        console.log(result);\n        process.exit(0);\n    }\n\n    lines.push(line.trim());\n\n    if (lines.length === 3) {\n        const a = parseInt(lines[0]);\n        const b = parseInt(lines[1]);\n        const expected = parseInt(lines[2]);\n\n        if (expected === mult(a, b)) {\n            result += 'Passed\\n';\n        } else {\n            result += 'Failed\\n';\n            console.log(result);\n            process.exit(0);\n        }\n\n        lines = [];\n    }\n});\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:50:17.402Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f6f"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "c",
+  "referenceSolution": "void refGenerateArray(int* arr, int n) {\n    for (int i = 0; i < n; i++) {\n        arr[i] = i + 1;\n    }\n}\n",
+  "starterCode": "void generateArray(int* arr, int n) {\n    \n}\n",
+  "runnerCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// RUNNER_CODE\n\nint main() {\n    char str[100];\n    while (fgets(str, sizeof(str), stdin)) {\n        int n = atoi(str);\n\n        if (n < 1 || n > 100) {\n            printf(\"Invalid TestCase %d \\n\", n);\n            break;\n        }\n\n        int actualOutput[100];\n        int expectedOutput[100];\n        refGenerateArray(&expectedOutput, n);\n        generateArray(&actualOutput, n);\n\n\n        printf(\"actualOutput=[\");\n        for (int i = 0; i < n; i++) {\n            printf(\"%d\", actualOutput[i]);\n            if (i != n - 1) printf(\", \");\n        }\n        printf(\"]\\n\");\n\n        printf(\"expectedOutput=[\");\n        for (int i = 0; i < n; i++) {\n            printf(\"%d\", expectedOutput[i]);\n            if (i != n - 1) printf(\", \");\n        }\n        printf(\"]\\n\");\n    }\n\n    return 0;\n}\n",
+  "submitCode": "// SUBMIT_CODE\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// int* generateArray(int n); // Assume it's defined elsewhere\n\n// SUBMIT_CODE\n\n\nint main() {\n    char input[1000];\n    char output[1000];\n    char result[10000] = \"\";\n\n    while (fgets(input, sizeof(input), stdin) && fgets(output, sizeof(output), stdin)) {\n        int n = atoi(input);\n\n        if (n < 1 || n > 100) {\n            sprintf(result + strlen(result), \"Invalid TestCase %d \\n\", n);\n            break;\n        }\n\n        int* actualOutput = generateArray(n);\n\n        char arrStr[1000] = \"[\";\n        for (int i = 0; i < n; i++) {\n            char num[10];\n            sprintf(num, \"%d\", actualOutput[i]);\n            strcat(arrStr, num);\n            if (i != n - 1) strcat(arrStr, \",\");\n        }\n        strcat(arrStr, \"]\");\n\n        // Remove whitespace from both output and arrStr\n        char cleanedOutput[1000], cleanedArr[1000];\n        int ci = 0, cj = 0;\n        for (int i = 0; output[i]; i++)\n            if (output[i] != ' ' && output[i] != '\\n') cleanedOutput[ci++] = output[i];\n        cleanedOutput[ci] = '\\0';\n\n        for (int i = 0; arrStr[i]; i++)\n            if (arrStr[i] != ' ') cleanedArr[cj++] = arrStr[i];\n        cleanedArr[cj] = '\\0';\n\n        if (strcmp(cleanedOutput, cleanedArr) == 0)\n            strcat(result, \"Passed\\n\");\n        else\n            strcat(result, \"Failed\\n\");\n\n        free(actualOutput);\n    }\n\n    printf(\"%s\", result);\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.377Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f70"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "cpp",
+  "referenceSolution": "class RefSolution {\npublic:\n    std::vector<int> generateArray(int n) {\n        std::vector<int> arr(n);\n        for (int i = 0; i < n; i++) {\n            arr[i] = i + 1;\n        }\n        return arr;\n    }\n};\n",
+  "starterCode": "class Solution {\npublic:\n    std::vector<int> generateArray(int n) {\n        \n    }\n};\n",
+  "runnerCode": "#include <iostream>\n#include <vector>\n#include <string>\n\nusing namespace std;\n\n// RUNNER_CODE\n\n\nint main() {\n    string str;\n    RefSolution refSol;\n    Solution sol;\n\n    while (getline(cin, str)) {\n        int n = stoi(str);\n\n        if (n < 1 || n > 100) {\n            cout << \"Invalid TestCase \" << n << \" \" << endl;\n            break;\n        }\n\n        vector<int> actualOutput = sol.generateArray(n);\n        vector<int> expectedOutput = refSol.generateArray(n);\n\n\n        cout << \"actualOutput=[\";\n        for (size_t i = 0; i < actualOutput.size(); ++i) {\n            cout << actualOutput[i];\n            if (i != actualOutput.size() - 1) cout << \", \";\n        }\n        cout << \"]\" << endl;\n\n        cout << \"expectedOutput=[\";\n        for (size_t i = 0; i < expectedOutput.size(); ++i) {\n            cout << expectedOutput[i];\n            if (i != expectedOutput.size() - 1) cout << \", \";\n        }\n        cout << \"]\" << endl;\n    }\n\n    return 0;\n}\n",
+  "submitCode": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <algorithm>\n\nusing namespace std;\n\n\n\n// SUBMIT_CODE\n\n\nint main() {\n    string input, output;\n    stringstream result;\n    Solution sol;\n\n    while (getline(cin, input) && getline(cin, output)) {\n        int n = stoi(input);\n\n        if (n < 1 || n > 100) {\n            result << \"Invalid TestCase \" << n << \" \" << endl;\n            break;\n        }\n\n        vector<int> actualOutput = sol.generateArray(n);\n\n        stringstream arrStr;\n        arrStr << \"[\";\n        for (size_t i = 0; i < actualOutput.size(); i++) {\n            arrStr << actualOutput[i];\n            if (i != actualOutput.size() - 1) arrStr << \",\";\n        }\n        arrStr << \"]\";\n\n        string expected = output;\n        expected.erase(remove_if(expected.begin(), expected.end(), ::isspace), expected.end());\n        string actual = arrStr.str();\n        actual.erase(remove_if(actual.begin(), actual.end(), ::isspace), actual.end());\n\n        if (expected == actual)\n            result << \"Passed\\n\";\n        else\n            result << \"Failed\\n\";\n    }\n\n    cout << result.str();\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.378Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f71"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "java",
+  "referenceSolution": "class RefSolution{\n    public int[] generateArray(int n){\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++){\n            arr[i] = i+1;\n        }\n        return arr;\n    }\n}",
+  "starterCode": "class Solution{\n    public int[] generateArray(int n){\n\n    }\n}",
+  "runnerCode": "import java.util.*;\n\n// RUNNER_CODE\n\nclass Main{\n    public static void main(String[] args){\n        \n        Scanner sc = new Scanner(System.in);\n        List<String> outputLines = new ArrayList<>();\n\n        RefSolution refSol = new RefSolution();\n        Solution sol = new Solution();\n\n        while(sc.hasNextLine()){\n\n            int n = Integer.parseInt(sc.nextLine().trim());\n\n            if(n < 1 || n > 100){\n                outputLines.add(\"Invalid TestCase \"+n+\" \"+\"\\n\");\n                break;\n            }\n\n            int[] actualOutput = sol.generateArray(n);\n            int expectedOutput[] = refSol.generateArray(n);\n            outputLines.add(String.format(\"actualOutput=%s\\nexpectedOutput=%s\\nuserPrints=\\n\", Arrays.toString(actualOutput), Arrays.toString(expectedOutput)));\n\n        }\n\n        System.out.println(outputLines);\n    }\n}",
+  "submitCode": "import java.util.*;\n\n// SUBMIT_CODE\n\nclass Main{\n    public static void main(String[] args){\n        \n        Scanner sc = new Scanner(System.in);\n\n        Solution sol = new Solution();\n\n        List<String> outputLines = new ArrayList<>();\n\n        while(sc.hasNextLine()){\n            if (!sc.hasNextLine()) break;\n\n            int n = Integer.parseInt(sc.nextLine().trim());\n            String expectedOutput = sc.nextLine().trim();\n            \n\n            if(n < 1 || n > 100){\n                outputLines.add(\"Invalid TestCase \"+n+\" \"+\"\\n\");\n                break;\n            }\n\n            int[] actualOutput = sol.generateArray(n);\n            String arrStr = Arrays.toString(actualOutput).replace(\" \", \"\");\n            if(expectedOutput.replace(\" \", \"\").equals(arrStr)){\n                outputLines.add(\"Passed\");\n            }\n            else{\n                outputLines.add(\"Failed\");\n            }\n\n        }\n\n        System.out.println(outputLines);\n    }\n}",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.378Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f72"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "python",
+  "referenceSolution": "class RefSolution:\n    def generateArray(self, n):\n        arr = [0] * n\n        for i in range(n):\n            arr[i] = i + 1\n        return arr\n",
+  "starterCode": "class Solution:\n    def generateArray(self, n):\n        \n",
+  "runnerCode": "\nimport sys\n\n# RUNNER_CODE\n\n\nrefSol = RefSolution()\nsol = Solution()\n\nsb = \"\"\n\nfor line in sys.stdin:\n    line = line.strip()\n    if not line:\n        continue\n\n    n = int(line)\n\n    if n < 1 or n > 100:\n        sb += f\"Invalid TestCase {n} \\n\"\n        print(sb, end=\"\")\n        break\n\n    actualOutput = sol.generateArray(n)\n    sb += f\"actualOutput={actualOutput}\\n\"\n\n    expectedOutput = refSol.generateArray(n)\n    sb += f\"expectedOutput={expectedOutput}\\n\"\n\nprint(sb, end=\"\")\n",
+  "submitCode": "import sys\n\n# SUBMIT_CODE\n\nsol = Solution()\n\nlines = sys.stdin.read().splitlines()\nsb = \"\"\n\ni = 0\nwhile i + 1 < len(lines):\n    input_line = lines[i].strip()\n    output_line = lines[i+1].strip()\n    i += 2\n\n    n = int(input_line)\n\n    if n < 1 or n > 100:\n        sb += f\"Invalid TestCase {n} \\n\"\n        break\n\n    actualOutput = sol.generateArray(n)\n    arrStr = str(actualOutput).replace(\" \", \"\")\n\n    if output_line.replace(\" \", \"\") == arrStr:\n        sb += \"Passed\\n\"\n    else:\n        sb += \"Failed\\n\"\n\nprint(sb, end=\"\")\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.378Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f73"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "js",
+  "referenceSolution": "class RefSolution {\n    generateArray(n) {\n        const arr = new Array(n);\n        for (let i = 0; i < n; i++) {\n            arr[i] = i + 1;\n        }\n        return arr;\n    }\n}\n",
+  "starterCode": "class RefSolution {\n    generateArray(n) {\n        \n    }\n}\n",
+  "runnerCode": "\nconst readline = require(\"readline\");\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout,\n    terminal: false\n});\n\n// RUNNER_CODE\n\nconst refSol = new RefSolution();\nconst sol = new Solution();\n\nlet sb = \"\";\nconst inputs = [];\n\nrl.on(\"line\", function(str) {\n    if (str.trim() !== '') {\n        inputs.push(str.trim());\n    }\n});\n\nrl.on(\"close\", function() {\n    for (const str of inputs) {\n        const n = parseInt(str);\n\n        if (n < 1 || n > 100) {\n            sb += \"Invalid TestCase \" + n + \" \" + \"\\n\";\n            break;\n        }\n\n        const actualOutput = sol.generateArray(n);\n        sb += \"actualOutput=\" + JSON.stringify(actualOutput) + \"\\n\";\n\n        const expectedOutput = refSol.generateArray(n);\n        sb += \"expectedOutput=\" + JSON.stringify(expectedOutput) + \"\\n\";\n    }\n\n    console.log(sb);\n});\n",
+  "submitCode": "const readline = require(\"readline\");\n\n// SUBMIT_CODE\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout,\n    terminal: false\n});\n\nconst sol = new Solution();\nlet lines = [];\nlet sb = \"\";\n\nrl.on(\"line\", function (line) {\n    lines.push(line);\n});\n\nrl.on(\"close\", function () {\n    for (let i = 0; i + 1 < lines.length; i += 2) {\n        let input = lines[i].trim();\n        let output = lines[i + 1].trim();\n\n        let n = parseInt(input);\n        if (n < 1 || n > 100) {\n            sb += \"Invalid TestCase \" + n + \" \" + \"\\n\";\n            break;\n        }\n\n        let actualOutput = sol.generateArray(n);\n        let arrStr = JSON.stringify(actualOutput).replace(/ /g, \"\");\n\n        if (output.replace(/ /g, \"\") === arrStr) {\n            sb += \"Passed\\n\";\n        } else {\n            sb += \"Failed\\n\";\n        }\n    }\n    console.log(sb);\n});\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.378Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f84"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "python",
+  "referenceSolution": "class RefSolution:\n    def generateArray(self, n):\n        arr = [0] * n\n        for i in range(n):\n            arr[i] = i + 1\n        return arr\n",
+  "starterCode": "class Solution:\n    def generateArray(self, n):\n        \n",
+  "runnerCode": "\nimport sys\n\n# RUNNER_CODE\n\n\nrefSol = RefSolution()\nsol = Solution()\n\nsb = \"\"\n\nfor line in sys.stdin:\n    line = line.strip()\n    if not line:\n        continue\n\n    n = int(line)\n\n    if n < 1 or n > 100:\n        sb += f\"Invalid TestCase {n} \\n\"\n        print(sb, end=\"\")\n        break\n\n    actualOutput = sol.generateArray(n)\n    sb += f\"actualOutput={actualOutput}\\n\"\n\n    expectedOutput = refSol.generateArray(n)\n    sb += f\"expectedOutput={expectedOutput}\\n\"\n\nprint(sb, end=\"\")\n",
+  "submitCode": "import sys\n\n# SUBMIT_CODE\n\nsol = Solution()\n\nlines = sys.stdin.read().splitlines()\nsb = \"\"\n\ni = 0\nwhile i + 1 < len(lines):\n    input_line = lines[i].strip()\n    output_line = lines[i+1].strip()\n    i += 2\n\n    n = int(input_line)\n\n    if n < 1 or n > 100:\n        sb += f\"Invalid TestCase {n} \\n\"\n        break\n\n    actualOutput = sol.generateArray(n)\n    arrStr = str(actualOutput).replace(\" \", \"\")\n\n    if output_line.replace(\" \", \"\") == arrStr:\n        sb += \"Passed\\n\"\n    else:\n        sb += \"Failed\\n\"\n\nprint(sb, end=\"\")\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.387Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f81"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "c",
+  "referenceSolution": "void refGenerateArray(int* arr, int n) {\n    for (int i = 0; i < n; i++) {\n        arr[i] = i + 1;\n    }\n}\n",
+  "starterCode": "void generateArray(int* arr, int n) {\n    \n}\n",
+  "runnerCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// RUNNER_CODE\n\nint main() {\n    char str[100];\n    while (fgets(str, sizeof(str), stdin)) {\n        int n = atoi(str);\n\n        if (n < 1 || n > 100) {\n            printf(\"Invalid TestCase %d \\n\", n);\n            break;\n        }\n\n        int actualOutput[100];\n        int expectedOutput[100];\n        refGenerateArray(&expectedOutput, n);\n        generateArray(&actualOutput, n);\n\n\n        printf(\"actualOutput=[\");\n        for (int i = 0; i < n; i++) {\n            printf(\"%d\", actualOutput[i]);\n            if (i != n - 1) printf(\", \");\n        }\n        printf(\"]\\n\");\n\n        printf(\"expectedOutput=[\");\n        for (int i = 0; i < n; i++) {\n            printf(\"%d\", expectedOutput[i]);\n            if (i != n - 1) printf(\", \");\n        }\n        printf(\"]\\n\");\n    }\n\n    return 0;\n}\n",
+  "submitCode": "// SUBMIT_CODE\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// int* generateArray(int n); // Assume it's defined elsewhere\n\n// SUBMIT_CODE\n\n\nint main() {\n    char input[1000];\n    char output[1000];\n    char result[10000] = \"\";\n\n    while (fgets(input, sizeof(input), stdin) && fgets(output, sizeof(output), stdin)) {\n        int n = atoi(input);\n\n        if (n < 1 || n > 100) {\n            sprintf(result + strlen(result), \"Invalid TestCase %d \\n\", n);\n            break;\n        }\n\n        int* actualOutput = generateArray(n);\n\n        char arrStr[1000] = \"[\";\n        for (int i = 0; i < n; i++) {\n            char num[10];\n            sprintf(num, \"%d\", actualOutput[i]);\n            strcat(arrStr, num);\n            if (i != n - 1) strcat(arrStr, \",\");\n        }\n        strcat(arrStr, \"]\");\n\n        // Remove whitespace from both output and arrStr\n        char cleanedOutput[1000], cleanedArr[1000];\n        int ci = 0, cj = 0;\n        for (int i = 0; output[i]; i++)\n            if (output[i] != ' ' && output[i] != '\\n') cleanedOutput[ci++] = output[i];\n        cleanedOutput[ci] = '\\0';\n\n        for (int i = 0; arrStr[i]; i++)\n            if (arrStr[i] != ' ') cleanedArr[cj++] = arrStr[i];\n        cleanedArr[cj] = '\\0';\n\n        if (strcmp(cleanedOutput, cleanedArr) == 0)\n            strcat(result, \"Passed\\n\");\n        else\n            strcat(result, \"Failed\\n\");\n\n        free(actualOutput);\n    }\n\n    printf(\"%s\", result);\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.386Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f85"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "js",
+  "referenceSolution": "class RefSolution {\n    generateArray(n) {\n        const arr = new Array(n);\n        for (let i = 0; i < n; i++) {\n            arr[i] = i + 1;\n        }\n        return arr;\n    }\n}\n",
+  "starterCode": "class RefSolution {\n    generateArray(n) {\n        \n    }\n}\n",
+  "runnerCode": "\nconst readline = require(\"readline\");\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout,\n    terminal: false\n});\n\n// RUNNER_CODE\n\nconst refSol = new RefSolution();\nconst sol = new Solution();\n\nlet sb = \"\";\nconst inputs = [];\n\nrl.on(\"line\", function(str) {\n    if (str.trim() !== '') {\n        inputs.push(str.trim());\n    }\n});\n\nrl.on(\"close\", function() {\n    for (const str of inputs) {\n        const n = parseInt(str);\n\n        if (n < 1 || n > 100) {\n            sb += \"Invalid TestCase \" + n + \" \" + \"\\n\";\n            break;\n        }\n\n        const actualOutput = sol.generateArray(n);\n        sb += \"actualOutput=\" + JSON.stringify(actualOutput) + \"\\n\";\n\n        const expectedOutput = refSol.generateArray(n);\n        sb += \"expectedOutput=\" + JSON.stringify(expectedOutput) + \"\\n\";\n    }\n\n    console.log(sb);\n});\n",
+  "submitCode": "const readline = require(\"readline\");\n\n// SUBMIT_CODE\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout,\n    terminal: false\n});\n\nconst sol = new Solution();\nlet lines = [];\nlet sb = \"\";\n\nrl.on(\"line\", function (line) {\n    lines.push(line);\n});\n\nrl.on(\"close\", function () {\n    for (let i = 0; i + 1 < lines.length; i += 2) {\n        let input = lines[i].trim();\n        let output = lines[i + 1].trim();\n\n        let n = parseInt(input);\n        if (n < 1 || n > 100) {\n            sb += \"Invalid TestCase \" + n + \" \" + \"\\n\";\n            break;\n        }\n\n        let actualOutput = sol.generateArray(n);\n        let arrStr = JSON.stringify(actualOutput).replace(/ /g, \"\");\n\n        if (output.replace(/ /g, \"\") === arrStr) {\n            sb += \"Passed\\n\";\n        } else {\n            sb += \"Failed\\n\";\n        }\n    }\n    console.log(sb);\n});\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.387Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f82"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "cpp",
+  "referenceSolution": "class RefSolution {\npublic:\n    std::vector<int> generateArray(int n) {\n        std::vector<int> arr(n);\n        for (int i = 0; i < n; i++) {\n            arr[i] = i + 1;\n        }\n        return arr;\n    }\n};\n",
+  "starterCode": "class Solution {\npublic:\n    std::vector<int> generateArray(int n) {\n        \n    }\n};\n",
+  "runnerCode": "#include <iostream>\n#include <vector>\n#include <string>\n\nusing namespace std;\n\n// RUNNER_CODE\n\n\nint main() {\n    string str;\n    RefSolution refSol;\n    Solution sol;\n\n    while (getline(cin, str)) {\n        int n = stoi(str);\n\n        if (n < 1 || n > 100) {\n            cout << \"Invalid TestCase \" << n << \" \" << endl;\n            break;\n        }\n\n        vector<int> actualOutput = sol.generateArray(n);\n        vector<int> expectedOutput = refSol.generateArray(n);\n\n\n        cout << \"actualOutput=[\";\n        for (size_t i = 0; i < actualOutput.size(); ++i) {\n            cout << actualOutput[i];\n            if (i != actualOutput.size() - 1) cout << \", \";\n        }\n        cout << \"]\" << endl;\n\n        cout << \"expectedOutput=[\";\n        for (size_t i = 0; i < expectedOutput.size(); ++i) {\n            cout << expectedOutput[i];\n            if (i != expectedOutput.size() - 1) cout << \", \";\n        }\n        cout << \"]\" << endl;\n    }\n\n    return 0;\n}\n",
+  "submitCode": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <algorithm>\n\nusing namespace std;\n\n\n\n// SUBMIT_CODE\n\n\nint main() {\n    string input, output;\n    stringstream result;\n    Solution sol;\n\n    while (getline(cin, input) && getline(cin, output)) {\n        int n = stoi(input);\n\n        if (n < 1 || n > 100) {\n            result << \"Invalid TestCase \" << n << \" \" << endl;\n            break;\n        }\n\n        vector<int> actualOutput = sol.generateArray(n);\n\n        stringstream arrStr;\n        arrStr << \"[\";\n        for (size_t i = 0; i < actualOutput.size(); i++) {\n            arrStr << actualOutput[i];\n            if (i != actualOutput.size() - 1) arrStr << \",\";\n        }\n        arrStr << \"]\";\n\n        string expected = output;\n        expected.erase(remove_if(expected.begin(), expected.end(), ::isspace), expected.end());\n        string actual = arrStr.str();\n        actual.erase(remove_if(actual.begin(), actual.end(), ::isspace), actual.end());\n\n        if (expected == actual)\n            result << \"Passed\\n\";\n        else\n            result << \"Failed\\n\";\n    }\n\n    cout << result.str();\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.386Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68667eba5afa03d2bcfe4f83"
+  },
+  "questionId": {
+    "$oid": "6859be5af45b9f9564c47f52"
+  },
+  "language": "java",
+  "referenceSolution": "class RefSolution{\n    public int[] generateArray(int n){\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++){\n            arr[i] = i+1;\n        }\n        return arr;\n    }\n}",
+  "starterCode": "class Solution{\n    public int[] generateArray(int n){\n\n    }\n}",
+  "runnerCode": "import java.util.*;\n\n// RUNNER_CODE\n\nclass Main{\n    public static void main(String[] args){\n        \n        Scanner sc = new Scanner(System.in);\n        List<String> outputLines = new ArrayList<>();\n\n        RefSolution refSol = new RefSolution();\n        Solution sol = new Solution();\n\n        while(sc.hasNextLine()){\n\n            int n = Integer.parseInt(sc.nextLine().trim());\n\n            if(n < 1 || n > 100){\n                outputLines.add(\"Invalid TestCase \"+n+\" \"+\"\\n\");\n                break;\n            }\n\n            int[] actualOutput = sol.generateArray(n);\n            int expectedOutput[] = refSol.generateArray(n);\n            outputLines.add(String.format(\"actualOutput=%s\\nexpectedOutput=%s\\nuserPrints=\\n\", Arrays.toString(actualOutput), Arrays.toString(expectedOutput)));\n\n        }\n\n        System.out.println(outputLines);\n    }\n}",
+  "submitCode": "import java.util.*;\n\n// SUBMIT_CODE\n\nclass Main{\n    public static void main(String[] args){\n        \n        Scanner sc = new Scanner(System.in);\n\n        Solution sol = new Solution();\n\n        List<String> outputLines = new ArrayList<>();\n\n        while(sc.hasNextLine()){\n            if (!sc.hasNextLine()) break;\n\n            int n = Integer.parseInt(sc.nextLine().trim());\n            String expectedOutput = sc.nextLine().trim();\n            \n\n            if(n < 1 || n > 100){\n                outputLines.add(\"Invalid TestCase \"+n+\" \"+\"\\n\");\n                break;\n            }\n\n            int[] actualOutput = sol.generateArray(n);\n            String arrStr = Arrays.toString(actualOutput).replace(\" \", \"\");\n            if(expectedOutput.replace(\" \", \"\").equals(arrStr)){\n                outputLines.add(\"Passed\");\n            }\n            else{\n                outputLines.add(\"Failed\");\n            }\n\n        }\n\n        System.out.println(outputLines);\n    }\n}",
+  "createdAt": {
+    "$date": "2025-07-03T12:59:38.387Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ae5afa03d2bcfe58a0"
+  },
+  "questionId": {
+    "$oid": "685d2c8b7c5c8b56fc5a762b"
+  },
+  "language": "c",
+  "referenceSolution": "bool ref_isSumDivisibleByK(int arr[], int n, int k) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += arr[i];\n    }\n    return sum % k == 0;\n}\n",
+  "starterCode": "bool isSumDivisibleByK(int arr[], int n, int k) {\n    \n}\n",
+  "runnerCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// RUNNER_CODE\n\nint main() {\n    char line[1024];\n    int arr[100], n, k;\n\n    while (fgets(line, sizeof(line), stdin)) {\n        // Remove brackets and spaces\n        n = 0;\n        char* p = strtok(line, \"[], \\n\");\n        while (p != NULL) {\n            int x = atoi(p);\n            if (x < 0 || x > 100) {\n                printf(\"Input constraint violation %d is not in constraints\\n\", x);\n                break;\n            }\n            arr[n++] = x;\n            p = strtok(NULL, \"[], \\n\");\n        }\n\n        if (!fgets(line, sizeof(line), stdin)) break;\n        k = atoi(line);\n        if (k < 1 || k > 10) {\n            printf(\"Input constraint violation %d is not in constraints\\n\", k);\n            break;\n        }\n\n        int expectedOutput = ref_isSumDivisibleByK(arr, n, k);\n        int actualOutput = isSumDivisibleByK(arr, n, k);\n\n        printf(\"actualOutput=%d\\nexpectedOutput=%d\\nUserPrints=\\n\\n\", actualOutput, expectedOutput);\n    }\n    return 0;\n}\n",
+  "submitCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// SUBMIT_CODE\n\n\nint main() {\n    char line[1024];\n    int arr[100], n;\n\n    while (fgets(line, sizeof(line), stdin)) {\n        n = 0;\n        char *token = strtok(line, \" \\n\");\n        while (token) {\n            arr[n++] = atoi(token);\n            token = strtok(NULL, \" \\n\");\n        }\n\n        if (!fgets(line, sizeof(line), stdin)) break;\n        int k = atoi(line);\n\n        if (!fgets(line, sizeof(line), stdin)) break;\n        int expectedOutput = atoi(line);\n\n        int actualOutput = isSumDivisibleByK(arr, n, k);\n\n        if (actualOutput != expectedOutput) {\n            printf(\"Failed\\n\");\n        } else {\n            printf(\"Passed\\n\");\n        }\n    }\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:16:30.113Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ae5afa03d2bcfe58a1"
+  },
+  "questionId": {
+    "$oid": "685d2c8b7c5c8b56fc5a762b"
+  },
+  "language": "cpp",
+  "referenceSolution": "bool ref_isSumDivisibleByK(const std::vector<int>& nums, int k) {\n    int sum = 0;\n    for (int x : nums) sum += x;\n    return sum % k == 0;\n}\n",
+  "starterCode": "bool isSumDivisibleByK(const std::vector<int>& nums, int k) {\n    \n}\n",
+  "runnerCode": "#include <iostream>\n#include <sstream>\n#include <vector>\n#include <string>\n\n// RUNNER_CODE\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        // Remove brackets and spaces\n        line.erase(remove(line.begin(), line.end(), '['), line.end());\n        line.erase(remove(line.begin(), line.end(), ']'), line.end());\n        line.erase(remove(line.begin(), line.end(), ' '), line.end());\n\n        std::vector<int> nums;\n        std::stringstream ss(line);\n        std::string token;\n\n        while (getline(ss, token, ',')) {\n            int x = std::stoi(token);\n            if (x < 0 || x > 100) {\n                std::cout << \"Input constraint violation \" << x << \" is not in constraints\\n\";\n                goto next_case;\n            }\n            nums.push_back(x);\n        }\n\n        if (!std::getline(std::cin, line)) break;\n        int k = std::stoi(line);\n        if (k < 1 || k > 10) {\n            std::cout << \"Input constraint violation \" << k << \" is not in constraints\\n\";\n            break;\n        }\n\n        int expectedOutput = ref_isSumDivisibleByK(nums, k);\n\n        // Capture user prints\n        std::streambuf* orig_buf = std::cout.rdbuf();\n        std::ostringstream capture;\n        std::cout.rdbuf(capture.rdbuf());\n\n        int actualOutput = isSumDivisibleByK(nums, k);\n\n        std::cout.rdbuf(orig_buf);\n        std::string prints = capture.str();\n\n        std::cout << \"actualOutput=\" << actualOutput << \"\\nexpectedOutput=\" << expectedOutput\n                  << \"\\nUserPrints=\" << prints << \"\\n\";\n\n    next_case:;\n    }\n    return 0;\n}\n",
+  "submitCode": "#include <iostream>\n#include <vector>\n#include <sstream>\nusing namespace std;\n\n// SUBMIT_CODE\n\n\nint main() {\n    string line;\n    while (getline(cin, line)) {\n        vector<int> nums;\n        istringstream iss(line);\n        int x;\n        while (iss >> x) nums.push_back(x);\n\n        if (!getline(cin, line)) break;\n        int k = stoi(line);\n\n        if (!getline(cin, line)) break;\n        int expectedOutput = stoi(line);\n\n        int actualOutput = isSumDivisibleByK(nums, k);\n\n        if (actualOutput != expectedOutput)\n            cout << \"Failed\\n\";\n        else\n            cout << \"Passed\\n\";\n    }\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:16:30.113Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ae5afa03d2bcfe58a3"
+  },
+  "questionId": {
+    "$oid": "685d2c8b7c5c8b56fc5a762b"
+  },
+  "language": "python",
+  "referenceSolution": "def ref_isSumDivisibleByK(nums, k):\n    return sum(nums) % k == 0\n",
+  "starterCode": "def isSumDivisibleByK(nums, k):\n    \n",
+  "runnerCode": "import sys\nimport io\nimport contextlib\n\n# RUNNER_CODE\n\nlines = sys.stdin.read().splitlines()\ni = 0\nwhile i < len(lines) - 1:\n    arr = list(map(int, lines[i].replace('[', '').replace(']', '').replace(' ', '').split(',')))\n    if any(x < 0 or x > 100 for x in arr):\n        print(f\"Input constraint violation {x} is not in constraints\")\n        i += 2\n        continue\n\n    k = int(lines[i+1].strip())\n    if k < 1 or k > 10:\n        print(f\"Input constraint violation {k} is not in constraints\")\n        break\n\n    expected_output = ref_isSumDivisibleByK(arr, k)\n\n    f = io.StringIO()\n    with contextlib.redirect_stdout(f):\n        actual_output = isSumDivisibleByK(arr, k)\n    user_prints = f.getvalue().strip()\n\n    print(f\"actualOutput={actual_output}\\nexpectedOutput={expected_output}\\nUserPrints={user_prints}\\n\")\n\n    i += 2\n",
+  "submitCode": "import sys\nlines = sys.stdin.read().splitlines()\n\n# SUBMIT_CODE\n\ni = 0\nwhile i + 2 < len(lines):\n    nums = list(map(int, lines[i].strip().split()))\n    k = int(lines[i + 1].strip())\n    expected_output = int(lines[i + 2].strip())\n\n    actual_output = isSumDivisibleByK(nums, k)\n\n    if actual_output != expected_output:\n        print(\"Failed\")\n    else:\n        print(\"Passed\")\n\n    i += 3\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:16:30.114Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ae5afa03d2bcfe58a2"
+  },
+  "questionId": {
+    "$oid": "685d2c8b7c5c8b56fc5a762b"
+  },
+  "language": "java",
+  "referenceSolution": "class RefSolution{\n    public boolean isSumDivisibleByK(int[] nums, int k){\n        int sum = 0;\n        for(int x : nums) sum += x;\n        return sum % k == 0;\n    }\n}",
+  "starterCode": "class Solution{\n    public boolean isSumDivisibleByK(int[] nums, int k){\n        \n    }\n}",
+  "runnerCode": "import java.util.*;\nimport java.io.*;\n\n// RUNNER_CODE\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        \n        List<String> outputLines = new ArrayList<>();\n\n        RefSolution refsol = new RefSolution();\n        Solution sol = new Solution();\n\n        while (sc.hasNextLine()) {\n            int[] nums = Arrays.stream(sc.nextLine().replace(\"[\", \"\").replace(\"]\",\"\").replace(\" \", \"\").split(\",\"))\n                              .mapToInt(Integer::parseInt)\n                              .toArray();\n            for(int x : nums){\n                if (x < 0 || x > 100) {\n                    outputLines.add(\"Input constraint violation \" + x + \" is not in constraints\");\n                    break;\n                }\n            }\n\n            int k = Integer.parseInt(sc.nextLine().trim());\n\n            if( k < 1 || k > 10){\n                outputLines.add(\"Input constraint violation \" + k + \" is not in constraints\");\n                break;\n            }\n\n            boolean expectedOutput = refsol.isSumDivisibleByK(nums, k);\n\n            // ByteArrayOutputStream buf = new ByteArrayOutputStream();\n            // PrintStream prev = System.out;\n            // System.setOut(new PrintStream(buf));\n            boolean actualOutput= sol.isSumDivisibleByK(nums, k);\n            // System.out.flush();\n            // System.setOut(prev);\n            // String prints = buf.toString().strip();\n\n            outputLines.add(String.format(\"actualOutput=%s\\nexpectedOutput=%s\\nUserPrints=\\n\",\n                    actualOutput, expectedOutput));\n\n        }\n        System.out.println(outputLines);\n    }\n}\n",
+  "submitCode": "import java.io.*;\nimport java.util.*;\n\n// SUBMIT_CODE\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner sc = new Scanner(System.in);\n        List<String> outputLines = new ArrayList<>();\n        Solution sol = new Solution();\n\n        while (sc.hasNextLine()) {\n            int[] nums = Arrays.stream(sc.nextLine().split(\" \"))\n                              .mapToInt(Integer::parseInt)\n                              .toArray();\n                              \n            int k = Integer.parseInt(sc.nextLine().trim());\n\n            boolean expectedOutput = Boolean.parseBoolean(sc.nextLine().trim());\n\n            boolean actualOutput = sol.isSumDivisibleByK(nums, k);\n\n\n            if (actualOutput != expectedOutput) {\n                outputLines.add(\"Failed\");\n            }\n            else {\n                outputLines.add(\"Passed\");\n            }\n        }\n        System.out.println(outputLines);\n    }\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:16:30.114Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ae5afa03d2bcfe58a4"
+  },
+  "questionId": {
+    "$oid": "685d2c8b7c5c8b56fc5a762b"
+  },
+  "language": "js",
+  "referenceSolution": "function ref_isSumDivisibleByK(nums, k) {\n    return nums.reduce((a, b) => a + b, 0) % k === 0;\n}\n",
+  "starterCode": "function isSumDivisibleByK(nums, k) {\n    \n}\n",
+  "runnerCode": "const readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin, output: process.stdout });\nlet lines = [];\n\n// RUNNER_CODE\n\n\nrl.on('line', line => lines.push(line));\nrl.on('close', () => {\n    for (let i = 0; i + 1 < lines.length; i += 2) {\n        const nums = lines[i].replace('[', '').replace(']', '').replace(/\\s/g, '').split(',').map(Number);\n        if (nums.some(x => x < 0 || x > 100)) {\n            console.log(`Input constraint violation ${x} is not in constraints`);\n            continue;\n        }\n\n        const k = parseInt(lines[i + 1].trim());\n        if (k < 1 || k > 10) {\n            console.log(`Input constraint violation ${k} is not in constraints`);\n            break;\n        }\n\n        const expectedOutput = ref_isSumDivisibleByK(nums, k);\n\n        let userPrints = '';\n        const originalLog = console.log;\n        console.log = (...args) => (userPrints += args.join(' ') + '\\n');\n\n        const actualOutput = isSumDivisibleByK(nums, k);\n\n        console.log = originalLog;\n\n        console.log(`actualOutput=${actualOutput}\\nexpectedOutput=${expectedOutput}\\nUserPrints=${userPrints.trim()}\\n`);\n    }\n});\n",
+  "submitCode": "const readline = require('readline');\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout,\n    terminal: false\n});\n\n// SUBMIT_CODE\n\nlet lines = [];\n\nrl.on('line', line => lines.push(line));\n\nrl.on('close', () => {\n    for (let i = 0; i + 2 < lines.length; i += 3) {\n        const nums = lines[i].trim().split(/\\s+/).map(Number);\n        const k = parseInt(lines[i + 1].trim());\n        const expectedOutput = parseInt(lines[i + 2].trim());\n\n        const actualOutput = isSumDivisibleByK(nums, k);\n\n        if (actualOutput !== expectedOutput) {\n            console.log(\"Failed\");\n        } else {\n            console.log(\"Passed\");\n        }\n    }\n});\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:16:30.114Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ce5afa03d2bcfe591a"
+  },
+  "questionId": {
+    "$oid": "68555e9a153d09506e517d26"
+  },
+  "language": "c",
+  "referenceSolution": "int add(int a, int b) {\n    return a + b;\n}\n",
+  "starterCode": "int add(int a, int b) {\n    \n}\n",
+  "runnerCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// RUNNER_CODE\nint main() {\n    char s1[100], s2[100];\n    while (fgets(s1, sizeof(s1), stdin)) {\n        if (strlen(s1) == 1 && s1[0] == '\\n') break;\n        fgets(s2, sizeof(s2), stdin);\n        int a = atoi(s1);\n        int b = atoi(s2);\n        int sum = add(a, b);\n        printf(\"%d\\n%d\\n%d\\n\", a, b, sum);\n    }\n    return 0;\n}",
+  "submitCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// SUBMIT_CODE\nint main() {\n    char s1[100], s2[100], s3[100];\n    while (fgets(s1, sizeof(s1), stdin)) {\n        if (strlen(s1) == 1 && s1[0] == '\\n') break;\n        fgets(s2, sizeof(s2), stdin);\n        fgets(s3, sizeof(s3), stdin);\n        int a = atoi(s1);\n        int b = atoi(s2);\n        int expected = atoi(s3);\n        int sum = add(a, b);\n        if (sum == expected)\n            printf(\"Passed\\n\");\n        else\n            printf(\"Failed\\n\");\n    }\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:17:02.136Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ce5afa03d2bcfe591b"
+  },
+  "questionId": {
+    "$oid": "68555e9a153d09506e517d26"
+  },
+  "language": "cpp",
+  "referenceSolution": "class Solution {\npublic:\n    int add(int a, int b) {\n        return a + b;\n    }\n};",
+  "starterCode": "class Solution {\npublic:\n    int add(int a, int b) {\n        \n    }\n};",
+  "runnerCode": "#include <iostream>\n#include <string>\nusing namespace std;\n\n// RUNNER_CODE\nint main() {\n    string s1, s2;\n    Solution s;\n    while (getline(cin, s1)) {\n        if (s1.empty()) break;\n        getline(cin, s2);\n        int a = stoi(s1);\n        int b = stoi(s2);\n        int sum = s.add(a, b);\n        cout << a << endl << b << endl << sum << endl;\n    }\n    return 0;\n}",
+  "submitCode": "#include <iostream>\n#include <string>\nusing namespace std;\n\n//SUBMIT_CODE\n\nint main() {\n    string s1, s2, s3;\n    Solution s;\n    while (getline(cin, s1)) {\n        if (s1.empty()) break;\n        getline(cin, s2);\n        getline(cin, s3);\n        int a = stoi(s1);\n        int b = stoi(s2);\n        int expected = stoi(s3);\n        int sum = s.add(a, b);\n        if (sum == expected)\n            cout << \"Passed\" << endl;\n        else\n            cout << \"Failed\" << endl;\n    }\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:17:02.136Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ce5afa03d2bcfe591c"
+  },
+  "questionId": {
+    "$oid": "68555e9a153d09506e517d26"
+  },
+  "language": "java",
+  "referenceSolution": "class RefSolution {\n    public int add(int a, int b) {\n        return a + b;\n    }\n}",
+  "starterCode": "class Solution {\n    public int add(int a, int b) {\n        \n    }\n}",
+  "runnerCode": "import java.util.*;\nimport java.io.*;\n\n// RUNNER_CODE\n\nclass Main{\n   public static void main(String[] args){\n       Scanner sc = new Scanner(System.in);\n\n       Solution sol = new Solution();\n       RefSolution refsol = new RefSolution();\n\n       List<String> outputLines = new ArrayList<>();\n\n       while(sc.hasNextLine()){\n\n           int a = Integer.parseInt(sc.nextLine().trim());\n           if(!sc.hasNextLine()) break;\n\n           int b = Integer.parseInt(sc.nextLine().trim());\n\n           int actualOutput = sol.add(a, b);\n           int expectedOutput = refsol.add(a, b);\n           \n           outputLines.add(String.format(\"actualOutput=%d\\nexpectedOutput=%d\\nuserPrints=\\n\",actualOutput, expectedOutput));\n           \n       }\n       System.out.println(outputLines);\n   }\n}",
+  "submitCode": "import java.util.*;\n\n// SUBMIT_CODE\n\nclass Main{\n   public static void main(String[] args){\n       Scanner sc = new Scanner(System.in);\n       Solution sol = new Solution();\n       List<String> outputLines = new ArrayList<>();\n\n       while(sc.hasNextLine()){\n           int a = Integer.parseInt(sc.nextLine().trim());\n           int b = Integer.parseInt(sc.nextLine().trim());\n           int sum = sol.add(a, b);\n           int expSum = Integer.parseInt(sc.nextLine().trim());\n           if(sum == expSum){\n                outputLines.add(\"Passed\");\n           }\n           else{\n                outputLines.add(\"Failed\");\n           }\n       }\n       System.out.println(outputLines);\n   }\n}",
+  "createdAt": {
+    "$date": "2025-07-03T13:17:02.136Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ce5afa03d2bcfe591d"
+  },
+  "questionId": {
+    "$oid": "68555e9a153d09506e517d26"
+  },
+  "language": "python",
+  "referenceSolution": "class Solution:\n    def add(self, a, b):\n        return a + b\n\ns = Solution()",
+  "starterCode": "class Solution:\n    def add(self, a, b):\n        \n\ns = Solution()",
+  "runnerCode": "output = []\n\ntry:\n    while True:\n        s1 = input()\n        if s1.strip() == \"\":\n            break\n        s2 = input()\n        a = int(s1)\n        b = int(s2)\n        output.append(f\"{a}\\n{b}\\n{s.add(a, b)}\")\nexcept EOFError:\n    pass\n\nprint(\"\\n\".join(output))",
+  "submitCode": "output = []\n\ntry:\n    while True:\n        s1 = input()\n        if s1.strip() == \"\":\n            break\n        s2 = input()\n        s3 = input()\n        a = int(s1)\n        b = int(s2)\n        expected = int(s3)\n        result = s.add(a, b)\n        output.append(\"Passed\" if result == expected else \"Failed\")\nexcept EOFError:\n    pass\n\nprint(\"\\n\".join(output))",
+  "createdAt": {
+    "$date": "2025-07-03T13:17:02.137Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682ce5afa03d2bcfe591e"
+  },
+  "questionId": {
+    "$oid": "68555e9a153d09506e517d26"
+  },
+  "language": "js",
+  "referenceSolution": "\nclass Solution {\n    add(a, b) {\n        return a + b;\n    }\n}",
+  "starterCode": "\nclass Solution {\n    add(a, b) {\n        \n    }\n}",
+  "runnerCode": "const readline = require('readline');\n//RUNNER_CODE\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\nconst inputs = [];\nconst s = new Solution();\n\nrl.on('line', (line) => {\n    if (line.trim().length === 0) {\n        rl.close();\n    } else {\n        inputs.push(line.trim());\n    }\n});\n\nrl.on('close', () => {\n    let result = '';\n    for (let i = 0; i < inputs.length; i += 2) {\n        const a = parseInt(inputs[i]);\n        const b = parseInt(inputs[i + 1]);\n        const sum = s.add(a, b);\n        result += `${a}\\n${b}\\n${sum}\\n`;\n    }\n    console.log(result);\n});",
+  "submitCode": "const readline = require('readline');\n\n// SUBMIT_CODE\n// hiiii\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\nconst inputs = [];\nconst s = new Solution();\n\nrl.on('line', (line) => {\n    if (line.trim() === '') {\n        rl.close();\n    } else {\n        inputs.push(line.trim());\n    }\n});\n\nrl.on('close', () => {\n    let result = '';\n    for (let i = 0; i + 2 < inputs.length; i += 3) {\n        const a = parseInt(inputs[i]);\n        const b = parseInt(inputs[i + 1]);\n        const expected = parseInt(inputs[i + 2]);\n        const sum = s.add(a, b);\n        result += (sum === expected ? \"Passed\\n\" : \"Failed\\n\");\n    }\n    console.log(result);\n});\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:17:02.137Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682fa5afa03d2bcfe59cf"
+  },
+  "questionId": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "language": "java",
+  "referenceSolution": "class RefSolution{\n    public int arraySum(int[] arr){\n        int sum = 0;\n        for(int x : arr){\n            sum += x;\n        }\n        return sum;\n        // Hello\n    }\n}",
+  "starterCode": "class Solution{\n    public int arraySum(int[] arr){\n        // Hello\n    }\n}",
+  "runnerCode": "import java.io.*;\nimport java.util.*;\n\n// RUNNER_CODE\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner sc = new Scanner(System.in);\n        List<String> outputLines = new ArrayList<>();\n        RefSolution refsol = new RefSolution();\n        Solution sol = new Solution();\n\n        while (sc.hasNextLine()) {\n            int[] arr = Arrays.stream(sc.nextLine().replace(\"[\", \"\").replace(\"]\",\"\").replace(\" \", \"\").split(\",\"))\n                              .mapToInt(Integer::parseInt)\n                              .toArray();\n            for(int x : arr){\n                if (x < -100 || x > 100) {\n                    outputLines.add(\"Input constraint violation \" + x + \" is not in constraints\");\n                    break;\n                }\n            }\n\n            int expectedOutput = refsol.arraySum(arr);\n\n            ByteArrayOutputStream buf = new ByteArrayOutputStream();\n            PrintStream prev = System.out;\n            System.setOut(new PrintStream(buf));\n            int actualOutput= sol.arraySum(arr);\n            System.out.flush();\n            System.setOut(prev);\n            String prints = buf.toString().strip();\n\n            outputLines.add(String.format(\"actualOutput=%d\\nexpectedOutput=%d\\nUserPrints=%s\\n\",\n                    actualOutput, expectedOutput, prints));\n\n        }\n        System.out.println(outputLines);\n    }\n}\n",
+  "submitCode": "import java.io.*;\nimport java.util.*;\n\n// SUBMIT_CODE\n// Hello\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner sc = new Scanner(System.in);\n        List<String> outputLines = new ArrayList<>();\n        Solution sol = new Solution();\n\n\n        while (sc.hasNextLine()) {\n            int[] arr = Arrays.stream(sc.nextLine().split(\" \"))\n                              .mapToInt(Integer::parseInt)\n                              .toArray();\n            int expectedOutput = Integer.parseInt(sc.nextLine().trim());\n\n            int actualOutput = sol.arraySum(arr);\n\n\n            if (actualOutput != expectedOutput) {\n                outputLines.add(\"Failed\");\n            }\n            else {\n                outputLines.add(\"Passed\");\n            }\n        }\n        System.out.println(outputLines);\n    }\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:17:46.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682fa5afa03d2bcfe59cd"
+  },
+  "questionId": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "language": "c",
+  "referenceSolution": "int arraySum(int arr[], int n) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += arr[i];\n    }\n    return sum;\n    // Hello\n}\n",
+  "starterCode": "int arraySum(int arr[], int n) {\n    // Hello\n}\n",
+  "runnerCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// RUNNER_CODE\n\nint main() {\n    char line[1024];\n    int caseId = 0;\n\n    while (fgets(line, sizeof(line), stdin)) {\n        int arr[100], n = 0;\n        char* token = strtok(line, \" \\n\");\n\n        while (token != NULL) {\n            int val = atoi(token);\n            if (val < -100 || val > 100) {\n                printf(\"Input constraint violation %d is not in constraints\\n\", val);\n                break;\n            }\n            arr[n++] = val;\n            token = strtok(NULL, \" \\n\");\n        }\n\n        int expectedOutput = arraySum(arr, n); \n        int actualOutput = arraySum(arr, n); \n\n        printf(\"Test Case %d\\nactualOutput=%d\\nexpectedOutput=%d\\nUserPrints=\\n\\n\",\n               caseId, actualOutput, expectedOutput);\n\n        caseId++;\n    }\n    return 0;\n}\n",
+  "submitCode": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// SUBMIT_CODE\n// Hello\n\nint main() {\n    char line[1024];\n    int arr[100], n;\n\n    while (fgets(line, sizeof(line), stdin)) {\n        n = 0;\n        char* token = strtok(line, \" \\n\");\n        while (token != NULL) {\n            arr[n++] = atoi(token);\n            token = strtok(NULL, \" \\n\");\n        }\n\n        if (!fgets(line, sizeof(line), stdin)) break;\n        int expectedOutput = atoi(line);\n\n        int actualOutput = arraySum(arr, n);\n        if (actualOutput != expectedOutput) {\n            printf(\"Failed\\n\");\n        } else {\n            printf(\"Passed\\n\");\n        }\n    }\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:17:46.464Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682fa5afa03d2bcfe59ce"
+  },
+  "questionId": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "language": "cpp",
+  "referenceSolution": "int arraySum(const std::vector<int>& arr) {\n    int sum = 0;\n    for (int x : arr) {\n        sum += x;\n    }\n    return sum;\n    // Hello\n}\n",
+  "starterCode": "int arraySum(const std::vector<int>& arr) {\n    // Hello\n}\n",
+  "runnerCode": "#include <iostream>\n#include <vector>\n#include <sstream>\nusing namespace std;\n\n// RUNNER_CODE\n\nint main() {\n    string line;\n    int caseId = 0;\n\n    while (getline(cin, line)) {\n        vector<int> arr;\n        istringstream iss(line);\n        int num;\n\n        while (iss >> num) {\n            if (num < -100 || num > 100) {\n                cout << \"Input constraint violation \" << num << \" is not in constraints\" << endl;\n                break;\n            }\n            arr.push_back(num);\n        }\n\n        int expectedOutput = arraySum(arr); \n        int actualOutput = arraySum(arr);  \n\n        cout << \"Test Case \" << caseId << \"\\nactualOutput=\" << actualOutput\n             << \"\\nexpectedOutput=\" << expectedOutput << \"\\nUserPrints=\\n\" << endl;\n\n        caseId++;\n    }\n    return 0;\n}\n",
+  "submitCode": "#include <iostream>\n#include <vector>\n#include <sstream>\nusing namespace std;\n\n// SUBMIT_CODE\n// Hello\nint main() {\n    string line;\n    while (getline(cin, line)) {\n        istringstream iss(line);\n        int x;\n        vector<int> arr;\n\n        while (iss >> x) arr.push_back(x);\n\n        if (!getline(cin, line)) break;\n        int expectedOutput = stoi(line);\n\n        int actualOutput = arraySum(arr);\n        if (actualOutput != expectedOutput)\n            cout << \"Failed\\n\";\n        else\n            cout << \"Passed\\n\";\n    }\n    return 0;\n}\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:17:46.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686682fa5afa03d2bcfe59d0"
+  },
+  "questionId": {
+    "$oid": "685cec8235158b4e9989569d"
+  },
+  "language": "python",
+  "referenceSolution": "def arraySum(arr):\n    sum_ = 0\n    for x in arr:\n        sum_ += x\n    return sum_\n    // Hello\n",
+  "starterCode": "def arraySum(arr):\n    // Hello\n",
+  "runnerCode": "# RUNNER_CODE\n\nimport sys\n\ndef main():\n    case_id = 0\n    for line in sys.stdin:\n        arr = list(map(int, line.strip().split()))\n        for x in arr:\n            if x < -100 or x > 100:\n                print(f\"Input constraint violation {x} is not in constraints\")\n                break\n        else:\n            expected_output = arraySum(arr)\n            actual_output = arraySum(arr)\n\n            print(f\"Test Case {case_id}\\nactualOutput={actual_output}\\nexpectedOutput={expected_output}\\nUserPrints=\\n\")\n            case_id += 1\n\nif __name__ == \"__main__\":\n    main()\n",
+  "submitCode": "# SUBMIT_CODE\n## Hello\nimport sys\nlines = sys.stdin.read().splitlines()\n\ni = 0\nwhile i < len(lines) - 1:\n    arr = list(map(int, lines[i].strip().split()))\n    expected_output = int(lines[i + 1].strip())\n\n    actual_output = arraySum(arr)\n\n    if actual_output != expected_output:\n        print(\"Failed\")\n    else:\n        print(\"Passed\")\n    i += 2\n",
+  "createdAt": {
+    "$date": "2025-07-03T13:17:46.465Z"
+  },
+  "__v": 0
+}]

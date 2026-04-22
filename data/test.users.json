@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "685556452f333218e7897225"
+  },
+  "name": "Abhi",
+  "email": "abhi@gmail.com",
+  "password": "$2y$10$T45yrpTt/JOAGvidC3WCjuQqQs3I1SEPrpDE8Xk5CgFx5D2vRxr9i",
+  "role": "admin"
+},
+{
+  "_id": {
+    "$oid": "68593f8b18ac2152bac422a6"
+  },
+  "name": "Jay",
+  "email": "jay@gmail.com",
+  "role": "user",
+  "password": "$2y$10$T45yrpTt/JOAGvidC3WCjuQqQs3I1SEPrpDE8Xk5CgFx5D2vRxr9i"
+}]

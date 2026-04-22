@@ -1,0 +1,255 @@
+[
+  {
+    "_id": {
+      "$oid": "68555e9a153d09506e517d26"
+    },
+    "title": "Two Sum",
+    "description": "You have given two integers return the sum of two integers.",
+    "examples": [
+      {
+        "input": "a = 5\nb = 6",
+        "output": "11",
+        "explanation": "5 + 6 = 11",
+        "_id": {
+          "$oid": "68555e9a153d09506e517d27"
+        }
+      },
+      {
+        "input": "a = 1\nb = 1",
+        "output": "2",
+        "explanation": "1 + 1 = 2",
+        "_id": {
+          "$oid": "68555e9a153d09506e517d28"
+        }
+      },
+      {
+        "input": "a = 100\nb = 100",
+        "output": "200",
+        "explanation": "100 + 100 = 200",
+        "_id": {
+          "$oid": "68555e9a153d09506e517d29"
+        }
+      }
+    ],
+    "constraints": [
+      "0 <= a <= 100\n0 <= b <= 100"
+    ],
+    "difficulty": "Easy",
+    "tags": [
+      "Array"
+    ],
+    "createdBy": {
+      "$oid": "685556452f333218e7897225"
+    },
+    "createdAt": {
+      "$date": "2025-06-20T13:14:02.020Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6856585e2c3edcaa8e41cfeb"
+    },
+    "title": "Difference of two",
+    "description": "Given two numbers return the absolute difference between two numbers.",
+    "examples": [
+      {
+        "input": "a = 5\nb = 2",
+        "output": "3",
+        "explanation": "5 - 2 = 3",
+        "_id": {
+          "$oid": "6856585e2c3edcaa8e41cfec"
+        }
+      },
+      {
+        "input": "a = 15\nb = 4",
+        "output": "11",
+        "explanation": "15 - 4 = 11",
+        "_id": {
+          "$oid": "6856585e2c3edcaa8e41cfed"
+        }
+      }
+    ],
+    "constraints": [
+      "-100 <= a <= 100\n-100 <= b <= 100"
+    ],
+    "difficulty": "Easy",
+    "tags": [
+      "Array"
+    ],
+    "createdBy": {
+      "$oid": "685556452f333218e7897225"
+    },
+    "createdAt": {
+      "$date": "2025-06-21T06:59:42.993Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "68565a442c3edcaa8e41d015"
+    },
+    "title": "Product of Two Integers.",
+    "description": "Given two numbers return the product of two numbers.",
+    "examples": [
+      {
+        "input": "a = 5 \nb = 2",
+        "output": "10",
+        "explanation": "5 * 2 = 10",
+        "_id": {
+          "$oid": "68565a442c3edcaa8e41d016"
+        }
+      },
+      {
+        "input": "a = 15 \nb = 4",
+        "output": "60",
+        "explanation": "15 * 4 = 60",
+        "_id": {
+          "$oid": "68565a442c3edcaa8e41d017"
+        }
+      }
+    ],
+    "constraints": [
+      "-100 <= a <= 100\n-100 <= b <= 100"
+    ],
+    "difficulty": "Easy",
+    "tags": [
+      "Array"
+    ],
+    "createdBy": {
+      "$oid": "685556452f333218e7897225"
+    },
+    "createdAt": {
+      "$date": "2025-06-21T07:07:48.306Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6859be5af45b9f9564c47f52"
+    },
+    "title": "Make an Array n",
+    "description": "Given an integer n. Return the array having elements containing from 1 to n.\n[1,2,3,......,n]",
+    "examples": [
+      {
+        "input": "n = 5",
+        "output": "[1,2,3,4,5]",
+        "explanation": "No explanation",
+        "_id": {
+          "$oid": "6859be5af45b9f9564c47f53"
+        }
+      },
+      {
+        "input": "n = 10",
+        "output": "[1,2,3,4,5,6,7,8,9,10]",
+        "explanation": "No explanation",
+        "_id": {
+          "$oid": "6859be5af45b9f9564c47f54"
+        }
+      },
+      {
+        "input": "n = 1",
+        "output": "[1]",
+        "explanation": "No explanation",
+        "_id": {
+          "$oid": "6859be5af45b9f9564c47f55"
+        }
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 100"
+    ],
+    "difficulty": "Medium",
+    "tags": [
+      "Array"
+    ],
+    "createdBy": {
+      "$oid": "685556452f333218e7897225"
+    },
+    "createdAt": {
+      "$date": "2025-06-23T20:51:38.675Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "685cec8235158b4e9989569d"
+    },
+    "title": "Array Sum",
+    "description": "Given an array `nums` of `n` integers. Return the sum of elements of array.",
+    "examples": [
+      {
+        "input": "nums = [ 1, 2, 3, 4 ]",
+        "output": "10",
+        "explanation": "sum = 1 + 2 + 3 + 4 = 10",
+        "_id": {
+          "$oid": "685cec8235158b4e9989569e"
+        }
+      },
+      {
+        "input": "num = [ -15, 7, 8, -24 ]",
+        "output": "-24",
+        "explanation": "sum = (-15) + 7 + 8 + (-24) = -24",
+        "_id": {
+          "$oid": "685cec8235158b4e9989569f"
+        }
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 100\n\n-100 <= nums[i] <= 100"
+    ],
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Math",
+      "String"
+    ],
+    "createdBy": {
+      "$oid": "685556452f333218e7897225"
+    },
+    "createdAt": {
+      "$date": "2025-06-26T06:45:22.975Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "685d2c8b7c5c8b56fc5a762b"
+    },
+    "title": "Sum Divisible by k",
+    "description": "Given an integer array nums of size n and an integer k. If sum of elements of array is divisible by k return true, otherwise return false.",
+    "examples": [
+      {
+        "input": "nums = [ 1, 2, 3 ]\nk = 5",
+        "output": "false",
+        "explanation": "( 1 + 2 + 3 ) % 5 != 0",
+        "_id": {
+          "$oid": "685d2c8b7c5c8b56fc5a762c"
+        }
+      },
+      {
+        "input": "nums = [ 5, 10, 15 ]\nk = 3",
+        "output": "true",
+        "explanation": "( 5 + 10 + 15 ) % 3 == 0",
+        "_id": {
+          "$oid": "685d2c8b7c5c8b56fc5a762d"
+        }
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 100\n1 <= k <= 10\n0 <= nums[i] <= 100\n"
+    ],
+    "difficulty": "Hard",
+    "tags": [
+      "Array",
+      "Math"
+    ],
+    "createdBy": {
+      "$oid": "685556452f333218e7897225"
+    },
+    "createdAt": {
+      "$date": "2025-06-26T11:18:35.070Z"
+    },
+    "__v": 0
+  }
+]
