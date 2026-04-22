@@ -11,8 +11,7 @@ router.post('/edit/:contestId', protect, editContest);
 router.get('/', getAllContests);
 router.get('/mycontests', protect, getMyContests);
 router.get('/:contestId', getContestById);
-router.get('/full/:contestId', protect, getFullContestById);
-
+router.get('/full/:contestId', getFullContestById);
 router.post('/register/:id', protect, registerForContest);
 router.post('/:contestId/suspend/:userId', protect, suspendUserInContest); // admin access only
 router.post('/:contestId/unsuspend/:userId', protect, unsuspendUserInContest); // admin access only

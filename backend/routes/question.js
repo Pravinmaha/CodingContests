@@ -6,7 +6,9 @@ const router = express.Router();
 
 router.post('/', protect, addQuestion);
 router.put('/:questionId', protect, updateQuestion);
-router.get('/', protect, getAdminQuestions);
-router.get('/:id', protect, getCompleteQuestionById);
+// router.get('/', protect, getAdminQuestions);
+// router.get('/:id', protect, getCompleteQuestionById);
+router.get('/', getAdminQuestions);
+router.get('/:id', getCompleteQuestionById);
 
 export default router;

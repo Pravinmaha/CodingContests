@@ -15,21 +15,45 @@ export const FullContestProvider = ({ children }) => {
 
   
 
+  // useEffect(() => {
+  //   if (!contestId) return;
+  //   setLoading(true);
+  //   getFullContest(contestId)
+  //     .then((data) => {
+  //       setContest(data);
+  //       // console.log(data)
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       console.error('Failed to load full contest:', err);
+  //       setError(err);
+  //       setLoading(false);
+  //     });
+  // }, [contestId, refresh, isLoggedIn]);
   useEffect(() => {
-    if (!contestId) return;
-    setLoading(true);
-    getFullContest(contestId)
-      .then((data) => {
-        setContest(data);
-        // console.log(data)
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Failed to load full contest:', err);
-        setError(err);
-        setLoading(false);
-      });
-  }, [contestId, refresh, isLoggedIn]);
+  if (!contestId) return;
+
+  setLoading(true);
+  setError(null); // reset previous error
+
+  getFullContest(contestId)
+    .then((data) => {
+      setContest(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error('Failed to load full contest:', err);
+
+      // handle 401 or other errors safely
+      if (err.response?.status === 401) {
+        console.log("Unauthorized - user not logged in");
+      }
+
+      setError(err);
+      setLoading(false);
+    });
+
+}, [contestId, refresh, isLoggedIn]);
 
   return (
     <FullContestContext.Provider value={{ contest, loading, error, setRefresh }}>
@@ -38,4 +62,28 @@ export const FullContestProvider = ({ children }) => {
   );
 };
 
+useEffect(() => {
+  if (!contestId) return;
+
+  setLoading(true);
+  setError(null); // reset previous error
+
+  getFullContest(contestId)
+    .then((data) => {
+      setContest(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error('Failed to load full contest:', err);
+
+      // handle 401 or other errors safely
+      if (err.response?.status === 401) {
+        console.log("Unauthorized - user not logged in");
+      }
+
+      setError(err);
+      setLoading(false);
+    });
+
+}, [contestId, refresh, isLoggedIn]);
 export const useFullContest = () => useContext(FullContestContext);
